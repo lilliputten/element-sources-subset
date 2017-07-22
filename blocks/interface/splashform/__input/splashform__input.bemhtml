@@ -1,0 +1,86 @@
+/* jshint camelcase:false, unused:false, laxbreak:true, expr:true, boss:true */
+/* globals modules, project, addAttrs, addElemMods, addJs, addMix, addMods, appendContent, apply, applyCtx, applyNext, attrs, bem, block, cls, content, def, elem, elemMod, elemMods, extend, js, local, match, mix, mod, mode, mods, oninit, prependContent, replace, tag, wrap, xjstOptions */
+/**
+ *
+ * @module splashform__input
+ * @overview splashform__input
+ *
+ * @author lilliputten <lilliputten@yandex.ru>
+ * @since 2017.02.02 13:26
+ * @version 2017.02.02 13:26
+ *
+ * $Date: 2017-07-17 14:16:38 +0300 (Mon, 17 Jul 2017) $
+ * $Id: splashform__input.bemhtml 8762 2017-07-17 11:16:38Z miheev $
+ *
+*/
+
+block('splashform').elem('input')(
+
+    /*{{{*/def()(function(){
+        var ctx = this.ctx,
+            undef
+        ;
+        ctx.elemMods || ( ctx.elemMods = {} );
+        return applyNext();
+    }),/*}}}*/
+
+    /*{{{ Текстовые поля (по умолчанию) ** */match(function(){ return !this.ctx.type || ['text','password','search'].indexOf(this.ctx.type) !== -1; }).content()(function(){
+        var ctx = this.ctx,
+            content = applyNext(),
+            undef
+        ;
+        return {
+            block : 'input',
+            mods : {
+                id : ctx.id,
+                type : ctx.type,
+                'has-clear' : true,
+                theme : 'islands',
+                size: 'm' ,
+            },
+            placeholder : ctx.title,
+            js : ctx.inputJs,
+            attrs : {
+                title : ctx.title,
+            },
+            // autocomplete : false,
+            val : ctx.val || content,
+        };
+    }),/*}}}*/
+    /*{{{ radio-group ** */match(function(){ return ['radio-group'].indexOf(this.ctx.type) !== -1; }).content()(function(){
+        var ctx = this.ctx,
+            content = applyNext(),
+            undef
+        ;
+        return {
+            block : 'radio-group',
+            name : ctx.id,
+            options : ctx.options,
+            mods : {
+                id : ctx.id,
+                // type : 'line',
+                // type : ctx.type,
+                // 'has-clear' : true,
+                theme : 'islands',
+                size: 'm' ,
+            },
+            js : ctx.inputJs,
+            attrs : {
+                title : ctx.title,
+            },
+            val : ctx.val || content,
+        };
+    }),/*}}}*/
+
+    /*{{{*/content()(function(){
+        var ctx = this.ctx,
+            content = applyNext(),
+            undef
+        ;
+        return content;
+    }),/*}}}*/
+
+    tag()()
+
+);
+

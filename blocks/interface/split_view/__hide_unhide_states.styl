@@ -1,0 +1,34 @@
+
+.split_view
+    .view_panel__toolbox_item_buttons .button
+    .box_actions__button
+        &.button_unhide_left
+        &.button_unhide_right
+            display: none
+
+.split_view_hide_left,
+.split_view_hide_right
+    .view_panel__toolbox_item_buttons .button
+    .box_actions__button
+        // border: 1px solid red
+        &.button_hide_left,
+        &.button_hide_right
+            display: none
+        &.button_unhide_left,
+        &.button_unhide_right
+            display: inline-block
+
+.split_view
+    &.split_view_hide_left,
+    &.split_view_hide_right
+        .split_view__split_bar
+            display: none
+
+.view_panel
+    &.view_panel_maxxed
+        .view_panel__ribbon
+            .view_panel__button_hide
+                display: none
+            .view_panel__button_unhide
+                display: block
+

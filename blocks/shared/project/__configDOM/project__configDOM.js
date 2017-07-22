@@ -27,8 +27,8 @@ modules.define('project__configDOM', [
 //
 // };
 
-var page = document
-debugger
+// var page = document
+// debugger
 
 provide(config);
 

@@ -1,0 +1,32 @@
+/* jshint camelcase: false */
+/* jshint unused: false */
+/* globals modules, debugger, applyCtx, content, applyNext, block, elem, attrs, def */
+
+/**
+ *
+ * @overview screenholder__error
+ *
+ * @author lilliputten <lilliputten@yandex.ru>
+ * @since 2017.01.30, 14:13
+ * @version 2017.01.30, 14:13
+ *
+*/
+
+/*
+ * @module screenholder__error
+ */
+
+block('screenholder').elem('error')(
+
+    content()(function(){
+        var ctx = this.ctx,
+            rootCtx = ctx.rootCtx;
+        var content = [
+            { block : 'icon', cls : ( rootCtx && rootCtx.error_icon ) || ctx.icon || 'fa fa-warning' },
+            { elem : 'error_text', content : ( rootCtx && rootCtx.error_text ) || ctx.content || '' },
+        ];
+        return content;
+    })
+
+);
+

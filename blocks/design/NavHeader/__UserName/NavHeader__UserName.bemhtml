@@ -1,0 +1,113 @@
+/* jshint camelcase: false, unused: false */
+/* globals modules, debugger, project, def, tag, match, js, applyCtx, content, applyNext, block, elem, attrs */
+
+/**
+ *
+ * @module NavHeader__UserName
+ * @overview NavHeader__UserName
+ * @author lilliputten <lilliputten@yandex.ru>
+ *
+ * @since 2017.03.30 20:10:51
+ * @version 2017.03.30 20:10:51
+ *
+ * $Date: 2017-07-11 19:47:15 +0300 (Tue, 11 Jul 2017) $
+ * $Id: NavHeader__UserName.bemhtml 8733 2017-07-11 16:47:15Z miheev $
+ *
+*/
+
+block('NavHeader').elem('UserName')(
+
+    content()(function(){
+        return {
+            block : 'dropdown',
+            uniqueID : 'appUserNameDropdown',
+            // uniqID : 'appUserNameDropdown',
+            // // id : 'appUserNameDropdown',
+            // attrs : {
+            //     uniqueID : 'appUserNameDropdown',
+            //     uniqID : 'appUserNameDropdown',
+            //     id : 'appUserNameDropdown',
+            // },
+            // js : {
+            //     uniqueID : 'appUserNameDropdown',
+            //     uniqID : 'appUserNameDropdown',
+            //     id : 'appUserNameDropdown',
+            // },
+            mods : {
+                switcher : 'button',
+                theme : 'islands',
+                size : 'm',
+            },
+            switcher : {
+                // uniqueID : 'appUserNameButton',
+                block : 'button',
+                cls : 'button_action',
+                // cls : 'button_no_frame button_on_dark',
+                mods : {
+                    // togglable : 'check',
+                    id : 'UserName',
+                },
+                icon : { block : 'icon', cls : 'fa fa-user' },
+                text : '',
+            },
+            /** popup ** {{{ */
+            popup : {
+                block : 'menu',
+                uniqueID : 'appUserNameMenu',
+                // id : 'appUserNameMenu',
+                // attrs : {
+                //     uniqueID : 'appUserNameMenu',
+                //     id : 'appUserNameMenu',
+                //     title : 'appUserNameMenu',
+                // },
+                // js : {
+                //     uniqueID : 'appUserNameMenu',
+                //     id : 'appUserNameMenu',
+                // },
+                mods : {
+                    theme : 'islands',
+                    size : 'm',
+                    popup : true,
+                },
+                content : [
+                    /*{{{*/{ elem : 'item', elemMods : { type : 'link' }, content : {
+                        block : 'link',
+                        url : '#app:tcm',
+                        content : 'ТЦМ',
+                    } },/*}}}*/
+                    /*{{{*/{ elem : 'item', elemMods : { type : 'link' }, content : {
+                        block : 'link',
+                        url : '#app:dc',
+                        content : 'ЦОД',
+                    } },/*}}}*/
+                    /*{{{*/{ elem : 'item', elemMods : { type : 'link' }, content : {
+                        block : 'link',
+                        url : '#app:umto',
+                        content : 'УМТО',
+                    } },/*}}}*/
+                    /*{{{*/{ elem : 'item', elemMods : { type : 'link' }, content : {
+                        block : 'link',
+                        url : '',
+                        content : 'Настройки',
+                    } },/*}}}*/
+                    /*{{{*/{ elem : 'item', elemMods : { type : 'link' }, content : {
+                        block : 'link',
+                        cls : 'appChangeAuth',
+                        url : '{{rootUrl}}application/Auth/signoff',
+                        content : 'Смена типа авторизации',
+                    } },/*}}}*/
+                    /*{{{*/{ elem : 'item', elemMods : { type : 'link' }, content : {
+                        block : 'link',
+                        cls : 'appSignOut',
+                        url : '{{rootUrl}}application/Auth/signout',
+                        content : 'Выйти',
+                    } },/*}}}*/
+                ],
+            },/*}}}*/
+        };
+    }),
+
+    tag()()
+
+);
+

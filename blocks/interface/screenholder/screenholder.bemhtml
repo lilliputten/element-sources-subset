@@ -1,0 +1,22 @@
+/* jshint camelcase:false, unused:false, laxbreak:true, expr:true, boss:true */
+/* globals modules, project, addAttrs, addElemMods, addJs, addMix, addMods, appendContent, apply, applyCtx, applyNext, attrs, bem, block, cls, content, def, elem, elemMod, elemMods, extend, js, local, match, mix, mod, mode, mods, oninit, prependContent, replace, tag, wrap, xjstOptions */
+block('screenholder')(
+
+    def()(function() {
+        var ctx = this.ctx;
+        return applyNext();
+    }),
+
+    addJs()(true),
+
+    content()(function() {
+        var ctx = this.ctx;
+        return [
+            { elem : 'waiting', content : [
+                { block : 'spin', mods : { theme : 'islands', size : 'xl', visible : true, color : 'accent' } },
+            ] },
+            { elem : 'error', rootCtx : ctx },
+        ];
+    })
+
+);

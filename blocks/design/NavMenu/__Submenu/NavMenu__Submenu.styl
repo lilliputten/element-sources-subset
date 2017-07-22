@@ -1,0 +1,61 @@
+// $Date: 2017-04-03 15:13:03 +0300 (Mon, 03 Apr 2017) $
+// $Id: NavMenu__Submenu.styl 8034 2017-04-03 12:13:03Z miheev $
+
+@require '../!Defaults.styl'
+
+.NavMenu
+    &__Submenu
+
+        list-style: none
+        margin: 0
+        padding: 0
+
+        display: none
+
+        ^[0]:not(^[0]_Collapsed) &
+
+            & ^[1]
+                // Отступ меню слева, если вложенное
+                margin-left: 30px
+
+            position: absolute
+            z-index: $NavMenu.zIndex
+
+            background: #FFF
+
+            &_isRoot
+                // Отступ от родительского пункта для верхнего уровня меню
+                margin-top: 5px
+
+            // Если меню второго уровня, то приподнимаем к родительскому пункту
+            margin-top: -3px
+
+            padding: 8px 0
+
+            border-radius: 3px
+
+            border: none
+            box-shadow: 0 0 0 1px rgba(0,0,0,0.1), 0 10px 20px -5px rgba(0,0,0,0.4)
+
+            @keyframes NavMenu__SubmenuAnimation
+                0%
+                    transform: translateY(10px)
+                    opacity: 0
+                100%
+                    transform: translateY(0px)
+                    opacity: 1
+
+            animation-timing-function: ease-out
+            animation-duration: 0.1s
+            // animation-fill-mode: forwards
+            animation-name: NavMenu__SubmenuAnimation
+
+        ^[0]_Collapsed &
+            position: relative
+            padding: 8px
+            padding-right: 0
+            overflow: hidden
+
+        &_opened
+            display: block
+

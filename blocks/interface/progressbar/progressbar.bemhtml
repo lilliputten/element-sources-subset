@@ -1,0 +1,85 @@
+/* jshint camelcase:false, unused:false, laxbreak:true, expr:true, boss:true */
+/* globals modules, project, addAttrs, addElemMods, addJs, addMix, addMods, appendContent, apply, applyCtx, applyNext, attrs, bem, block, cls, content, def, elem, elemMod, elemMods, extend, js, local, match, mix, mod, mode, mods, oninit, prependContent, replace, tag, wrap, xjstOptions */
+block('progressbar')(
+
+    def()(function(){
+        var ctx = this.ctx;
+        if ( !ctx.cls ) { ctx.cls = ''; }
+        // ctx.cls += ' progressbar_expanded';
+        return applyNext();
+    }),
+
+    addJs()(true),
+
+    content()(function(){
+        var ctx = this.ctx;
+        var content = [
+            { elem : 'progress', content : [
+                { elem : 'progress_show', content : [
+                    { elem : 'progress_bar', content : [
+                        { elem : 'progress_glow', content : [
+                            { elem : 'progress_glow_tail' },
+                            { elem : 'progress_glow_tip' },
+                        ]},
+                    ]},
+                ]},
+            ]},
+            { elem : 'details'/* , cls : 'progressbar__details_expanded' */, content : [
+                { elem : 'details_show', content : [
+                    { elem : 'details_title', content : [
+                        {
+                            elem : 'details_title_text',
+                            mix : [{ elem : 'details_title_text_active' }],
+                            content : 'Активные задачи:',
+                        },
+                        {
+                            elem : 'details_title_text',
+                            mix : [{ elem : 'details_title_text_done' }],
+                            content : 'Нет активных задач',
+                        },
+                        {
+                            block : 'button',
+                            cls : 'progressbar__details_title_hide button_icon button_no_frame', // Стиль для оформления предопределённым css классом
+                            attrs : { title : 'Скрыть задачи' },
+                            mods : { id : 'details_title_hide', theme : 'islands', size : 'm' },
+                            icon : { block : 'icon', cls : 'ti ti-angle-up' },
+                        },
+                    ] },
+                    { elem : 'details_container', content : [
+                        // {
+                        //     elem : 'details_item',
+                        //     id : 'debug',
+                        //     title : 'Отладка1',
+                        //     percent : '100%',
+                        // },
+                        // {
+                        //     elem : 'details_item',
+                        //     id : 'debug',
+                        //     title : 'Отладка',
+                        //     closable : true,
+                        //     percent : '0%',
+                        // },
+                    ]},
+                    { elem : 'details_tools', content : [
+                        // { block : 'button',
+                        //     id : 'close',
+                        //     mods : { theme : 'islands', size : 'm', type : 'link' },
+                        //     cls : 'icon-only',
+                        //     // text : 'Закрыть',
+                        //     icon : {
+                        //         block : 'icon',
+                        //         cls : 'ti ti-close',
+                        //         // mods : { social : 'twitter' }
+                        //     },
+                        // },
+                    ]},
+                ]},
+            ]},
+        ];
+        return content;
+    }),
+
+    tag()()
+
+);
+

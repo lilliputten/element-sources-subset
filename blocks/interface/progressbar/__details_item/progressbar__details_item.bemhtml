@@ -1,0 +1,84 @@
+/* jshint camelcase:false, unused:false, laxbreak:true, expr:true, boss:true */
+/* globals modules, debugger, project, def, tag, match, js, applyCtx, content, applyNext, block, elem, attrs, mix */
+/*
+ * $Id: progressbar__details_item.bemhtml 8733 2017-07-11 16:47:15Z miheev $
+ * $Date: 2017-07-11 19:47:15 +0300 (Tue, 11 Jul 2017) $
+ */
+block('progressbar')( elem('details_item')(
+
+    def()(function(){
+        var ctx = this.ctx;
+
+        if ( !ctx.cls ) { ctx.cls = ''; }
+        if ( !ctx.mix ) { ctx.mix = []; }
+        if ( !ctx.mods ) { ctx.mods = {}; }
+        if ( !ctx.attrs ) { ctx.attrs = {}; }
+
+        ctx.mix.push({ elem : 'details_item_id_' + ctx.id });
+
+        // return applyCtx(ctx);
+        return applyNext();
+    }),
+
+    js()(function(){
+        var ctx = this.ctx;
+        var id = ctx.id; // if defined?
+        return { id : id };
+    }),
+
+    content()(function(){
+        var ctx = this.ctx;
+        var options = ctx.options || {};
+        var title = options.title || ctx.id;
+        var hint = ( options.title ) ? '('+ctx.id+') '+options.title : ctx.id;
+        var content = [
+            {
+                elem : 'details_item_text',
+                content : title,
+                attrs : { title : hint },
+            },
+            {
+                elem : 'details_item_percents',
+                content: {
+                    elem : 'details_item_percents_text',
+                    mix : [{ elem : 'details_item_percents_text_id_' + ctx.id }],
+                    content: ( options.start_percents || 0 ) + '%',
+                },
+            },
+        ];
+        return content;
+    }),
+
+    // если с кнопкой "Отменить задачу"
+    match(function(){ return this.ctx.options.on_cancel; })(
+
+        mix()({ elemMods : { hasCancel : true } }),
+
+        content()(function(){
+            var ctx = this.ctx,
+                content = applyNext()
+            ;
+            content.push({
+                block : 'button',
+                cls : 'progressbar__details_item_button button_icon button_no_frame', // Стиль для оформления предопределённым css классом
+                attrs : {
+                    // id : 'my_button',
+                    title : 'Завершить задачу',
+                },
+                // name : 'my_button',
+                mods : {
+                    theme : 'islands',
+                    size : 'm',
+                    // id : 'my_button_icon',
+                },
+                icon : { block : 'icon', cls : 'ti ti-close' },
+            });
+            return content;
+        })
+
+    ),
+
+    tag()()
+
+));
+

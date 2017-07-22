@@ -1,0 +1,18 @@
+{
+    "result": true,
+    "resp": [
+        {
+            "IdMonObject": 5585,
+            "IdObject": 440,
+            "VisitCount": 2,
+            "FirstTime": 1.497333069e+12,
+            "LastTime": 1.497676998e+12,
+            "VisitDuration": 7018
+        },
+        {
+            "IdMonObject": 7683,
+            "IdObject": 440,
+            "VisitCount": 0
+        }
+    ]
+}

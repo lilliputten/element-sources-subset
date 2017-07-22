@@ -1,0 +1,539 @@
+[
+    {
+        "block": "object_details",
+        "elem": "tab",
+        "id": "REG",
+        "title": "Учётные данные",
+        "content": [
+            {
+                "elem": "group",
+                "content": [
+                    {
+                        "elem": "input",
+                        "id": "typeID",
+                        "title": "Тип объекта",
+                        "required": true,
+                        "default_value": 1,
+                        "dict": "objTypes",
+                        "type": "select",
+                        "editable_for": "new"
+                    },
+                    {
+                        "elem": "input",
+                        "id": "name",
+                        "title": "Наименование",
+                        "readonly": true
+                    },
+                    {
+                        "elem": "input",
+                        "id": "objID",
+                        "title": "Номер",
+                        "type": "text",
+                        "show_template": "{%s|if_equal:-1:}",
+                        "required": true,
+                        "default_value": -1,
+                        "editable_for": "none"
+                    },
+                    {
+                        "elem": "input",
+                        "id": "radio",
+                        "title": "Позывной",
+                        "type": "text"
+                    }
+                ]
+            },
+            {
+                "elem": "group",
+                "content": [
+                    {
+                        "elem": "input",
+                        "id": "acInfo.ID",
+                        "type": "selector",
+                        "dict": "aclist",
+                        "toggle": "acInfoPlus",
+                        "selector": {
+                            "extended": true,
+                            "title": "Выбор АНК",
+                            "multiple": false,
+                            "search_in": [
+                                "--"
+                            ],
+                            "actions_combine": true,
+                            "buttons": [
+                                "accept",
+                                "reset_value",
+                                "close"
+                            ],
+                            "actions": [
+                                [
+                                    "append_object",
+                                    "edit_object",
+                                    "delete_object"
+                                ],
+                                [
+                                    "target_selected_object"
+                                ]
+                            ],
+                            "edit_form": {
+                                "mode": "form",
+                                "id": "aclist_edit",
+                                "title_edit": "Редактировать АНК",
+                                "title_new": "Добавить АНК",
+                                "content": [
+                                    {
+                                        "elem": "input",
+                                        "id": "IdACType",
+                                        "type": "select",
+                                        "dict": "DictComplectTypes",
+                                        "title": "Тип АНК"
+                                    },
+                                    {
+                                        "elem": "input",
+                                        "id": "IdMonObject",
+                                        "type": "hidden"
+                                    },
+                                    {
+                                        "elem": "input",
+                                        "id": "IdChannelType",
+                                        "type": "select",
+                                        "dict": "DictChanelTypes",
+                                        "title": "Тип канала связи"
+                                    },
+                                    {
+                                        "elem": "input",
+                                        "id": "SerialNumber",
+                                        "title": "Серийный номер"
+                                    },
+                                    {
+                                        "elem": "input",
+                                        "id": "Phone",
+                                        "title": "Телефон"
+                                    }
+                                ],
+                                "close_button": true,
+                                "buttons": [
+                                    "save",
+                                    "cancel"
+                                ]
+                            },
+                            "dict_filters": [
+                                {
+                                    "hidden": true,
+                                    "id": "--",
+                                    "title": "ID"
+                                },
+                                {
+                                    "id": "search",
+                                    "title": "Поиск"
+                                },
+                                {
+                                    "id": "IdACType",
+                                    "dict": "DictComplectTypes",
+                                    "title": "Тип АНК"
+                                },
+                                {
+                                    "id": "IdMonObject",
+                                    "select_mode": "radio",
+                                    "filter_mode": "check_value",
+                                    "options": [
+                                        {
+                                            "val": "any",
+                                            "text": "Все"
+                                        },
+                                        {
+                                            "val": "empty",
+                                            "text": "Свободные"
+                                        },
+                                        {
+                                            "val": "not_empty",
+                                            "text": "Установленные"
+                                        }
+                                    ],
+                                    "val": "not_empty",
+                                    "title": "Привязка"
+                                },
+                                {
+                                    "hidden": true,
+                                    "id": "IdChannelType",
+                                    "dict": "DictChanelTypes",
+                                    "title": "Тип канала связи"
+                                },
+                                {
+                                    "hidden": true,
+                                    "id": "Phone",
+                                    "title": "Номер"
+                                }
+                            ]
+                        },
+                        "dictkey": "{IdMonObject|not_empty:<span title=\"Установлено: %s\" class=\"icon status-icon fa fa-lock\"></span>|default:<span title=\"Свободно\" class=\"icon status-icon fa fa-unlock\"></span>}{SerialNumber|not_empty:%s, }{IdACType|dict:DictComplectTypes|not_empty:%s/}{IdChannelType|dict:DictChanelTypes|not_empty:%s, }{Phone}",
+                        "title": "АНК"
+                    },
+                    {
+                        "elem": "group",
+                        "id": "acInfoPlus",
+                        "cls": "nospace nodelim toggle_target",
+                        "content": [
+                            {
+                                "elem": "input",
+                                "id": "acInfo.typeID",
+                                "type": "select",
+                                "dict": "DictComplectTypes",
+                                "title": "Тип оборудования",
+                                "editable_for": "none"
+                            },
+                            {
+                                "elem": "input",
+                                "id": "acInfo.channelType",
+                                "type": "select",
+                                "dict": "DictChanelTypes",
+                                "title": "Тип канала связи",
+                                "editable_for": "none"
+                            },
+                            {
+                                "elem": "input",
+                                "id": "acInfo.phone",
+                                "title": "№ телефона",
+                                "editable_for": "none"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "elem": "group",
+                "title": "Определение стоянки",
+                "content": [
+                    {
+                        "elem": "input",
+                        "id": "Rangemin",
+                        "required": true,
+                        "default_value": 0,
+                        "title": "Пороговое значение расстояния"
+                    },
+                    {
+                        "elem": "input",
+                        "id": "Speedmin",
+                        "required": true,
+                        "default_value": 0,
+                        "title": "Пороговое значение скорости"
+                    },
+                    {
+                        "elem": "input",
+                        "id": "Reportmin",
+                        "required": true,
+                        "default_value": 0,
+                        "title": "Количество анализируемых отсчётов"
+                    },
+                    {
+                        "elem": "input",
+                        "id": "Rangemax",
+                        "required": true,
+                        "default_value": 0,
+                        "title": "Пороговое значение сдвига стоянки"
+                    },
+                    {
+                        "elem": "input",
+                        "id": "TimeMin",
+                        "required": true,
+                        "default_value": 0,
+                        "title": "Пороговое значение разрыва связи"
+                    }
+                ]
+            },
+            {
+                "elem": "group",
+                "datasets": "TS",
+                "content": [
+                    {
+                        "elem": "input",
+                        "id": "monObjCar.StateNumber",
+                        "readonly": true,
+                        "title": "Гос. №",
+                        "datasets": "TS"
+                    },
+                    {
+                        "elem": "input",
+                        "id": "_monObjCar.IdCar",
+                        "type": "select",
+                        "dict": "objTypes",
+                        "readonly": true,
+                        "title": "Тип ТС",
+                        "datasets": "TS"
+                    },
+                    {
+                        "elem": "input",
+                        "id": "monObjCar.GarageNumber",
+                        "readonly": true,
+                        "title": "№ учетный",
+                        "datasets": "TS"
+                    },
+                    {
+                        "elem": "input",
+                        "id": "__monObjCar.IdBrand",
+                        "readonly": true,
+                        "title": "?Марка",
+                        "datasets": "TS"
+                    },
+                    {
+                        "elem": "input",
+                        "id": "monObjCar.IdModel",
+                        "type": "select",
+                        "dict": "CarModel",
+                        "readonly": true,
+                        "title": "Модель",
+                        "datasets": "TS"
+                    },
+                    {
+                        "elem": "input",
+                        "id": "monObjCar.VIN",
+                        "readonly": true,
+                        "title": "VIN",
+                        "datasets": "TS"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "block": "object_details",
+        "elem": "tab",
+        "id": "PAR",
+        "title": "Параметры",
+        "content": [
+            {
+                "elem": "group",
+                "content": [
+                    {
+                        "elem": "input",
+                        "id": "__no_carrier",
+                        "title": "?Отсутствие связи",
+                        "datasets": "TS"
+                    },
+                    {
+                        "elem": "input",
+                        "id": "__speed_over",
+                        "title": "?Превышение скорости",
+                        "datasets": "TS"
+                    },
+                    {
+                        "elem": "input",
+                        "id": "__no_valid_coords",
+                        "title": "?Отсутствие валидных координат",
+                        "datasets": "TS"
+                    },
+                    {
+                        "elem": "input",
+                        "id": "__parking_detection",
+                        "title": "?Определение стоянки",
+                        "datasets": "TS"
+                    },
+                    {
+                        "elem": "input",
+                        "id": "__monitoring_zk",
+                        "title": "?Мониторинг ЗК",
+                        "datasets": "TS"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "block": "object_details",
+        "elem": "tab",
+        "id": "DEV",
+        "title": "Датчики и ИУ",
+        "content": [
+            {
+                "elem": "group",
+                "title": "Датчики",
+                "content": [
+                    {
+                        "elem": "array",
+                        "id": "controlparam_sensors",
+                        "content": [
+                            {
+                                "elem": "input",
+                                "id": "controlparam_sensors--id",
+                                "type": "hidden"
+                            },
+                            {
+                                "elem": "input",
+                                "id": "controlparam_sensors--__name",
+                                "title": "?Наименование",
+                                "datasets": "TS"
+                            },
+                            {
+                                "elem": "input",
+                                "id": "controlparam_sensors--IdMeasurerGroup",
+                                "title": "Группа типов устройств",
+                                "datasets": "TS"
+                            },
+                            {
+                                "elem": "input",
+                                "id": "controlparam_sensors--IdMesurerType",
+                                "title": "Тип датчика",
+                                "datasets": "TS"
+                            },
+                            {
+                                "elem": "input",
+                                "id": "controlparam_sensors--__properties",
+                                "title": "?Свойства датчика",
+                                "datasets": "TS"
+                            },
+                            {
+                                "elem": "input",
+                                "id": "controlparam_sensors--IdDictContrParam",
+                                "title": "Контролируемый параметр",
+                                "datasets": "TS"
+                            },
+                            {
+                                "elem": "input",
+                                "id": "controlparam_sensors--__ank_connected",
+                                "title": "?Подключен к АНК",
+                                "datasets": "TS"
+                            },
+                            {
+                                "elem": "input",
+                                "id": "controlparam_sensors--__install_date",
+                                "title": "?Дата установки",
+                                "datasets": "TS"
+                            },
+                            {
+                                "elem": "input",
+                                "id": "controlparam_sensors--__status",
+                                "title": "?Статус",
+                                "datasets": "TS"
+                            },
+                            {
+                                "elem": "input",
+                                "id": "controlparam_sensors--__ank_connected_date",
+                                "title": "?Дата подключения к АНК",
+                                "datasets": "TS"
+                            },
+                            {
+                                "elem": "input",
+                                "id": "controlparam_sensors--__disconnected_date",
+                                "title": "?Дата отключения",
+                                "datasets": "TS"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "elem": "group",
+                "title": "Исполнительные устройства",
+                "content": [
+                    {
+                        "elem": "array",
+                        "id": "controlparam_actors",
+                        "content": [
+                            {
+                                "elem": "input",
+                                "id": "controlparam_actors--id",
+                                "type": "hidden"
+                            },
+                            {
+                                "elem": "input",
+                                "id": "controlparam_actors--__name",
+                                "title": "?Наименование",
+                                "datasets": "TS"
+                            },
+                            {
+                                "elem": "input",
+                                "id": "controlparam_actors--IdMeasurerGroup",
+                                "title": "Группа типов устройств",
+                                "datasets": "TS"
+                            },
+                            {
+                                "elem": "input",
+                                "id": "controlparam_actors--__ank_connected",
+                                "title": "?Подключен к АНК",
+                                "datasets": "TS"
+                            },
+                            {
+                                "elem": "input",
+                                "id": "controlparam_actors--__install_date",
+                                "title": "?Дата установки",
+                                "datasets": "TS"
+                            },
+                            {
+                                "elem": "input",
+                                "id": "controlparam_actors--__status",
+                                "title": "?Статус",
+                                "datasets": "TS"
+                            },
+                            {
+                                "elem": "input",
+                                "id": "controlparam_actors--__ank_connected_date",
+                                "title": "?Дата подключения к АНК",
+                                "datasets": "TS"
+                            },
+                            {
+                                "elem": "input",
+                                "id": "controlparam_actors--__disconnected_date",
+                                "title": "?Дата отключения",
+                                "datasets": "TS"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "block": "object_details",
+        "elem": "tab",
+        "id": "STA",
+        "title": "Состояния",
+        "content": [
+            {
+                "elem": "group",
+                "content": [
+                    {
+                        "elem": "array",
+                        "id": "enabledStateList",
+                        "title": "Назначенные состояния",
+                        "showkey": "<b>№ {--}</b> {stateID|dict:statelist}",
+                        "content": [
+                            {
+                                "elem": "input",
+                                "id": "enabledStateList--stateID",
+                                "type": "select",
+                                "dict": "statelist",
+                                "title": "Состояние"
+                            },
+                            {
+                                "elem": "input",
+                                "id": "enabledStateList--schemeID",
+                                "editable_for": "none",
+                                "title": "Схема"
+                            },
+                            {
+                                "elem": "input",
+                                "id": "enabledStateList--priority",
+                                "editable_for": "none",
+                                "title": "Приоритет"
+                            },
+                            {
+                                "elem": "input",
+                                "id": "enabledStateList--lastTimeTriggered",
+                                "editable_for": "none",
+                                "show_template": "{%s|datetime}",
+                                "title": "Время последнего срабатывания"
+                            },
+                            {
+                                "elem": "input",
+                                "id": "enabledStateList--problemID",
+                                "editable_for": "none",
+                                "type": "select",
+                                "dict": "DictProblemTypes",
+                                "title": "Проблема"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+]

@@ -1,0 +1,76 @@
+block('popup_dialog')( elem('input_edit')(
+
+    content()(function(){
+        var ctx = this.ctx;
+        var opt = ctx.parent || {};
+        // DBG( 'bemhtml opt', ctx, opt );
+
+        var block = { mix : [], cls : '', atrs : {} };
+
+        // see params definition in `__input`
+        var params = {
+            field_id : opt.field_id,
+            id : opt.id,
+            data_id : opt.data_id,
+            array : opt.array,
+            array_id : opt.array_id,
+            item_n : opt.item_n,
+            original_val : opt.data,
+        };
+        // DBG( 'item', ctx, opt );
+        var val = String(opt.data);
+        var set_val = ( typeof val === 'undefined' || val == 'undefined' || val == 'null' ) ? '' : val;
+
+        /*{{{*/if ( opt.type == 'select' ) {
+            var options = ctx.parent.options;
+            // // options sample:
+            // var options = [
+            //     // { val : 1, text : 'first', checked: true },
+            //     // { val : 2, text : 'second' }
+            // ];
+            block = {
+                block : 'select',
+                js : params,
+                mix : [
+                    { block : 'select_type_select' },
+                    { block : 'select_field_edit' },
+                    { block : 'select_edit_' + opt.id },
+                ],
+                mods : {
+                    mode : opt.select_mode || 'radio-check',
+                    theme : 'islands',
+                    size : 'm',
+                    nicescroll : true,
+                },
+                name : opt.id,
+                text : '—',// opt.title,
+                options : options,
+                val : set_val,
+            };
+            // DBG( 'item select', block, ctx, opt );
+        }/*}}}*/
+        /*{{{ text... */else {
+            block = {
+                block : 'input',
+                js : params,
+                mix : [
+                    { block : 'input_type_text' },
+                    { block : 'input_field_edit' },
+                    { block : 'input_edit_' + opt.id },
+                ],
+                mods : { theme : 'islands', size : 'm', 'has-clear' : true },
+                val : set_val,
+                // placeholder : 'placeholder',
+            };
+        }/*}}}*/
+
+        // var content = [
+        //     // { elem : 'inner', content : ctx.content },
+        // ];
+        return block;
+    }),
+
+    def()()
+
+));
+

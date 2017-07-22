@@ -1,0 +1,134 @@
+/* jshint camelcase:false, unused:false, laxbreak:true, expr:true, boss:true */
+/* globals modules, project, addAttrs, addElemMods, addJs, addMix, addMods, appendContent, apply, applyCtx, applyNext, attrs, bem, block, cls, content, def, elem, elemMod, elemMods, extend, js, local, match, mix, mod, mode, mods, oninit, prependContent, replace, tag, wrap, xjstOptions */
+/* globals LOCAL_DEV, LOCAL_ENB */
+/**
+ *
+ * @module NavMenu__Item
+ * @overview NavMenu__Item
+ * @author lilliputten <lilliputten@yandex.ru>
+ *
+ * @since 2017.03.31 12:19:27
+ * @version 2017.03.31 12:19:27
+ *
+ * $Date: 2017-07-17 14:16:38 +0300 (Mon, 17 Jul 2017) $
+ * $Id: NavMenu__Item.bemhtml 8762 2017-07-17 11:16:38Z miheev $
+ *
+*/
+
+block('NavMenu').elem('Item')(
+
+    def()(function(){
+
+        var ctx = this.ctx;
+
+        ctx.mix || ( ctx.mix = [] );
+        // this.mix || ( this.mix = [] );
+        this.elemMods || ( this.elemMods = {} );
+
+        if ( ctx.hasChilds ) {
+            // this.elemMods.dropdown = true;
+            this.elemMods.hasChilds = true;
+            // ctx.mix.push({ block : 'dropdown-controller' });
+        }
+        else {
+            if ( ctx.id ) {
+                this.elemMods.hasId = true;
+                this.elemMods.id = ctx.id; // id присутствует в параметрах, но надо сохранять и в модификаторах для поиска ткущего пункта в DOM
+            }
+            else if ( ctx.url ) {
+                this.elemMods.hasUrl = true;
+            }
+        }
+
+        this.elemMods.isRoot = !ctx.level;
+
+        return applyNext();
+    }),
+
+    js()(function(){
+        return {
+            id : this.ctx.id, // Для получения значения id (если id с '_', то из модификаторов его не получить)
+        };
+    }),
+
+    attrs()(function(){
+        var ctx = this.ctx,
+            root = ctx.rootCtx,
+            attrs = {
+            }
+        ;
+        if ( ctx.id ) {
+            attrs.href = '#' + ctx.id;
+        }
+        else if ( ctx.url ) {
+            attrs.href = ctx.url;
+            if ( root && root.authTokenName && root.authToken ) {
+                attrs.href += ( attrs.href.url.includes('?') ) ? '&' : '?';
+                attrs.href += root.authTokenName+'='+encodeURIComponent(root.authToken);
+            }
+        }
+        return attrs;
+    }),
+
+    content()(function(){
+        var ctx = this.ctx;
+        var title = ctx.title;
+        // Отладочная информация в меню
+        if ( ( LOCAL_DEV || LOCAL_ENB ) && ctx.id ) {
+            title = [ ctx.title, ' ', { tag : 'code', content : ctx.id } ];
+        }
+        Array.isArray(title) || ( title = [title] );
+        var content = [ title ];
+        if ( ctx.hasChilds ) {
+            content.push({
+                tag : 'span',
+                cls : 'caret',
+            });
+        }
+        return content;
+    }),
+
+    /*
+     * ВНИМАНИЕ!
+     * Должна быть именно структура:
+     * - li
+     *   - a (Item)
+     *   - ul (submenu)
+     *
+     * ...См. код в .js (находим следующий и предыдущий элементы относительно друг дргуа через
+     * prev() и next()...)
+     *
+     */
+
+    wrap()(function(){
+        var ctx = this.ctx;
+        var isRoot = !ctx.level;
+        var content = [
+            ctx,
+        ];
+        if ( Array.isArray(ctx.content) && ctx.content.length ) {
+            content.push({
+                elem : 'Submenu',
+                tag : 'ul',
+                content : ctx.content,
+                elemMods : {
+                    isRoot : isRoot,
+                },
+            });
+        }
+        return {
+            elem : 'ItemWrap',
+            tag : 'li',
+            content : content,
+            elemMods : {
+                isRoot : isRoot,
+                hasChilds : ctx.hasChilds,
+            },
+            // cls : ( ctx.hasChilds ) ? 'nav-parent' : '',
+        };
+    }),
+
+    tag()('a')
+
+);
+

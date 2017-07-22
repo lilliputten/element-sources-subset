@@ -1,0 +1,52 @@
+@require "__defaults.styl"
+
+.appholder
+    position: absolute
+    left: 0
+    right: 0
+    top: 0
+    bottom: 0
+
+    &_animating
+        box-shadow: inset 0 0 10px 5px #0F0
+
+    // border: 3px solid red
+    &
+    &__container
+    &__screen
+    &__credits
+        background-color: $layout-background-color
+    &
+    &__container
+        // overflow: hidden
+        z-index: 60 // Выше, чем NavHeader
+
+    display: none
+
+    &_show
+        display: block
+
+    &__prjLogo
+    &__prjTitle
+    &__prjReference
+    &__prjCredits
+        padding: 5px
+    &__prjTitle
+        color: $accent-color
+        font-size: $font-size-xl
+    &__prjCredits
+        font-size: $font-size-s
+        color: lighten($neutral-color,10)
+        letter-spacing: 2px
+
+    @media ( max-height: $verticalTreshold - 100px )
+        // &__container
+        //     height: 100%
+        &__credits
+            display: none
+
+    > .screenholder
+        // opacity: .5
+        & > .screenholder__waiting
+            // opacity: .7
+

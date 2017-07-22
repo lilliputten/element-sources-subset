@@ -1,0 +1,66 @@
+@require "../__defaults.styl"
+
+$details-height = 28px
+
+.progressbar__details_item
+
+    &
+    &_text
+    &_percents
+    &_percents_text
+        height: $details-height
+        line-height: $details-height
+        box-sizing: border-box
+        display: inline-block
+        padding: 0 5px
+
+    &_text
+    &_percents
+    &_button
+        display: block
+        float: left
+
+    &_text
+        // margin-left: 7px
+        max-width: 250px
+        overflow: hidden
+        text-overflow: ellipsis
+
+
+    &
+        // font-size: $font-size-default
+        //
+        // float: left
+        background: alpha($default-color,.2)
+        border: 1px solid alpha($default-color,.6)
+        // border: 1px solid alpha($neutral-color,.25)
+        border-radius: 3px
+        margin: 5px
+        cursor: default
+        &:hover
+            background: alpha($default-color,.4)
+            border: 1px solid alpha($default-color,.8)
+
+    &_percents
+        min-width: 3em
+        // border: 1px solid grey
+        text-align: center
+    &_percents_text
+        margin: 0 auto
+        min-width: 2em
+        opacity: .25
+        // border: 1px solid grey
+
+    &_button
+        &.button_theme_islands
+            .icon
+                color: $accent-color
+            &.button_hovered
+                .icon
+                    color: lighten($accent-color,15)
+
+    // Если с кнопкой "Завершить задачу"
+    &_hasCancel
+        // ...Убираем отступ от кнопки справа
+        padding-right: 0
+

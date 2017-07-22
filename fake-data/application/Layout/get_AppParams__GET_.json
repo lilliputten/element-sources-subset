@@ -1,0 +1,1886 @@
+{
+    "config": {
+        "bem": {
+            "projectName": "vektor-element",
+            "projectVersion": "0.0.7",
+            "dateTag": "170717-212401",
+            "hashTag": "19d39a",
+            "projectTag": "0.0.7 @ 170717-212401 | 19d39a"
+        },
+        "websocketUrl": "http://localhost:8083",
+        "mapserverUrl": "http://localhost:5588",
+        "cache": {
+            "lifetime_default": 3600,
+            "lifetime_short": 300,
+            "lifetime_supershort": 60,
+            "lifetime_long": 86400,
+            "_DATA_TYPES": {
+                "ObjMonitoring": {
+                    "userID": true,
+                    "type": "dict",
+                    "lifetime": "short"
+                },
+                "ControlArea": {
+                    "userID": true,
+                    "type": "dict",
+                    "lifetime": "short"
+                },
+                "Route": {
+                    "userID": true,
+                    "type": "dict",
+                    "lifetime": "short"
+                },
+                "DictProblemTypes": {
+                    "userID": false,
+                    "type": "dict",
+                    "lifetime": "long"
+                },
+                "DictCalibrationChart": {
+                    "userID": false,
+                    "type": "dict",
+                    "lifetime": "long"
+                },
+                "DictMeasurTypes": {
+                    "userID": false,
+                    "type": "dict",
+                    "lifetime": "long"
+                },
+                "Object": {
+                    "userID": true,
+                    "type": "dict",
+                    "lifetime": "long"
+                },
+                "Complect": {
+                    "userID": true,
+                    "type": "dict",
+                    "lifetime": "long"
+                },
+                "DC": {
+                    "userID": true,
+                    "type": "dict",
+                    "lifetime": "long"
+                },
+                "Cars": {
+                    "userID": true,
+                    "type": "dict",
+                    "lifetime": "long"
+                },
+                "Person": {
+                    "userID": true,
+                    "type": "dict",
+                    "lifetime": "long"
+                },
+                "Divisions": {
+                    "userID": true,
+                    "type": "dict",
+                    "lifetime": "long"
+                },
+                "StatGroup": {
+                    "userID": true,
+                    "type": "dict",
+                    "lifetime": "long"
+                },
+                "ObjTypes": {
+                    "userID": false,
+                    "type": "dict",
+                    "lifetime": "long"
+                },
+                "MoState": {
+                    "userID": false,
+                    "type": "dict",
+                    "lifetime": "long"
+                },
+                "DictControlParams": {
+                    "userID": false,
+                    "type": "dict",
+                    "lifetime": "long"
+                },
+                "DictEnumVal": {
+                    "userID": false,
+                    "type": "dict",
+                    "lifetime": "long"
+                },
+                "Dimension": {
+                    "userID": false,
+                    "type": "dict",
+                    "lifetime": "long"
+                },
+                "CarModel": {
+                    "userID": false,
+                    "type": "dict",
+                    "lifetime": "long"
+                },
+                "CarType": {
+                    "userID": false,
+                    "type": "dict",
+                    "lifetime": "long"
+                },
+                "DictComplectTypes": {
+                    "userID": false,
+                    "type": "dict",
+                    "lifetime": "long"
+                },
+                "DictChanelTypes": {
+                    "userID": false,
+                    "type": "dict",
+                    "lifetime": "long"
+                },
+                "area": {
+                    "userID": true,
+                    "type": "data",
+                    "lifetime": "short"
+                },
+                "division": {
+                    "userID": true,
+                    "type": "data",
+                    "lifetime": "long"
+                },
+                "organization": {
+                    "userID": true,
+                    "type": "data",
+                    "lifetime": "long"
+                },
+                "route": {
+                    "userID": true,
+                    "type": "data",
+                    "lifetime": "short"
+                },
+                "statelist": {
+                    "userID": false,
+                    "type": "data",
+                    "lifetime": "long"
+                },
+                "uobj": {
+                    "userID": true,
+                    "type": "data",
+                    "lifetime": "long"
+                },
+                "uobjgrp": {
+                    "userID": true,
+                    "type": "data",
+                    "lifetime": "short"
+                },
+                "measurgrp": {
+                    "userID": false,
+                    "type": "data",
+                    "lifetime": "long"
+                },
+                "controlparam": {
+                    "userID": true,
+                    "type": "data",
+                    "lifetime": "supershort"
+                },
+                "dictcontrolparam": {
+                    "userID": false,
+                    "type": "data",
+                    "lifetime": "long"
+                },
+                "task": {
+                    "userID": true,
+                    "type": "data",
+                    "lifetime": "long"
+                },
+                "taskroute": {
+                    "userID": true,
+                    "type": "data",
+                    "lifetime": "short"
+                },
+                "taskobject": {
+                    "userID": true,
+                    "type": "data",
+                    "lifetime": "short"
+                },
+                "statgrplist": {
+                    "userID": true,
+                    "type": "data",
+                    "lifetime": "long"
+                },
+                "aclist": {
+                    "userID": false,
+                    "type": "data",
+                    "lifetime": "long"
+                },
+                "objTypes": {
+                    "userID": false,
+                    "type": "dict",
+                    "virtual": true,
+                    "lifetime": "long"
+                },
+                "objTypesBrief": {
+                    "userID": false,
+                    "type": "dict",
+                    "virtual": true,
+                    "lifetime": "long"
+                },
+                "objTypesCodes": {
+                    "userID": false,
+                    "type": "dict",
+                    "virtual": true,
+                    "lifetime": "long"
+                },
+                "MovePeriodType": {
+                    "userID": false,
+                    "type": "dict",
+                    "virtual": true,
+                    "lifetime": "long"
+                }
+            }
+        },
+        "appdata": {
+            "defaultPage": "app:tcm",
+            "pages": {
+                "dc_Monitoring_KO": {
+                    "title": "ЦОД: КО",
+                    "required": {
+                        "assets": [
+                            {
+                                "type": "data",
+                                "url": "{{coreUrl}}fake-pages/dc/dc_Monitoring_KO.html"
+                            }
+                        ]
+                    },
+                    "open": {
+                        "html": "data:{{coreUrl}}fake-pages/dc/dc_Monitoring_KO.html"
+                    }
+                },
+                "dc_Monitoring_Messages": {
+                    "title": "ЦОД: Сообщения",
+                    "required": {
+                        "assets": [
+                            {
+                                "type": "data",
+                                "url": "{{coreUrl}}fake-pages/dc/dc_Monitoring_Messages.html"
+                            }
+                        ]
+                    },
+                    "open": {
+                        "html": "data:{{coreUrl}}fake-pages/dc/dc_Monitoring_Messages.html"
+                    }
+                },
+                "dc_Monitoring_Routes": {
+                    "title": "ЦОД: Маршруты",
+                    "required": {
+                        "assets": [
+                            {
+                                "type": "data",
+                                "url": "{{coreUrl}}fake-pages/dc/dc_Monitoring_Routes.html"
+                            }
+                        ]
+                    },
+                    "open": {
+                        "html": "data:{{coreUrl}}fake-pages/dc/dc_Monitoring_Routes.html"
+                    }
+                },
+                "dc_Monitoring_Tasks": {
+                    "title": "ЦОД: Задания",
+                    "required": {
+                        "assets": [
+                            {
+                                "type": "data",
+                                "url": "{{coreUrl}}fake-pages/dc/dc_Monitoring_Tasks.html"
+                            }
+                        ]
+                    },
+                    "open": {
+                        "html": "data:{{coreUrl}}fake-pages/dc/dc_Monitoring_Tasks.html"
+                    }
+                },
+                "dc_Reports_Consolidated_DivisionsUtilization": {
+                    "title": "ЦОД: Загруженность подразделений",
+                    "required": {
+                        "assets": [
+                            {
+                                "type": "data",
+                                "url": "{{coreUrl}}fake-pages/dc/dc_Reports_Consolidated_DivisionsUtilization.html"
+                            }
+                        ]
+                    },
+                    "open": {
+                        "html": "data:{{coreUrl}}fake-pages/dc/dc_Reports_Consolidated_DivisionsUtilization.html"
+                    }
+                },
+                "dc_Reports_Consolidated_KOProblems": {
+                    "title": "ЦОД: Отчет о проблемах с КО",
+                    "required": {
+                        "assets": [
+                            {
+                                "type": "data",
+                                "url": "{{coreUrl}}fake-pages/dc/dc_Reports_Consolidated_KOProblems.html"
+                            }
+                        ]
+                    },
+                    "open": {
+                        "html": "data:{{coreUrl}}fake-pages/dc/dc_Reports_Consolidated_KOProblems.html"
+                    }
+                },
+                "dc_Reports_Consolidated_ResourcesUtilisation": {
+                    "title": "ЦОД: Загруженность средств",
+                    "required": {
+                        "assets": [
+                            {
+                                "type": "data",
+                                "url": "{{coreUrl}}fake-pages/dc/dc_Reports_Consolidated_ResourcesUtilisation.html"
+                            }
+                        ]
+                    },
+                    "open": {
+                        "html": "data:{{coreUrl}}fake-pages/dc/dc_Reports_Consolidated_ResourcesUtilisation.html"
+                    }
+                },
+                "dc_Reports_Consolidated_TasksStates": {
+                    "title": "ЦОД: Состояние выполнения задач",
+                    "required": {
+                        "assets": [
+                            {
+                                "type": "data",
+                                "url": "{{coreUrl}}fake-pages/dc/dc_Reports_Consolidated_TasksStates.html"
+                            }
+                        ]
+                    },
+                    "open": {
+                        "html": "data:{{coreUrl}}fake-pages/dc/dc_Reports_Consolidated_TasksStates.html"
+                    }
+                },
+                "dc_Reports_Consolidated_Violations": {
+                    "title": "ЦОД: Нарушения",
+                    "required": {
+                        "assets": [
+                            {
+                                "type": "data",
+                                "url": "{{coreUrl}}fake-pages/dc/dc_Reports_Consolidated_Violations.html"
+                            }
+                        ]
+                    },
+                    "open": {
+                        "html": "data:{{coreUrl}}fake-pages/dc/dc_Reports_Consolidated_Violations.html"
+                    }
+                },
+                "dc_Settings_Messages": {
+                    "title": "ЦОД: Сообщения",
+                    "required": {
+                        "assets": [
+                            {
+                                "type": "data",
+                                "url": "{{coreUrl}}fake-pages/dc/dc_Settings_Messages.html"
+                            }
+                        ]
+                    },
+                    "open": {
+                        "html": "data:{{coreUrl}}fake-pages/dc/dc_Settings_Messages.html"
+                    }
+                },
+                "dc_Settings_UserKOStates": {
+                    "title": "ЦОД: Пользовательские состояния КО",
+                    "required": {
+                        "assets": [
+                            {
+                                "type": "data",
+                                "url": "{{coreUrl}}fake-pages/dc/dc_Settings_UserKOStates.html"
+                            }
+                        ]
+                    },
+                    "open": {
+                        "html": "data:{{coreUrl}}fake-pages/dc/dc_Settings_UserKOStates.html"
+                    }
+                },
+                "dc_StatusTask": {
+                    "title": "ЦОД: Состояние выполнения задач",
+                    "required": {
+                        "assets": [
+                            {
+                                "type": "data",
+                                "url": "{{coreUrl}}fake-pages/dc/dc_StatusTask.html"
+                            }
+                        ]
+                    },
+                    "open": {
+                        "html": "data:{{coreUrl}}fake-pages/dc/dc_StatusTask.html"
+                    }
+                },
+                "dc_WorkloadResource": {
+                    "title": "ЦОД: Загруженность средств",
+                    "required": {
+                        "assets": [
+                            {
+                                "type": "data",
+                                "url": "{{coreUrl}}fake-pages/dc/dc_WorkloadResource.html"
+                            }
+                        ]
+                    },
+                    "open": {
+                        "html": "data:{{coreUrl}}fake-pages/dc/dc_WorkloadResource.html"
+                    }
+                },
+                "dc_WorkloadUnits": {
+                    "title": "ЦОД: Загруженность подразделений",
+                    "required": {
+                        "assets": [
+                            {
+                                "type": "data",
+                                "url": "{{coreUrl}}fake-pages/dc/dc_WorkloadUnits.html"
+                            }
+                        ]
+                    },
+                    "open": {
+                        "html": "data:{{coreUrl}}fake-pages/dc/dc_WorkloadUnits.html"
+                    }
+                },
+                "tcm_Monitoring_KO": {
+                    "title": "ТЦМ: КО",
+                    "required": {
+                        "assets": [
+                            {
+                                "type": "data",
+                                "url": "{{coreUrl}}fake-pages/tcm/tcm_Monitoring_KO.html"
+                            }
+                        ]
+                    },
+                    "open": {
+                        "html": "data:{{coreUrl}}fake-pages/tcm/tcm_Monitoring_KO.html"
+                    }
+                },
+                "tcm_Monitoring_Messages": {
+                    "title": "ТЦМ: Сообщения",
+                    "required": {
+                        "assets": [
+                            {
+                                "type": "data",
+                                "url": "{{coreUrl}}fake-pages/tcm/tcm_Monitoring_Messages.html"
+                            }
+                        ]
+                    },
+                    "open": {
+                        "html": "data:{{coreUrl}}fake-pages/tcm/tcm_Monitoring_Messages.html"
+                    }
+                },
+                "tcm_Monitoring_Routes": {
+                    "title": "ТЦМ: Маршруты",
+                    "required": {
+                        "assets": [
+                            {
+                                "type": "data",
+                                "url": "{{coreUrl}}fake-pages/tcm/tcm_Monitoring_Routes.html"
+                            }
+                        ]
+                    },
+                    "open": {
+                        "html": "data:{{coreUrl}}fake-pages/tcm/tcm_Monitoring_Routes.html"
+                    }
+                },
+                "tcm_Monitoring_Tasks": {
+                    "title": "ТЦМ: Задания",
+                    "required": {
+                        "assets": [
+                            {
+                                "type": "data",
+                                "url": "{{coreUrl}}fake-pages/tcm/tcm_Monitoring_Tasks.html"
+                            }
+                        ]
+                    },
+                    "open": {
+                        "html": "data:{{coreUrl}}fake-pages/tcm/tcm_Monitoring_Tasks.html"
+                    }
+                },
+                "tcm_Planning_KOGroups": {
+                    "title": "ТЦМ: Группы КО",
+                    "required": {
+                        "assets": [
+                            {
+                                "type": "data",
+                                "url": "{{coreUrl}}fake-pages/tcm/tcm_Planning_KOGroups.html"
+                            }
+                        ]
+                    },
+                    "open": {
+                        "html": "data:{{coreUrl}}fake-pages/tcm/tcm_Planning_KOGroups.html"
+                    }
+                },
+                "tcm_Planning_ObjectGroups": {
+                    "title": "ТЦМ: Группы объектов",
+                    "required": {
+                        "assets": [
+                            {
+                                "type": "data",
+                                "url": "{{coreUrl}}fake-pages/tcm/tcm_Planning_ObjectGroups.html"
+                            }
+                        ]
+                    },
+                    "open": {
+                        "html": "data:{{coreUrl}}fake-pages/tcm/tcm_Planning_ObjectGroups.html"
+                    }
+                },
+                "tcm_Planning_Routes": {
+                    "title": "ТЦМ: Планирование маршруты",
+                    "required": {
+                        "assets": [
+                            {
+                                "type": "data",
+                                "url": "{{coreUrl}}fake-pages/tcm/tcm_Planning_Routes.html"
+                            }
+                        ]
+                    },
+                    "open": {
+                        "html": "data:{{coreUrl}}fake-pages/tcm/tcm_Planning_Routes.html"
+                    }
+                },
+                "tcm_Planning_TaskVisitObjects": {
+                    "title": "ТЦМ: Задание по посещению объектов",
+                    "required": {
+                        "assets": [
+                            {
+                                "type": "data",
+                                "url": "{{coreUrl}}fake-pages/tcm/tcm_Planning_TaskVisitObjects.html"
+                            }
+                        ]
+                    },
+                    "open": {
+                        "html": "data:{{coreUrl}}fake-pages/tcm/tcm_Planning_TaskVisitObjects.html"
+                    }
+                },
+                "tcm_Planning_Tasks": {
+                    "title": "ТЦМ: Планирование маршруты задания",
+                    "required": {
+                        "assets": [
+                            {
+                                "type": "data",
+                                "url": "{{coreUrl}}fake-pages/tcm/tcm_Planning_Tasks.html"
+                            }
+                        ]
+                    },
+                    "open": {
+                        "html": "data:{{coreUrl}}fake-pages/tcm/tcm_Planning_Tasks.html"
+                    }
+                },
+                "tcm_Planning_TasksRoute": {
+                    "title": "ТЦМ: Задание по маршруту",
+                    "required": {
+                        "assets": [
+                            {
+                                "type": "data",
+                                "url": "{{coreUrl}}fake-pages/tcm/tcm_Planning_TasksRoute.html"
+                            }
+                        ]
+                    },
+                    "open": {
+                        "html": "data:{{coreUrl}}fake-pages/tcm/tcm_Planning_TasksRoute.html"
+                    }
+                },
+                "tcm_Planning_Zones": {
+                    "title": "ТЦМ: Планирование зоны",
+                    "required": {
+                        "assets": [
+                            {
+                                "type": "data",
+                                "url": "{{coreUrl}}fake-pages/tcm/tcm_Planning_Zones.html"
+                            }
+                        ]
+                    },
+                    "open": {
+                        "html": "data:{{coreUrl}}fake-pages/tcm/tcm_Planning_Zones.html"
+                    }
+                },
+                "tcm_Reports_Consolidated_DataTransfer": {
+                    "title": "ТЦМ: Отчет о передаче данных ТЦМ–ЦОД",
+                    "required": {
+                        "assets": [
+                            {
+                                "type": "data",
+                                "url": "{{coreUrl}}fake-pages/tcm/tcm_Reports_Consolidated_DataTransfer.html"
+                            }
+                        ]
+                    },
+                    "open": {
+                        "html": "data:{{coreUrl}}fake-pages/tcm/tcm_Reports_Consolidated_DataTransfer.html"
+                    }
+                },
+                "tcm_Reports_Consolidated_KO": {
+                    "title": "ТЦМ: Сводный отчет по КО/группе КО",
+                    "required": {
+                        "assets": [
+                            {
+                                "type": "data",
+                                "url": "{{coreUrl}}fake-pages/tcm/tcm_Reports_Consolidated_KO.html"
+                            }
+                        ]
+                    },
+                    "open": {
+                        "html": "data:{{coreUrl}}fake-pages/tcm/tcm_Reports_Consolidated_KO.html"
+                    }
+                },
+                "tcm_Reports_Consolidated_KOProblems": {
+                    "title": "ТЦМ: Отчет о проблемах с КО",
+                    "required": {
+                        "assets": [
+                            {
+                                "type": "data",
+                                "url": "{{coreUrl}}fake-pages/tcm/tcm_Reports_Consolidated_KOProblems.html"
+                            }
+                        ]
+                    },
+                    "open": {
+                        "html": "data:{{coreUrl}}fake-pages/tcm/tcm_Reports_Consolidated_KOProblems.html"
+                    }
+                },
+                "tcm_Reports_Consolidated_ObjectsVisit_FAKE": {
+                    "title": "ТЦМ: Сводный отчет о посещении объектов",
+                    "required": {
+                        "assets": [
+                            {
+                                "type": "data",
+                                "url": "{{coreUrl}}fake-pages/tcm/tcm_Reports_Consolidated_ObjectsVisit_FAKE.html"
+                            }
+                        ]
+                    },
+                    "open": {
+                        "html": "data:{{coreUrl}}fake-pages/tcm/tcm_Reports_Consolidated_ObjectsVisit_FAKE.html"
+                    }
+                },
+                "tcm_Reports_Consolidated_States": {
+                    "title": "ТЦМ: Сводный отчет о состояниях КО",
+                    "required": {
+                        "assets": [
+                            {
+                                "type": "data",
+                                "url": "{{coreUrl}}fake-pages/tcm/tcm_Reports_Consolidated_States.html"
+                            }
+                        ]
+                    },
+                    "open": {
+                        "html": "data:{{coreUrl}}fake-pages/tcm/tcm_Reports_Consolidated_States.html"
+                    }
+                },
+                "tcm_Reports_Consolidated_Tasks": {
+                    "title": "ТЦМ: Сводный отчет по заданиям",
+                    "required": {
+                        "assets": [
+                            {
+                                "type": "data",
+                                "url": "{{coreUrl}}fake-pages/tcm/tcm_Reports_Consolidated_Tasks.html"
+                            }
+                        ]
+                    },
+                    "open": {
+                        "html": "data:{{coreUrl}}fake-pages/tcm/tcm_Reports_Consolidated_Tasks.html"
+                    }
+                },
+                "tcm_Reports_Operational_KOStates": {
+                    "title": "ТЦМ: Отчет о состояниях КО",
+                    "required": {
+                        "assets": [
+                            {
+                                "type": "data",
+                                "url": "{{coreUrl}}fake-pages/tcm/tcm_Reports_Operational_KOStates.html"
+                            }
+                        ]
+                    },
+                    "open": {
+                        "html": "data:{{coreUrl}}fake-pages/tcm/tcm_Reports_Operational_KOStates.html"
+                    }
+                },
+                "tcm_Reports_Operational_KOTransfer": {
+                    "title": "ТЦМ: Отчет об истории перемещения КО",
+                    "required": {
+                        "assets": [
+                            {
+                                "type": "data",
+                                "url": "{{coreUrl}}fake-pages/tcm/tcm_Reports_Operational_KOTransfer.html"
+                            }
+                        ]
+                    },
+                    "open": {
+                        "html": "data:{{coreUrl}}fake-pages/tcm/tcm_Reports_Operational_KOTransfer.html"
+                    }
+                },
+                "tcm_Reports_Operational_NAP": {
+                    "title": "ТЦМ: Отчет о работоспособности НАП",
+                    "required": {
+                        "assets": [
+                            {
+                                "type": "data",
+                                "url": "{{coreUrl}}fake-pages/tcm/tcm_Reports_Operational_NAP.html"
+                            }
+                        ]
+                    },
+                    "open": {
+                        "html": "data:{{coreUrl}}fake-pages/tcm/tcm_Reports_Operational_NAP.html"
+                    }
+                },
+                "tcm_Reports_Operational_ObjectsVisit_FAKE": {
+                    "title": "ТЦМ: Отчет о посещении объектов",
+                    "required": {
+                        "assets": [
+                            {
+                                "type": "data",
+                                "url": "{{coreUrl}}fake-pages/tcm/tcm_Reports_Operational_ObjectsVisit_FAKE.html"
+                            }
+                        ]
+                    },
+                    "open": {
+                        "html": "data:{{coreUrl}}fake-pages/tcm/tcm_Reports_Operational_ObjectsVisit_FAKE.html"
+                    }
+                },
+                "tcm_Reports_Operational_PeriodMileage": {
+                    "title": "ТЦМ: Отчет о пробеге за период",
+                    "required": {
+                        "assets": [
+                            {
+                                "type": "data",
+                                "url": "{{coreUrl}}fake-pages/tcm/tcm_Reports_Operational_PeriodMileage.html"
+                            }
+                        ]
+                    },
+                    "open": {
+                        "html": "data:{{coreUrl}}fake-pages/tcm/tcm_Reports_Operational_PeriodMileage.html"
+                    }
+                },
+                "tcm_Reports_Operational_Zones": {
+                    "title": "ТЦМ: Отчет о посещении Зон контроля",
+                    "required": {
+                        "assets": [
+                            {
+                                "type": "data",
+                                "url": "{{coreUrl}}fake-pages/tcm/tcm_Reports_Operational_Zones.html"
+                            }
+                        ]
+                    },
+                    "open": {
+                        "html": "data:{{coreUrl}}fake-pages/tcm/tcm_Reports_Operational_Zones.html"
+                    }
+                },
+                "tcm_Settings_Messages": {
+                    "title": "ТЦМ: Пользовательские состояния КО",
+                    "required": {
+                        "assets": [
+                            {
+                                "type": "data",
+                                "url": "{{coreUrl}}fake-pages/tcm/tcm_Settings_Messages.html"
+                            }
+                        ]
+                    },
+                    "open": {
+                        "html": "data:{{coreUrl}}fake-pages/tcm/tcm_Settings_Messages.html"
+                    }
+                },
+                "tcm_Settings_UserKOStates": {
+                    "title": "ТЦМ: Пользовательские состояния КО",
+                    "required": {
+                        "assets": [
+                            {
+                                "type": "data",
+                                "url": "{{coreUrl}}fake-pages/tcm/tcm_Settings_UserKOStates.html"
+                            }
+                        ]
+                    },
+                    "open": {
+                        "html": "data:{{coreUrl}}fake-pages/tcm/tcm_Settings_UserKOStates.html"
+                    }
+                },
+                "umto_Dicts_Commands": {
+                    "title": "УМТО: Справочник органов управления ВВ МВД",
+                    "required": {
+                        "assets": [
+                            {
+                                "type": "data",
+                                "url": "{{coreUrl}}fake-pages/umto/umto_Dicts_Commands.html"
+                            }
+                        ]
+                    },
+                    "open": {
+                        "html": "data:{{coreUrl}}fake-pages/umto/umto_Dicts_Commands.html"
+                    }
+                },
+                "umto_Dicts_ConditionTypes": {
+                    "title": "УМТО: Справочник комбинаций условий",
+                    "required": {
+                        "assets": [
+                            {
+                                "type": "data",
+                                "url": "{{coreUrl}}fake-pages/umto/umto_Dicts_ConditionTypes.html"
+                            }
+                        ]
+                    },
+                    "open": {
+                        "html": "data:{{coreUrl}}fake-pages/umto/umto_Dicts_ConditionTypes.html"
+                    }
+                },
+                "umto_Dicts_DCTypes": {
+                    "title": "УМТО: Справочник типов ДЦ",
+                    "required": {
+                        "assets": [
+                            {
+                                "type": "data",
+                                "url": "{{coreUrl}}fake-pages/umto/umto_Dicts_DCTypes.html"
+                            }
+                        ]
+                    },
+                    "open": {
+                        "html": "data:{{coreUrl}}fake-pages/umto/umto_Dicts_DCTypes.html"
+                    }
+                },
+                "umto_Dicts_IterableValues": {
+                    "title": "УМТО: Справочник перечислимых значений",
+                    "required": {
+                        "assets": [
+                            {
+                                "type": "data",
+                                "url": "{{coreUrl}}fake-pages/umto/umto_Dicts_IterableValues.html"
+                            }
+                        ]
+                    },
+                    "open": {
+                        "html": "data:{{coreUrl}}fake-pages/umto/umto_Dicts_IterableValues.html"
+                    }
+                },
+                "umto_Dicts_KOStates": {
+                    "title": "УМТО: Справочник состояний КО",
+                    "required": {
+                        "assets": [
+                            {
+                                "type": "data",
+                                "url": "{{coreUrl}}fake-pages/umto/umto_Dicts_KOStates.html"
+                            }
+                        ]
+                    },
+                    "open": {
+                        "html": "data:{{coreUrl}}fake-pages/umto/umto_Dicts_KOStates.html"
+                    }
+                },
+                "umto_Dicts_MeasurerTypes": {
+                    "title": "УМТО: Справочник типов измерительных устройств",
+                    "required": {
+                        "assets": [
+                            {
+                                "type": "data",
+                                "url": "{{coreUrl}}fake-pages/umto/umto_Dicts_MeasurerTypes.html"
+                            }
+                        ]
+                    },
+                    "open": {
+                        "html": "data:{{coreUrl}}fake-pages/umto/umto_Dicts_MeasurerTypes.html"
+                    }
+                },
+                "umto_Dicts_NAPTypes": {
+                    "title": "УМТО: Справочник типов НАП",
+                    "required": {
+                        "assets": [
+                            {
+                                "type": "data",
+                                "url": "{{coreUrl}}fake-pages/umto/umto_Dicts_NAPTypes.html"
+                            }
+                        ]
+                    },
+                    "open": {
+                        "html": "data:{{coreUrl}}fake-pages/umto/umto_Dicts_NAPTypes.html"
+                    }
+                },
+                "umto_Dicts_POTypes": {
+                    "title": "УМТО: Справочник типов ПО",
+                    "required": {
+                        "assets": [
+                            {
+                                "type": "data",
+                                "url": "{{coreUrl}}fake-pages/umto/umto_Dicts_POTypes.html"
+                            }
+                        ]
+                    },
+                    "open": {
+                        "html": "data:{{coreUrl}}fake-pages/umto/umto_Dicts_POTypes.html"
+                    }
+                },
+                "umto_Dicts_ParameterTypes": {
+                    "title": "УМТО: Справочник типов контролируемых параметров",
+                    "required": {
+                        "assets": [
+                            {
+                                "type": "data",
+                                "url": "{{coreUrl}}fake-pages/umto/umto_Dicts_ParameterTypes.html"
+                            }
+                        ]
+                    },
+                    "open": {
+                        "html": "data:{{coreUrl}}fake-pages/umto/umto_Dicts_ParameterTypes.html"
+                    }
+                },
+                "umto_Dicts_ProblemTypes": {
+                    "title": "УМТО: Справочник типов проблем (сообщений)",
+                    "required": {
+                        "assets": [
+                            {
+                                "type": "data",
+                                "url": "{{coreUrl}}fake-pages/umto/umto_Dicts_ProblemTypes.html"
+                            }
+                        ]
+                    },
+                    "open": {
+                        "html": "data:{{coreUrl}}fake-pages/umto/umto_Dicts_ProblemTypes.html"
+                    }
+                },
+                "umto_Dicts_TSModels": {
+                    "title": "УМТО: Справочник моделей ТС",
+                    "required": {
+                        "assets": [
+                            {
+                                "type": "data",
+                                "url": "{{coreUrl}}fake-pages/umto/umto_Dicts_TSModels.html"
+                            }
+                        ]
+                    },
+                    "open": {
+                        "html": "data:{{coreUrl}}fake-pages/umto/umto_Dicts_TSModels.html"
+                    }
+                },
+                "umto_Dicts_TableTypes": {
+                    "title": "УМТО: Справочник градуировочных таблиц",
+                    "required": {
+                        "assets": [
+                            {
+                                "type": "data",
+                                "url": "{{coreUrl}}fake-pages/umto/umto_Dicts_TableTypes.html"
+                            }
+                        ]
+                    },
+                    "open": {
+                        "html": "data:{{coreUrl}}fake-pages/umto/umto_Dicts_TableTypes.html"
+                    }
+                },
+                "umto_Dicts_Users_Rights": {
+                    "title": "УМТО: Справочник должностей",
+                    "required": {
+                        "assets": [
+                            {
+                                "type": "data",
+                                "url": "{{coreUrl}}fake-pages/umto/umto_Dicts_Users_Rights.html"
+                            }
+                        ]
+                    },
+                    "open": {
+                        "html": "data:{{coreUrl}}fake-pages/umto/umto_Dicts_Users_Rights.html"
+                    }
+                },
+                "umto_Monitoring_Data": {
+                    "title": "УМТО: Данные НАП, ВДЦ",
+                    "required": {
+                        "assets": [
+                            {
+                                "type": "data",
+                                "url": "{{coreUrl}}fake-pages/umto/umto_Monitoring_Data.html"
+                            }
+                        ]
+                    },
+                    "open": {
+                        "html": "data:{{coreUrl}}fake-pages/umto/umto_Monitoring_Data.html"
+                    }
+                },
+                "umto_Monitoring_Objects": {
+                    "title": "УМТО: Объекты мониторинга",
+                    "required": {
+                        "assets": [
+                            {
+                                "type": "data",
+                                "url": "{{coreUrl}}fake-pages/umto/umto_Monitoring_Objects.html"
+                            }
+                        ]
+                    },
+                    "open": {
+                        "html": "data:{{coreUrl}}fake-pages/umto/umto_Monitoring_Objects.html"
+                    }
+                },
+                "umto_Objects_Convoy": {
+                    "title": "УМТО: Колонны",
+                    "required": {
+                        "assets": [
+                            {
+                                "type": "data",
+                                "url": "{{coreUrl}}fake-pages/umto/umto_Objects_Convoy.html"
+                            }
+                        ]
+                    },
+                    "open": {
+                        "html": "data:{{coreUrl}}fake-pages/umto/umto_Objects_Convoy.html"
+                    }
+                },
+                "umto_Objects_DC": {
+                    "title": "УМТО: ДЦ",
+                    "required": {
+                        "assets": [
+                            {
+                                "type": "data",
+                                "url": "{{coreUrl}}fake-pages/umto/umto_Objects_DC.html"
+                            }
+                        ]
+                    },
+                    "open": {
+                        "html": "data:{{coreUrl}}fake-pages/umto/umto_Objects_DC.html"
+                    }
+                },
+                "umto_Objects_KO": {
+                    "title": "УМТО: Контролируемые объекты",
+                    "required": {
+                        "assets": [
+                            {
+                                "type": "data",
+                                "url": "{{coreUrl}}fake-pages/umto/umto_Objects_KO.html"
+                            }
+                        ]
+                    },
+                    "open": {
+                        "html": "data:{{coreUrl}}fake-pages/umto/umto_Objects_KO.html"
+                    }
+                },
+                "umto_Objects_NAP": {
+                    "title": "УМТО: НАП",
+                    "required": {
+                        "assets": [
+                            {
+                                "type": "data",
+                                "url": "{{coreUrl}}fake-pages/umto/umto_Objects_NAP.html"
+                            }
+                        ]
+                    },
+                    "open": {
+                        "html": "data:{{coreUrl}}fake-pages/umto/umto_Objects_NAP.html"
+                    }
+                },
+                "umto_Objects_Stationary": {
+                    "title": "УМТО: Стационарные объекты",
+                    "required": {
+                        "assets": [
+                            {
+                                "type": "data",
+                                "url": "{{coreUrl}}fake-pages/umto/umto_Objects_Stationary.html"
+                            }
+                        ]
+                    },
+                    "open": {
+                        "html": "data:{{coreUrl}}fake-pages/umto/umto_Objects_Stationary.html"
+                    }
+                },
+                "umto_Objects_TS": {
+                    "title": "УМТО: ТС",
+                    "required": {
+                        "assets": [
+                            {
+                                "type": "data",
+                                "url": "{{coreUrl}}fake-pages/umto/umto_Objects_TS.html"
+                            }
+                        ]
+                    },
+                    "open": {
+                        "html": "data:{{coreUrl}}fake-pages/umto/umto_Objects_TS.html"
+                    }
+                },
+                "umto_Objects_TypesDict": {
+                    "title": "УМТО: Справочник типов объектов контроля",
+                    "required": {
+                        "assets": [
+                            {
+                                "type": "data",
+                                "url": "{{coreUrl}}fake-pages/umto/umto_Objects_TypesDict.html"
+                            }
+                        ]
+                    },
+                    "open": {
+                        "html": "data:{{coreUrl}}fake-pages/umto/umto_Objects_TypesDict.html"
+                    }
+                },
+                "umto_Software_Update": {
+                    "title": "УМТО: Обновление ПО",
+                    "required": {
+                        "assets": [
+                            {
+                                "type": "data",
+                                "url": "{{coreUrl}}fake-pages/umto/umto_Software_Update.html"
+                            }
+                        ]
+                    },
+                    "open": {
+                        "html": "data:{{coreUrl}}fake-pages/umto/umto_Software_Update.html"
+                    }
+                },
+                "umto_Software_Versions": {
+                    "title": "УМТО: Версии ПО",
+                    "required": {
+                        "assets": [
+                            {
+                                "type": "data",
+                                "url": "{{coreUrl}}fake-pages/umto/umto_Software_Versions.html"
+                            }
+                        ]
+                    },
+                    "open": {
+                        "html": "data:{{coreUrl}}fake-pages/umto/umto_Software_Versions.html"
+                    }
+                },
+                "umto_Transmit_TCMCOD": {
+                    "title": "УМТО: Объекты мониторинга",
+                    "required": {
+                        "assets": [
+                            {
+                                "type": "data",
+                                "url": "{{coreUrl}}fake-pages/umto/umto_Transmit_TCMCOD.html"
+                            }
+                        ]
+                    },
+                    "open": {
+                        "html": "data:{{coreUrl}}fake-pages/umto/umto_Transmit_TCMCOD.html"
+                    }
+                },
+                "umto_Users_PostsDict": {
+                    "title": "УМТО: Справочник должностей",
+                    "required": {
+                        "assets": [
+                            {
+                                "type": "data",
+                                "url": "{{coreUrl}}fake-pages/umto/umto_Users_PostsDict.html"
+                            }
+                        ]
+                    },
+                    "open": {
+                        "html": "data:{{coreUrl}}fake-pages/umto/umto_Users_PostsDict.html"
+                    }
+                },
+                "umto_Users_Rights": {
+                    "title": "УМТО: Права доступа",
+                    "required": {
+                        "assets": [
+                            {
+                                "type": "data",
+                                "url": "{{coreUrl}}fake-pages/umto/umto_Users_Rights.html"
+                            }
+                        ]
+                    },
+                    "open": {
+                        "html": "data:{{coreUrl}}fake-pages/umto/umto_Users_Rights.html"
+                    }
+                },
+                "umto_Users_Roles": {
+                    "title": "УМТО: роли",
+                    "required": {
+                        "assets": [
+                            {
+                                "type": "data",
+                                "url": "{{coreUrl}}fake-pages/umto/umto_Users_Roles.html"
+                            }
+                        ]
+                    },
+                    "open": {
+                        "html": "data:{{coreUrl}}fake-pages/umto/umto_Users_Roles.html"
+                    }
+                },
+                "umto_Users_Types": {
+                    "title": "УМТО: Справочник типов пользователей",
+                    "required": {
+                        "assets": [
+                            {
+                                "type": "data",
+                                "url": "{{coreUrl}}fake-pages/umto/umto_Users_Types.html"
+                            }
+                        ]
+                    },
+                    "open": {
+                        "html": "data:{{coreUrl}}fake-pages/umto/umto_Users_Types.html"
+                    }
+                },
+                "umto_Users_UsersDict": {
+                    "title": "УМТО: Пользователи",
+                    "required": {
+                        "assets": [
+                            {
+                                "type": "data",
+                                "url": "{{coreUrl}}fake-pages/umto/umto_Users_UsersDict.html"
+                            }
+                        ]
+                    },
+                    "open": {
+                        "html": "data:{{coreUrl}}fake-pages/umto/umto_Users_UsersDict.html"
+                    }
+                },
+                "umto_Variables_DataUpdate": {
+                    "title": "УМТО: Обновление данных",
+                    "required": {
+                        "assets": [
+                            {
+                                "type": "data",
+                                "url": "{{coreUrl}}fake-pages/umto/umto_Variables_DataUpdate.html"
+                            }
+                        ]
+                    },
+                    "open": {
+                        "html": "data:{{coreUrl}}fake-pages/umto/umto_Variables_DataUpdate.html"
+                    }
+                },
+                "tcm_Reports_detailmove": {
+                    "setPageReadyWaiter": true,
+                    "title": "ТЦМ: Отчет о пробеге за период",
+                    "data": {
+                        "reportType": "detailmove"
+                    },
+                    "required": {
+                        "dicts": [
+
+                        ],
+                        "assets": [
+                            {
+                                "type": "package",
+                                "kind": "styles.css",
+                                "name": "Report"
+                            },
+                            {
+                                "type": "package",
+                                "kind": "bemhtml.js",
+                                "name": "Report"
+                            },
+                            {
+                                "type": "package",
+                                "kind": "browser.js",
+                                "name": "Report"
+                            },
+                            {
+                                "type": "data",
+                                "url": "{{bemjson}}Report.json"
+                            }
+                        ]
+                    },
+                    "open": {
+                        "bemhtml": "data:{{bemjson}}Report.json"
+                    }
+                },
+                "tcm_Reports_efficiency": {
+                    "setPageReadyWaiter": true,
+                    "title": "ТЦМ: Отчет о работоспособности НАП",
+                    "data": {
+                        "reportType": "efficiency"
+                    },
+                    "required": {
+                        "dicts": [
+
+                        ],
+                        "assets": [
+                            {
+                                "type": "package",
+                                "kind": "styles.css",
+                                "name": "Report"
+                            },
+                            {
+                                "type": "package",
+                                "kind": "bemhtml.js",
+                                "name": "Report"
+                            },
+                            {
+                                "type": "package",
+                                "kind": "browser.js",
+                                "name": "Report"
+                            },
+                            {
+                                "type": "data",
+                                "url": "{{bemjson}}Report.json"
+                            }
+                        ]
+                    },
+                    "open": {
+                        "bemhtml": "data:{{bemjson}}Report.json"
+                    }
+                },
+                "tcm_Reports_milage": {
+                    "setPageReadyWaiter": true,
+                    "title": "ТЦМ: Отчет о пробеге за период",
+                    "data": {
+                        "reportType": "milage"
+                    },
+                    "required": {
+                        "dicts": [
+
+                        ],
+                        "assets": [
+                            {
+                                "type": "package",
+                                "kind": "styles.css",
+                                "name": "Report"
+                            },
+                            {
+                                "type": "package",
+                                "kind": "bemhtml.js",
+                                "name": "Report"
+                            },
+                            {
+                                "type": "package",
+                                "kind": "browser.js",
+                                "name": "Report"
+                            },
+                            {
+                                "type": "data",
+                                "url": "{{bemjson}}Report.json"
+                            }
+                        ]
+                    },
+                    "open": {
+                        "bemhtml": "data:{{bemjson}}Report.json"
+                    }
+                },
+                "tcm_Reports_objvisit": {
+                    "setPageReadyWaiter": true,
+                    "title": "ТЦМ: Отчет о посещении объектов",
+                    "data": {
+                        "reportType": "objvisit"
+                    },
+                    "required": {
+                        "dicts": [
+
+                        ],
+                        "assets": [
+                            {
+                                "type": "package",
+                                "kind": "styles.css",
+                                "name": "Report"
+                            },
+                            {
+                                "type": "package",
+                                "kind": "bemhtml.js",
+                                "name": "Report"
+                            },
+                            {
+                                "type": "package",
+                                "kind": "browser.js",
+                                "name": "Report"
+                            },
+                            {
+                                "type": "data",
+                                "url": "{{bemjson}}Report.json"
+                            }
+                        ]
+                    },
+                    "open": {
+                        "bemhtml": "data:{{bemjson}}Report.json"
+                    }
+                },
+                "tcm_Reports_objvisitdetail": {
+                    "setPageReadyWaiter": true,
+                    "title": "ТЦМ: Отчет о посещении объектов (детально)",
+                    "data": {
+                        "reportType": "objvisitdetail"
+                    },
+                    "required": {
+                        "dicts": [
+
+                        ],
+                        "assets": [
+                            {
+                                "type": "package",
+                                "kind": "styles.css",
+                                "name": "Report"
+                            },
+                            {
+                                "type": "package",
+                                "kind": "bemhtml.js",
+                                "name": "Report"
+                            },
+                            {
+                                "type": "package",
+                                "kind": "browser.js",
+                                "name": "Report"
+                            },
+                            {
+                                "type": "data",
+                                "url": "{{bemjson}}Report.json"
+                            }
+                        ]
+                    },
+                    "open": {
+                        "bemhtml": "data:{{bemjson}}Report.json"
+                    }
+                },
+                "AdminKO": {
+                    "title": "Администрирование КО",
+                    "required": {
+                        "dicts": [
+
+                        ],
+                        "assets": [
+                            {
+                                "type": "package",
+                                "kind": "styles.css",
+                                "name": "AdminKO"
+                            },
+                            {
+                                "type": "package",
+                                "kind": "bemhtml.js",
+                                "name": "AdminKO"
+                            },
+                            {
+                                "type": "package",
+                                "kind": "browser.js",
+                                "name": "AdminKO"
+                            },
+                            {
+                                "type": "data",
+                                "url": "{{bemjson}}AdminKO.json"
+                            }
+                        ]
+                    },
+                    "open": {
+                        "bemhtml": "data:{{bemjson}}AdminKO.json"
+                    }
+                },
+                "Report": {
+                    "setPageReadyWaiter": true,
+                    "title": "Отчёт",
+                    "data": {
+                        "reportType": "detailmove"
+                    },
+                    "required": {
+                        "dicts": [
+
+                        ],
+                        "assets": [
+                            {
+                                "type": "package",
+                                "kind": "styles.css",
+                                "name": "Report"
+                            },
+                            {
+                                "type": "package",
+                                "kind": "bemhtml.js",
+                                "name": "Report"
+                            },
+                            {
+                                "type": "package",
+                                "kind": "browser.js",
+                                "name": "Report"
+                            },
+                            {
+                                "type": "data",
+                                "url": "{{bemjson}}Report.json"
+                            }
+                        ]
+                    },
+                    "open": {
+                        "bemhtml": "data:{{bemjson}}Report.json"
+                    }
+                },
+                "Test": {
+                    "title": "Тестовая страница",
+                    "required": {
+                        "dicts": [
+
+                        ],
+                        "assets": [
+                            {
+                                "type": "data",
+                                "url": "{{bemjson}}Test.json"
+                            }
+                        ]
+                    },
+                    "open": {
+                        "bemhtml": "data:{{bemjson}}Test.json"
+                    }
+                }
+            },
+            "menuRubrics": [
+                {
+                    "id": "tcm",
+                    "name": "ТСМ"
+                },
+                {
+                    "id": "dc",
+                    "name": "ЦОД"
+                },
+                {
+                    "id": "umto",
+                    "name": "УМТО"
+                }
+            ],
+            "menu": {
+                "tcm": [
+                    {
+                        "title": "Мониторинг",
+                        "content": [
+                            {
+                                "title": "КО",
+                                "id": "tcm_Monitoring_KO"
+                            },
+                            {
+                                "title": "Задания",
+                                "id": "tcm_Monitoring_Tasks"
+                            },
+                            {
+                                "title": "Маршруты",
+                                "id": "tcm_Monitoring_Routes"
+                            },
+                            {
+                                "title": "Сообщения",
+                                "id": "tcm_Monitoring_Messages"
+                            }
+                        ]
+                    },
+                    {
+                        "title": "Планирование",
+                        "content": [
+                            {
+                                "title": "Задания",
+                                "id": "tcm_Planning_Tasks"
+                            },
+                            {
+                                "title": "Маршруты",
+                                "id": "tcm_Planning_Routes"
+                            },
+                            {
+                                "title": "Зоны",
+                                "id": "tcm_Planning_Zones"
+                            },
+                            {
+                                "title": "Задание по маршруту",
+                                "id": "tcm_Planning_TasksRoute"
+                            },
+                            {
+                                "title": "Задание по посещению объектов",
+                                "id": "tcm_Planning_TaskVisitObjects"
+                            },
+                            {
+                                "title": "Группы КО",
+                                "id": "tcm_Planning_KOGroups"
+                            },
+                            {
+                                "title": "Группы объектов",
+                                "id": "tcm_Planning_ObjectGroups"
+                            }
+                        ]
+                    },
+                    {
+                        "title": "Отчеты",
+                        "content": [
+                            {
+                                "title": "Оперативные",
+                                "content": [
+                                    {
+                                        "title": "Пробег за период (В РАБОТЕ)",
+                                        "id": "tcm_Reports_milage"
+                                    },
+                                    {
+                                        "title": "История перемещения КО",
+                                        "id": "tcm_Reports_Operational_KOTransfer"
+                                    },
+                                    {
+                                        "title": "Посещение объектов (детально) (В РАБОТЕ)",
+                                        "id": "tcm_Reports_objvisitdetail"
+                                    },
+                                    {
+                                        "title": "Посещение зон контроля",
+                                        "id": "tcm_Reports_Operational_Zones"
+                                    },
+                                    {
+                                        "title": "Состояния КО",
+                                        "id": "tcm_Reports_Operational_KOStates"
+                                    },
+                                    {
+                                        "title": "Работоспособность НАП (В РАБОТЕ)",
+                                        "id": "tcm_Reports_efficiency"
+                                    }
+                                ]
+                            },
+                            {
+                                "title": "Сводные",
+                                "content": [
+                                    {
+                                        "title": "Периоды движения (В РАБОТЕ)",
+                                        "id": "tcm_Reports_detailmove"
+                                    },
+                                    {
+                                        "title": "Посещение объектов (В РАБОТЕ)",
+                                        "id": "tcm_Reports_objvisit"
+                                    },
+                                    {
+                                        "title": "Проблемы с КО",
+                                        "id": "tcm_Reports_Consolidated_KOProblems"
+                                    },
+                                    {
+                                        "title": "По КО/группе КО",
+                                        "id": "tcm_Reports_Consolidated_KO"
+                                    },
+                                    {
+                                        "title": "По заданиям",
+                                        "id": "tcm_Reports_Consolidated_Tasks"
+                                    },
+                                    {
+                                        "title": "Состояния КО",
+                                        "id": "tcm_Reports_Consolidated_States"
+                                    },
+                                    {
+                                        "title": "Передача данных ТЦМ–ЦОД",
+                                        "id": "tcm_Reports_Consolidated_DataTransfer"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "title": "Настройки",
+                        "content": [
+                            {
+                                "title": "Сообщения",
+                                "id": "tcm_Settings_Messages"
+                            },
+                            {
+                                "title": "Пользовательские состояния КО",
+                                "id": "tcm_Settings_UserKOStates"
+                            }
+                        ]
+                    }
+                ],
+                "dc": [
+                    {
+                        "title": "Мониторинг",
+                        "content": [
+                            {
+                                "id": "dc_Monitoring_KO",
+                                "title": "КО"
+                            },
+                            {
+                                "id": "dc_Monitoring_Tasks",
+                                "title": "Задания"
+                            },
+                            {
+                                "id": "dc_Monitoring_Routes",
+                                "title": "Маршруты"
+                            },
+                            {
+                                "id": "dc_Monitoring_Messages",
+                                "title": "Сообщения"
+                            }
+                        ]
+                    },
+                    {
+                        "title": "Отчеты",
+                        "content": [
+                            {
+                                "title": "Сводные",
+                                "content": [
+                                    {
+                                        "id": "dc_Reports_Consolidated_TasksStates",
+                                        "title": "Состояние выполнения задач"
+                                    },
+                                    {
+                                        "id": "dc_Reports_Consolidated_KOProblems",
+                                        "title": "Проблемы с КО"
+                                    },
+                                    {
+                                        "id": "dc_Reports_Consolidated_DivisionsUtilization",
+                                        "title": "Загруженность подразделений"
+                                    },
+                                    {
+                                        "id": "dc_Reports_Consolidated_ResourcesUtilisation",
+                                        "title": "Загруженность средств"
+                                    },
+                                    {
+                                        "id": "dc_Reports_Consolidated_Violations",
+                                        "title": "Нарушения"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "title": "Настройки",
+                        "content": [
+                            {
+                                "id": "dc_Settings_Messages",
+                                "title": "Сообщения"
+                            },
+                            {
+                                "id": "dc_Settings_UserKOStates",
+                                "title": "Пользовательские состояния КО"
+                            }
+                        ]
+                    },
+                    {
+                        "title": "(ТЕСТЫ)",
+                        "content": [
+                            {
+                                "id": "Test",
+                                "title": "Тестовая страница"
+                            },
+                            {
+                                "title": "Отчет",
+                                "id": "Report"
+                            }
+                        ]
+                    }
+                ],
+                "umto": [
+                    {
+                        "title": "Пользователи",
+                        "content": [
+                            {
+                                "id": "umto_Users_UsersDict",
+                                "title": "Справочник пользователей"
+                            },
+                            {
+                                "id": "umto_Users_Rights",
+                                "title": "Права доступа"
+                            },
+                            {
+                                "id": "umto_Users_Roles",
+                                "title": "Роли"
+                            },
+                            {
+                                "id": "umto_Users_Types",
+                                "title": "Типы пользователей"
+                            },
+                            {
+                                "id": "umto_Users_PostsDict",
+                                "title": "Справочник должностей"
+                            }
+                        ]
+                    },
+                    {
+                        "title": "Объекты контроля",
+                        "content": [
+                            {
+                                "id": "AdminKO",
+                                "title": "Контролируемые объекты (AdminKO)"
+                            },
+                            {
+                                "id": "umto_Objects_KO",
+                                "title": "Контролируемые объекты"
+                            },
+                            {
+                                "id": "umto_Objects_TypesDict",
+                                "title": "Справочник типов объектов контроля"
+                            },
+                            {
+                                "id": "umto_Objects_TS",
+                                "title": "ТС"
+                            },
+                            {
+                                "id": "umto_Objects_DC",
+                                "title": "ЦОД"
+                            },
+                            {
+                                "id": "umto_Objects_Stationary",
+                                "title": "Стационарные объекты"
+                            },
+                            {
+                                "id": "umto_Objects_Convoy",
+                                "title": "Колонны"
+                            },
+                            {
+                                "id": "umto_Objects_NAP",
+                                "title": "НАП"
+                            }
+                        ]
+                    },
+                    {
+                        "title": "Мониторинг",
+                        "content": [
+                            {
+                                "id": "umto_Monitoring_Objects",
+                                "title": "Объекты мониторинга (ЦОД, ТЦМ, НАП, ВЦОД)"
+                            },
+                            {
+                                "id": "umto_Monitoring_Data",
+                                "title": "Данные НАП, ВЦОД"
+                            }
+                        ]
+                    },
+                    {
+                        "title": "Передача данных",
+                        "content": [
+                            {
+                                "id": "umto_Transmit_TCMCOD",
+                                "title": "ТЦМ-ЦОД"
+                            }
+                        ]
+                    },
+                    {
+                        "title": "Управление ПО",
+                        "content": [
+                            {
+                                "id": "umto_Software_Versions",
+                                "title": "Версии ПО"
+                            },
+                            {
+                                "id": "umto_Software_Update",
+                                "title": "Обновление ПО"
+                            }
+                        ]
+                    },
+                    {
+                        "title": "НСИ",
+                        "content": [
+                            {
+                                "id": "umto_Dicts_Commands",
+                                "title": "Справочник органов управления ВВ МВД"
+                            },
+                            {
+                                "id": "umto_Dicts_ProblemTypes",
+                                "title": "Справочник типов проблем (сообщений)"
+                            },
+                            {
+                                "id": "umto_Dicts_KOStates",
+                                "title": "Справочник состояний КО"
+                            },
+                            {
+                                "id": "umto_Dicts_IterableValues",
+                                "title": "Справочник перечислимых значений"
+                            },
+                            {
+                                "id": "umto_Dicts_TSModels",
+                                "title": "Справочник моделей ТС"
+                            },
+                            {
+                                "id": "umto_Dicts_DCTypes",
+                                "title": "Справочник типов ЦОД"
+                            },
+                            {
+                                "id": "umto_Dicts_NAPTypes",
+                                "title": "Справочник типов НАП"
+                            },
+                            {
+                                "id": "umto_Dicts_POTypes",
+                                "title": "Справочник типов ПО"
+                            },
+                            {
+                                "id": "umto_Dicts_TableTypes",
+                                "title": "Справочник градуировочных таблиц"
+                            },
+                            {
+                                "id": "umto_Dicts_MeasurerTypes",
+                                "title": "Справочник типов измерительных устройств"
+                            },
+                            {
+                                "id": "umto_Dicts_ParameterTypes",
+                                "title": "Справочник типов контролируемых параметров"
+                            },
+                            {
+                                "id": "umto_Dicts_ConditionTypes",
+                                "title": "Справочник комбинаций условий"
+                            }
+                        ]
+                    },
+                    {
+                        "title": "Системные переменные",
+                        "content": [
+                            {
+                                "id": "umto_Variables_DataUpdate",
+                                "title": "Обновление данных"
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        "token": {
+            "life_time": 1800,
+            "save_time": 60,
+            "refresh_time": 30
+        },
+        "nodeToken": "231431341500316038596d0186313ac8.81234937",
+        "approot": "http://localhost:5590/WEB_TINTS/"
+    },
+    "user": {
+        "UseDomainAuth": true,
+        "username": "555",
+        "userID": 134,
+        "isAdmin": true,
+        "isOperator": true
+    }
+}

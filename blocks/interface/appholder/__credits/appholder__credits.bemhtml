@@ -1,0 +1,25 @@
+/* jshint camelcase:false, unused:false, laxbreak:true, expr:true, boss:true */
+/* globals modules, project, addAttrs, addElemMods, addJs, addMix, addMods, appendContent, apply, applyCtx, applyNext, attrs, bem, block, cls, content, def, elem, elemMod, elemMods, extend, js, local, match, mix, mod, mode, mods, oninit, prependContent, replace, tag, wrap, xjstOptions */
+/**
+ *
+ * @module appholder__credits
+ * @overview appholder__credits
+ *
+ * @author lilliputten <lilliputten@yandex.ru>
+ * @since 2017.01.20 15:51
+ * @version 2017.01.20 15:51
+ *
+*/
+
+block('appholder').elem('credits')(
+
+    content()(function(){
+        var ctx = this.ctx;
+        var content = [
+            { elem : 'prjCredits', content : project.config.prjCredits },
+        ];
+        return content;
+    })
+
+);
+

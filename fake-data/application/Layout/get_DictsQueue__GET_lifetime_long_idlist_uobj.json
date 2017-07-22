@@ -1,0 +1,674 @@
+{
+    "uobj": {
+        "252": {
+            "name": "aa",
+            "ownerID": 139,
+            "desc": null,
+            "objectTypeID": 165,
+            "lonRad": 0.658564925194,
+            "latRad": 0.973542809486,
+            "height": 0,
+            "monObjectID": null
+        },
+        "254": {
+            "name": "aa3dd",
+            "ownerID": 139,
+            "desc": null,
+            "objectTypeID": 165,
+            "lonRad": 0.658202528954,
+            "latRad": 0.973269939423,
+            "height": 0,
+            "monObjectID": null
+        },
+        "255": {
+            "name": "aa4",
+            "ownerID": 139,
+            "desc": null,
+            "objectTypeID": 165,
+            "lonRad": 0.657873868942,
+            "latRad": 0.973483264446,
+            "height": 0,
+            "monObjectID": null
+        },
+        "269": {
+            "name": "test_nat4_edited",
+            "ownerID": 139,
+            "desc": null,
+            "objectTypeID": 161,
+            "lonRad": 0.659225642681,
+            "latRad": 0.955197572708,
+            "height": 0,
+            "monObjectID": null
+        },
+        "270": {
+            "name": "bab112 Тестовый Стац Объект",
+            "ownerID": 139,
+            "desc": null,
+            "objectTypeID": 167,
+            "lonRad": 0.654500424862,
+            "latRad": 0.973895668983,
+            "height": 0,
+            "monObjectID": 5678
+        },
+        "271": {
+            "name": "bab113 Тестовый Стац Объект",
+            "ownerID": 139,
+            "desc": null,
+            "objectTypeID": 167,
+            "lonRad": 0.654500424862,
+            "latRad": 0.973895668983,
+            "height": 0,
+            "monObjectID": 5679
+        },
+        "272": {
+            "name": "bab114 Тестовый Стац Объект",
+            "ownerID": 139,
+            "desc": null,
+            "objectTypeID": 167,
+            "lonRad": 0.654500484467,
+            "latRad": 0.973895728588,
+            "height": 0,
+            "monObjectID": 5680
+        },
+        "273": {
+            "name": "bab115 Тестовый Стац Объект88",
+            "ownerID": 139,
+            "desc": null,
+            "objectTypeID": 167,
+            "lonRad": 0.653357744217,
+            "latRad": 0.973344624043,
+            "height": 0,
+            "monObjectID": 5681
+        },
+        "274": {
+            "name": "bab116 Тестовый Стац Объект",
+            "ownerID": 139,
+            "desc": null,
+            "objectTypeID": 167,
+            "lonRad": 0.654500484467,
+            "latRad": 0.973895728588,
+            "height": 0,
+            "monObjectID": 5682
+        },
+        "275": {
+            "name": "bab117 Тестовый Стац Объект",
+            "ownerID": 139,
+            "desc": null,
+            "objectTypeID": 167,
+            "lonRad": 0.654500484467,
+            "latRad": 0.973895788193,
+            "height": 0,
+            "monObjectID": 5683
+        },
+        "276": {
+            "name": "bab118 Тестовый Стац Объект",
+            "ownerID": 139,
+            "desc": null,
+            "objectTypeID": 167,
+            "lonRad": 0.654500544071,
+            "latRad": 0.973895788193,
+            "height": 0,
+            "monObjectID": 5684
+        },
+        "277": {
+            "name": "bab119 Тестовый Стац Объект",
+            "ownerID": 139,
+            "desc": null,
+            "objectTypeID": 167,
+            "lonRad": 0.654500544071,
+            "latRad": 0.973895788193,
+            "height": 0,
+            "monObjectID": 5685
+        },
+        "278": {
+            "name": "bab120 Тестовый Стац Объект",
+            "ownerID": 139,
+            "desc": null,
+            "objectTypeID": 167,
+            "lonRad": 0.654500544071,
+            "latRad": 0.973895788193,
+            "height": 0,
+            "monObjectID": 5686
+        },
+        "279": {
+            "name": "bab121 Тестовый Стац Объект",
+            "ownerID": 139,
+            "desc": null,
+            "objectTypeID": 167,
+            "lonRad": 0.654500603676,
+            "latRad": 0.973895847797,
+            "height": 0,
+            "monObjectID": 5687
+        },
+        "282": {
+            "name": "1",
+            "ownerID": 139,
+            "desc": null,
+            "objectTypeID": 168,
+            "lonRad": 0.660494744778,
+            "latRad": 0.973506331444,
+            "height": 0,
+            "monObjectID": null
+        },
+        "391": {
+            "name": "D-001",
+            "ownerID": 139,
+            "desc": null,
+            "objectTypeID": 187,
+            "lonRad": 0.658748984337,
+            "latRad": 0.976412773132,
+            "height": 0,
+            "monObjectID": null
+        },
+        "392": {
+            "name": "Б-002",
+            "ownerID": 139,
+            "desc": null,
+            "objectTypeID": 187,
+            "lonRad": 0.657649040222,
+            "latRad": 0.977186739445,
+            "height": 0,
+            "monObjectID": null
+        },
+        "400": {
+            "name": "START_M7",
+            "ownerID": 139,
+            "desc": null,
+            "objectTypeID": 193,
+            "lonRad": 0.660481214523,
+            "latRad": 0.973441958427,
+            "height": 0,
+            "monObjectID": null
+        },
+        "401": {
+            "name": "FINISH_01",
+            "ownerID": 139,
+            "desc": null,
+            "objectTypeID": 194,
+            "lonRad": 0.660368978977,
+            "latRad": 0.972367048264,
+            "height": 0,
+            "monObjectID": null
+        },
+        "403": {
+            "name": "START",
+            "ownerID": 139,
+            "desc": null,
+            "objectTypeID": 199,
+            "lonRad": 0.660489916801,
+            "latRad": 0.973356127739,
+            "height": 0,
+            "monObjectID": null
+        },
+        "404": {
+            "name": "dyd-objFrom",
+            "ownerID": 139,
+            "desc": null,
+            "objectTypeID": 187,
+            "lonRad": 0.654026150703,
+            "latRad": 0.970693051815,
+            "height": 0,
+            "monObjectID": null
+        },
+        "405": {
+            "name": "dyd-objTo",
+            "ownerID": 139,
+            "desc": null,
+            "objectTypeID": 187,
+            "lonRad": 0.653352975845,
+            "latRad": 0.9705914855,
+            "height": 0,
+            "monObjectID": null
+        },
+        "408": {
+            "name": "1-Финиш",
+            "ownerID": 139,
+            "desc": null,
+            "objectTypeID": 238,
+            "lonRad": 0.83466643095,
+            "latRad": 0.809554636478,
+            "height": 0,
+            "monObjectID": null
+        },
+        "409": {
+            "name": "1-1",
+            "ownerID": 139,
+            "desc": null,
+            "objectTypeID": 232,
+            "lonRad": 0.815302789211,
+            "latRad": 0.820680201054,
+            "height": 0,
+            "monObjectID": null
+        },
+        "410": {
+            "name": "1-2",
+            "ownerID": 139,
+            "desc": null,
+            "objectTypeID": 232,
+            "lonRad": 0.818058073521,
+            "latRad": 0.816560745239,
+            "height": 0,
+            "monObjectID": null
+        },
+        "411": {
+            "name": "1-3",
+            "ownerID": 139,
+            "desc": null,
+            "objectTypeID": 232,
+            "lonRad": 0.817320048809,
+            "latRad": 0.809303700924,
+            "height": 0,
+            "monObjectID": null
+        },
+        "412": {
+            "name": "1-4",
+            "ownerID": 139,
+            "desc": null,
+            "objectTypeID": 238,
+            "lonRad": 0.825453102589,
+            "latRad": 0.81403952837,
+            "height": 0,
+            "monObjectID": null
+        },
+        "413": {
+            "name": "1-Старт",
+            "ownerID": 139,
+            "desc": null,
+            "objectTypeID": 238,
+            "lonRad": 0.811858713627,
+            "latRad": 0.827306807041,
+            "height": 0,
+            "monObjectID": null
+        },
+        "414": {
+            "name": "2-Старт",
+            "ownerID": 139,
+            "desc": null,
+            "objectTypeID": 233,
+            "lonRad": 0.80352127552,
+            "latRad": 0.809544563293,
+            "height": 0,
+            "monObjectID": null
+        },
+        "415": {
+            "name": "2-Финиш",
+            "ownerID": 139,
+            "desc": null,
+            "objectTypeID": 233,
+            "lonRad": 0.782914698124,
+            "latRad": 0.808435738087,
+            "height": 0,
+            "monObjectID": null
+        },
+        "416": {
+            "name": "2-1",
+            "ownerID": 139,
+            "desc": null,
+            "objectTypeID": 233,
+            "lonRad": 0.801018059254,
+            "latRad": 0.813823401928,
+            "height": 0,
+            "monObjectID": null
+        },
+        "417": {
+            "name": "2-2",
+            "ownerID": 139,
+            "desc": null,
+            "objectTypeID": 233,
+            "lonRad": 0.791612267494,
+            "latRad": 0.816765248775,
+            "height": 0,
+            "monObjectID": null
+        },
+        "418": {
+            "name": "2-3",
+            "ownerID": 139,
+            "desc": null,
+            "objectTypeID": 233,
+            "lonRad": 0.783421456814,
+            "latRad": 0.813155949116,
+            "height": 0,
+            "monObjectID": null
+        },
+        "421": {
+            "name": "3-1",
+            "ownerID": 139,
+            "desc": null,
+            "objectTypeID": 234,
+            "lonRad": 0.805247843266,
+            "latRad": 0.829850792885,
+            "height": 0,
+            "monObjectID": null
+        },
+        "422": {
+            "name": "3-2",
+            "ownerID": 139,
+            "desc": null,
+            "objectTypeID": 234,
+            "lonRad": 0.80030220747,
+            "latRad": 0.833715319633,
+            "height": 0,
+            "monObjectID": null
+        },
+        "423": {
+            "name": "3-3",
+            "ownerID": 139,
+            "desc": null,
+            "objectTypeID": 234,
+            "lonRad": 0.791337907314,
+            "latRad": 0.839511692524,
+            "height": 0,
+            "monObjectID": null
+        },
+        "424": {
+            "name": "3-Старт",
+            "ownerID": 139,
+            "desc": null,
+            "objectTypeID": 234,
+            "lonRad": 0.811886250973,
+            "latRad": 0.827314198017,
+            "height": 0,
+            "monObjectID": null
+        },
+        "425": {
+            "name": "3-Финиш",
+            "ownerID": 139,
+            "desc": null,
+            "objectTypeID": 234,
+            "lonRad": 0.783914446831,
+            "latRad": 0.841718316078,
+            "height": 0,
+            "monObjectID": null
+        },
+        "426": {
+            "name": "Т1-Старт",
+            "ownerID": 139,
+            "desc": null,
+            "objectTypeID": 235,
+            "lonRad": 0.802805542946,
+            "latRad": 0.80986571312,
+            "height": 0,
+            "monObjectID": null
+        },
+        "427": {
+            "name": "Т1-2",
+            "ownerID": 139,
+            "desc": null,
+            "objectTypeID": 235,
+            "lonRad": 0.802473604679,
+            "latRad": 0.81000649929,
+            "height": 0,
+            "monObjectID": null
+        },
+        "428": {
+            "name": "Т1-Финиш",
+            "ownerID": 139,
+            "desc": null,
+            "objectTypeID": 235,
+            "lonRad": 0.802020013332,
+            "latRad": 0.810191273689,
+            "height": 0,
+            "monObjectID": null
+        },
+        "429": {
+            "name": "волгоград",
+            "ownerID": 139,
+            "desc": null,
+            "objectTypeID": 236,
+            "lonRad": 0.777676105499,
+            "latRad": 0.849901556969,
+            "height": 0,
+            "monObjectID": null
+        },
+        "430": {
+            "name": "Старт-150",
+            "ownerID": 139,
+            "desc": null,
+            "objectTypeID": 237,
+            "lonRad": 0.776921272278,
+            "latRad": 0.85022175312,
+            "height": 0,
+            "monObjectID": null
+        },
+        "431": {
+            "name": "2",
+            "ownerID": 139,
+            "desc": null,
+            "objectTypeID": 237,
+            "lonRad": 0.776364326477,
+            "latRad": 0.850916981697,
+            "height": 0,
+            "monObjectID": null
+        },
+        "432": {
+            "name": "3",
+            "ownerID": 139,
+            "desc": null,
+            "objectTypeID": 237,
+            "lonRad": 0.775771141052,
+            "latRad": 0.850464820862,
+            "height": 0,
+            "monObjectID": null
+        },
+        "433": {
+            "name": "4",
+            "ownerID": 139,
+            "desc": null,
+            "objectTypeID": 237,
+            "lonRad": 0.775624990463,
+            "latRad": 0.850054681301,
+            "height": 0,
+            "monObjectID": null
+        },
+        "434": {
+            "name": "5",
+            "ownerID": 139,
+            "desc": null,
+            "objectTypeID": 237,
+            "lonRad": 0.774563610554,
+            "latRad": 0.849930405617,
+            "height": 0,
+            "monObjectID": null
+        },
+        "435": {
+            "name": "Финиш",
+            "ownerID": 139,
+            "desc": null,
+            "objectTypeID": 237,
+            "lonRad": 0.77405500412,
+            "latRad": 0.849738061428,
+            "height": 0,
+            "monObjectID": null
+        },
+        "436": {
+            "name": "Площадь в Волгограде",
+            "ownerID": 139,
+            "desc": null,
+            "objectTypeID": 236,
+            "lonRad": 0.776927828789,
+            "latRad": 0.850162029266,
+            "height": 0,
+            "monObjectID": null
+        },
+        "437": {
+            "name": "Старт-М (AVG)",
+            "ownerID": 139,
+            "desc": null,
+            "objectTypeID": 232,
+            "lonRad": 0.811946570873,
+            "latRad": 0.827247262001,
+            "height": 0,
+            "monObjectID": null
+        },
+        "438": {
+            "name": "Старт-М (SSV)",
+            "ownerID": 139,
+            "desc": null,
+            "objectTypeID": 232,
+            "lonRad": 0.811922073364,
+            "latRad": 0.827264487743,
+            "height": 0,
+            "monObjectID": null
+        },
+        "439": {
+            "name": "1км от старта",
+            "ownerID": 139,
+            "desc": null,
+            "objectTypeID": 232,
+            "lonRad": 0.812065064907,
+            "latRad": 0.827061057091,
+            "height": 0,
+            "monObjectID": null
+        },
+        "440": {
+            "name": "линия старта этапа",
+            "ownerID": 139,
+            "desc": null,
+            "objectTypeID": 232,
+            "lonRad": 0.811873853207,
+            "latRad": 0.827295780182,
+            "height": 0,
+            "monObjectID": null
+        },
+        "442": {
+            "name": "Старт",
+            "ownerID": 139,
+            "desc": null,
+            "objectTypeID": 233,
+            "lonRad": 0.803531587124,
+            "latRad": 0.809542000294,
+            "height": 0,
+            "monObjectID": null
+        },
+        "443": {
+            "name": "2А",
+            "ownerID": 139,
+            "desc": null,
+            "objectTypeID": 233,
+            "lonRad": 0.791733443737,
+            "latRad": 0.816751182079,
+            "height": 0,
+            "monObjectID": null
+        },
+        "444": {
+            "name": "3А",
+            "ownerID": 139,
+            "desc": null,
+            "objectTypeID": 233,
+            "lonRad": 0.783316791058,
+            "latRad": 0.813237190247,
+            "height": 0,
+            "monObjectID": null
+        },
+        "445": {
+            "name": "Финиш-А",
+            "ownerID": 139,
+            "desc": null,
+            "objectTypeID": 233,
+            "lonRad": 0.783010184765,
+            "latRad": 0.808515131474,
+            "height": 0,
+            "monObjectID": null
+        },
+        "446": {
+            "name": "1A",
+            "ownerID": 139,
+            "desc": null,
+            "objectTypeID": 233,
+            "lonRad": 0.800920128822,
+            "latRad": 0.813893377781,
+            "height": 0,
+            "monObjectID": null
+        },
+        "447": {
+            "name": "KT-START",
+            "ownerID": 139,
+            "desc": null,
+            "objectTypeID": 239,
+            "lonRad": 0.811801314354,
+            "latRad": 0.827414572239,
+            "height": 0,
+            "monObjectID": null
+        },
+        "448": {
+            "name": "KT-1",
+            "ownerID": 139,
+            "desc": null,
+            "objectTypeID": 239,
+            "lonRad": 0.805291354656,
+            "latRad": 0.829848766327,
+            "height": 0,
+            "monObjectID": null
+        },
+        "449": {
+            "name": "KT-2",
+            "ownerID": 139,
+            "desc": null,
+            "objectTypeID": 239,
+            "lonRad": 0.800345003605,
+            "latRad": 0.833695888519,
+            "height": 0,
+            "monObjectID": null
+        },
+        "450": {
+            "name": "KT-3",
+            "ownerID": 139,
+            "desc": null,
+            "objectTypeID": 239,
+            "lonRad": 0.791389167309,
+            "latRad": 0.839425683022,
+            "height": 0,
+            "monObjectID": null
+        },
+        "451": {
+            "name": "KT-FINISH",
+            "ownerID": 139,
+            "desc": null,
+            "objectTypeID": 239,
+            "lonRad": 0.783911049366,
+            "latRad": 0.841692328453,
+            "height": 0,
+            "monObjectID": null
+        },
+        "452": {
+            "name": "Старт-АГ",
+            "ownerID": 139,
+            "desc": null,
+            "objectTypeID": 239,
+            "lonRad": 0.811835050583,
+            "latRad": 0.827358782291,
+            "height": 0,
+            "monObjectID": null
+        },
+        "453": {
+            "name": "Финиш-ВДВ",
+            "ownerID": 139,
+            "desc": null,
+            "objectTypeID": 239,
+            "lonRad": 0.784016430378,
+            "latRad": 0.841641426086,
+            "height": 0,
+            "monObjectID": null
+        },
+        "454": {
+            "name": "КПП1",
+            "ownerID": 139,
+            "desc": null,
+            "objectTypeID": 227,
+            "lonRad": 0.659347832203,
+            "latRad": 0.974054276943,
+            "height": 0,
+            "monObjectID": null
+        },
+        "456": {
+            "name": "testweb",
+            "ownerID": 28,
+            "desc": null,
+            "objectTypeID": 161,
+            "lonRad": 0.660097956657,
+            "latRad": 0.973523557186,
+            "height": 0,
+            "monObjectID": null
+        }
+    }
+}

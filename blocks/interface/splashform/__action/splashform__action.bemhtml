@@ -1,0 +1,58 @@
+/* jshint camelcase: false */
+/* jshint unused: false */
+/* globals modules, debugger, applyCtx, content, applyNext, block, elem, attrs, def */
+
+/**
+ *
+ * @overview splashform__action
+ *
+ * @author lilliputten <lilliputten@yandex.ru>
+ * @since 2017.02.02 13:26
+ * @version 2017.02.02 13:26
+ *
+ * $Date: 2017-07-11 19:47:15 +0300 (Tue, 11 Jul 2017) $
+ * $Id: splashform__action.bemhtml 8733 2017-07-11 16:47:15Z miheev $
+ *
+*/
+
+/*
+ * @module splashform__action
+ */
+
+block('splashform').elem('action')(
+
+    def()(function(){
+        var ctx = this.ctx,
+            undef
+        ;
+        ctx.elemMods || ( ctx.elemMods = {} );
+        return applyNext();
+    }),
+
+    content()(function(){
+        var ctx = this.ctx,
+            content = applyNext(),
+            undef
+        ;
+        return [
+            {
+                // block : 'input',
+                block : 'button',
+                text : ctx.title,
+                cls : ctx.buttonCls || 'button_action',
+                url : ctx.url,
+                mods : {
+                    id : ctx.id,
+                    type : ctx.type,
+                    theme : 'islands',
+                    size: 'm' ,
+                },
+                // attrs : {
+                //     title : ctx.title,
+                // },
+            },
+        ];
+    })
+
+);
+

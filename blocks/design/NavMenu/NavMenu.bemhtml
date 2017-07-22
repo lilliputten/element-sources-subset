@@ -1,0 +1,58 @@
+/* jshint camelcase: false, unused: false */
+/* globals modules, debugger, project, def, tag, match, js, applyCtx, content, applyNext, block, elem, attrs */
+
+/**
+ *
+ * @module NavMenu
+ * @overview NavMenu
+ *
+ * @author lilliputten <lilliputten@yandex.ru>
+ * @since 2017.03.30 17:31:53
+ * @version 2017.03.30 17:31:53
+ *
+ * $Date: 2017-07-11 19:47:15 +0300 (Tue, 11 Jul 2017) $
+ * $Id: NavMenu.bemhtml 8733 2017-07-11 16:47:15Z miheev $
+ *
+*/
+
+block('NavMenu')(
+
+    content()(function(){
+
+        var ctx = this.ctx,
+            that = this,
+
+            extend_ctx = function (item, level) {
+                level = level || 0;
+                item = that.extend(item, { rootCtx : ctx, level : level });
+                if ( Array.isArray(item.content) ) {
+                    for ( var i in item.content ) {
+                        if ( typeof item.content[i] === 'object' ) {
+                            item.content[i] = extend_ctx(item.content[i], level+1);
+                        }
+                    }
+                }
+                return item;
+            },
+
+            itemsList = Array.isArray(ctx.content) ? ctx.content : [ ctx.content ],
+            items = itemsList.map(function(item){
+                    return extend_ctx(item);
+                }
+            )
+        ;
+
+        return [
+            {
+                elem : 'RootMenu',
+                tag : 'ul',
+                content : items,
+            },
+        ];
+
+    }),
+
+    tag()('nav')
+
+);
+

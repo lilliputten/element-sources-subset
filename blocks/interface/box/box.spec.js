@@ -53,7 +53,7 @@ describe('box', function() {
 
     /*{{{*/describe('vertical layout', function() {
 
-        var box, emitter;
+        var box;
 
         beforeEach(function() {
             var
@@ -111,7 +111,6 @@ describe('box', function() {
             ;
 
             box = BEMDOM.init(dom).bem(Box);
-            emitter = box._events();
 
             // console.log('events', typeof box._events());
             // box._events().on('updatedOnInit', function(e,data){
@@ -124,21 +123,22 @@ describe('box', function() {
             BEMDOM.destruct(box.domElem);
         });
 
-        it('events2', function(done) {
-            console.log('started');
+        it('initialize', function(done) {
             this.timeout(3000);
-            // setTimeout(done, 15000);
             var spy1 = sinon.spy();
-            // box._emit('test');
-            // var promise = new vow.Promise(function(resolve,reject){
-            //     emitter.on('updatedOnInit', resolve);
-            // });
-            emitter.on('updatedOnInit', function(data){
-                console.log('updatedOnInit called');
-                expect(true).toBe(true);
-                done();
-            });
-            // spy1.should.have.been.calledOnce;
+            box.initPromise
+                .then(function(result){
+                    console.log('event called',result);
+                    expect(true).should.be.equal(true);
+                    done();
+                })
+                .fail(function(error){
+                    done(new Error(error));
+                })
+            ;
+            // setTimeout(function(){
+            //     done();
+            // }, 1000);
         });
 
         /*

@@ -1,0 +1,211 @@
+{
+    "datasets": [
+        {
+            "id": "TS",
+            "val": 1,
+            "text": "ТС",
+            "title": "Транспортные средства"
+        },
+        {
+            "id": "LS",
+            "val": 2,
+            "text": "ЛС",
+            "title": "Личный состав"
+        },
+        {
+            "id": "DC",
+            "val": 4,
+            "text": "ДЦ",
+            "title": "Центры обработки данных"
+        },
+        {
+            "id": "SO",
+            "val": 5,
+            "text": "СО",
+            "title": "Стационарные объекты"
+        },
+        {
+            "id": "RD",
+            "val": 3,
+            "text": "Считыватели",
+            "title": "Считыватели"
+        }
+    ],
+    "columns": [
+        {
+            "id": "objID",
+            "hidden": true,
+            "key": true
+        },
+        {
+            "id": "name",
+            "title": "Наименование",
+            "required": true
+        },
+        {
+            "id": "typeID",
+            "title": "Тип КО",
+            "filter": "selector_group",
+            "group_id": "separated",
+            "dict": "objTypesBrief",
+            "data_dict": "objTypesCodes",
+            "hints_dict": "objTypes",
+            "mode": "multiple",
+            "required": true,
+            "show": true
+        },
+        {
+            "id": "division",
+            "title": "Подразделение",
+            "datasets": "TS,LS",
+            "dict": "division",
+            "filter": "select",
+            "dict_tree_key": "parentID",
+            "dict_mode": "check",
+            "show": true
+        },
+        {
+            "id": "monObjPerson.nm1",
+            "title": "Фамилия",
+            "datasets": "LS",
+            "filter": "text"
+        },
+        {
+            "id": "monObjCar.StateNumber",
+            "title": "Гос. №",
+            "datasets": "TS",
+            "filter": "text"
+        },
+        {
+            "id": "monObjCar.GarageNumber",
+            "title": "№ учетный",
+            "filter": "text",
+            "datasets": "TS"
+        },
+        {
+            "id": "monObjCar.IdModel",
+            "title": "Марка / модель",
+            "datasets": "TS",
+            "dict": "CarModel",
+            "filter": "select",
+            "show": true
+        },
+        {
+            "id": "monObjCar.VIN",
+            "title": "VIN",
+            "datasets": "TS"
+        },
+        {
+            "id": "monObjCar.CarColor",
+            "title": "Цвет",
+            "datasets": "TS"
+        },
+        {
+            "id": "acInfo.ID",
+            "title": "АНК",
+            "filter": "text",
+            "show": true
+        },
+        {
+            "id": "acInfo.typeID",
+            "title": "Тип АНК",
+            "dict": "DictComplectTypes",
+            "show": true
+        },
+        {
+            "id": "acInfo.channelType",
+            "title": "Тип канала связи АНК",
+            "dict": "DictChanelTypes",
+            "filter": "select",
+            "dict_mode": "check",
+            "show": false
+        },
+        {
+            "id": "acInfo.phone",
+            "title": "№ телефона",
+            "show": true
+        },
+        {
+            "id": "statgrplist",
+            "title": "Группа",
+            "filter": "select",
+            "no_column_data": true,
+            "dict": "statgrplist",
+            "dict_name_key": "NmObject",
+            "back_filter_key": "MOInfo",
+            "back_filter_compare_key": "objID",
+            "dict_mode": "check",
+            "show": true
+        },
+        {
+            "id": "defaultState",
+            "title": "Состояние по умолчанию",
+            "dict": "statelist",
+            "objectKey": "stateID"
+        },
+        {
+            "id": "areas",
+            "title": "Зона приписки",
+            "datasets": "TS,DC,LS,SO"
+        },
+        {
+            "id": "parentDC_ID",
+            "title": "ДЦ приписки",
+            "datasets": "TS,LS"
+        },
+        {
+            "id": "radio",
+            "title": "Позывной",
+            "datasets": "TS,LS"
+        },
+        {
+            "id": "controlparam_actors",
+            "title": "Исполнительные устройства",
+            "no_column_data": true,
+            "datasets": "TS",
+            "dict": "controlparam",
+            "back_filter_key": "IdMonObj",
+            "back_filter_compare_key": "objID",
+            "dict_name_key": "IdDictContrParam",
+            "post_dict": "DictControlParams"
+        },
+        {
+            "id": "enabledStateList",
+            "title": "Назначенные состояния",
+            "datasets": "TS",
+            "dict": "statelist",
+            "objectKey": "stateID"
+        },
+        {
+            "id": "monObjSession.IdTaskCarting",
+            "title": "Задача",
+            "filter": "select",
+            "dict": "task",
+            "dict_name_key": "IdTask_NmObject",
+            "dict_tree_key": "IdParentTask",
+            "dict_mode": "check"
+        }
+    ],
+    "search_filter": {
+        "id": "search",
+        "title": "Поиск",
+        "is_search": true,
+        "insert_pos": 0,
+        "search_columns": [
+            "--",
+            "name"
+        ]
+    },
+    "used_dicts": [
+        "objTypes",
+        "objTypesBrief",
+        "division",
+        "CarModel",
+        "DictComplectTypes",
+        "DictChanelTypes",
+        "statgrplist",
+        "statelist",
+        "controlparam",
+        "task"
+    ]
+}

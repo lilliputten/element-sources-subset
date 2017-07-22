@@ -1,0 +1,58 @@
+/* jshint camelcase: false */
+/* jshint unused: false */
+/* globals modules, debugger, applyCtx, content, applyNext, block, elem, attrs, def, tag, js, wrap */
+
+/**
+ *
+ * @overview panelbox
+ *
+ * @author lilliputten <lilliputten@yandex.ru>
+ * @since ~2016.04
+ * @version 2016.12.05, 13:28
+ *
+*/
+
+/*
+ *  @module panelbox
+ */
+
+block('panelbox')(
+
+    js()(function(){
+        var ctx = this.ctx;
+        return {
+            id : ctx.id,
+        };
+    }),
+
+    attrs()(function(){
+        var ctx = this.ctx;
+        return {
+            id : ctx.id,
+        };
+    }),
+
+    def()( function () {
+        var ctx = this.ctx;
+
+        ctx.cls && ( ctx.cls += ' ' ) || ( ctx.cls = '' ); // jshint ignore:line
+        ctx.cls += ctx.id;
+
+        return applyNext();
+    }),
+
+    content()( function () {
+        var that = this,
+            ctx = this.ctx;
+
+        return Array.isArray(ctx.content) && ctx.content.map(function(item){
+            return that.extend(item, {
+                js : {
+                    panelbox_id : ctx.id,
+                }
+            });
+        }) || ctx.content;
+    })
+
+);
+

@@ -1,0 +1,14 @@
+// $Date: 2017-04-03 15:13:03 +0300 (Mon, 03 Apr 2017) $
+// $Id: NavMenu__RootMenu.styl 8034 2017-04-03 12:13:03Z miheev $
+
+.NavMenu
+    &__RootMenu
+        clearfix()
+        // float: left
+        list-style: none
+        margin: 0
+        padding: 0
+
+        ^[0]:not(^[0]_Collapsed) &
+            padding-right: 120px // Оставляем место, чтобы не резались длинные пункты меню
+

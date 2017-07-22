@@ -1,0 +1,32 @@
+@require "../__defaults.styl"
+
+$details_background = alpha($default-color,.85)
+
+.progressbar__details
+    width: 100%
+    position: absolute
+    // z-index: 60 // minimal above rest `split_view` elements and `object_details__curtain`
+    z-index: 55 // minimal above rest `split_view` elements and `object_details__curtain`
+    display: none
+    top: $app_panel_spacing + 3px //18px
+    //
+.progressbar_expanded
+    .progressbar__details
+        display: block
+
+.progressbar__details_show
+    // height: 100px
+    margin: 0 $app_panel_spacing
+    background: $details_background
+    color: #FFF
+    // background: #FFF;
+    box-shadow: 0 5px 10px 1px rgba(0,0,0,.5);
+    padding: 10px
+    // padding-bottom: ( @padding + 5px )
+    $radius = 5px
+    border-bottom-left-radius: $radius
+    border-bottom-right-radius: $radius
+
+.progressbar__details_container
+    clearfix()
+

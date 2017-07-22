@@ -1,0 +1,73 @@
+@require "../__defaults.styl"
+
+$loaderSpinSize = 60px
+
+.appholder__screen
+    // position: absolute
+    // // top: 0
+    // // bottom: 0
+    // left: 0
+    // right: 0
+    // top: 50%
+    // transform: translateY(-50%)
+
+    // width: 100%
+
+    box-sizing: border-box
+
+    &_type_form
+        &_container
+            // padding: 10px
+    &_type_error
+        if $appholderDebug
+            border: 2px solid red
+        // Перекрываем стили от оригинального .scrennholder
+        &.screenholder
+        .screenholder__error
+            text-align: center
+            // opacity: 1
+            transform: none
+            top: auto
+            position: relative
+            height: auto
+            overflow: hidden
+    &_type_loader
+        // > *
+        //     background-color: $layout-background-color
+        if $appholderDebug
+            border: 2px solid blue
+        padding: 20px 10px
+        // text-align: center
+        .spin
+            // display: inline-block
+            // margin: 10px auto
+            &.spin_theme_islands.spin_visible
+                if $loaderSpinSize
+                    width: $loaderSpinSize
+                    height: $loaderSpinSize
+        .progressbar
+            margin-top: 30px
+            margin-bottom: 15px
+        &_status
+            margin: 0 15px
+            margin-top: 5px
+            color: lighten($neutral-color,0)
+            text-align: center
+
+    // Состояния для показанных/спрятанных экранов
+    &
+        display: none
+        opacity: 0
+        // transition: opacity 3s
+        pointer-events: none
+    &_show
+    &_initial
+    & > .screenholder__error
+        display: block
+        pointer-events: auto
+    &_initial
+        opacity: 1 // Устанавливается динамически
+    &_spinwrap
+        text-align: center
+
+    //

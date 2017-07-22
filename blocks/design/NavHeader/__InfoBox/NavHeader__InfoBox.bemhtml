@@ -1,0 +1,31 @@
+/* jshint camelcase: false, unused: false */
+/* globals modules, debugger, project, def, tag, match, js, applyCtx, content, applyNext, block, elem, attrs */
+
+/**
+ *
+ * @module NavHeader__InfoBox
+ * @overview NavHeader__InfoBox
+ * @author lilliputten <lilliputten@yandex.ru>
+ *
+ * @since 2017.03.31 16:57:19
+ * @version 2017.03.31 16:57:19
+ *
+ * $Date: 2017-07-11 19:47:15 +0300 (Tue, 11 Jul 2017) $
+ * $Id: NavHeader__InfoBox.bemhtml 8733 2017-07-11 16:47:15Z miheev $
+ *
+*/
+
+block('NavHeader').elem('InfoBox')(
+
+    content()(function(){
+        return [
+            { elem : 'UserBox', content : [
+                { elem : 'UserName' },
+                { elem : 'UserRole' },
+            ] },
+            { elem : 'Status', content : '{Status}' },
+        ];
+    })
+
+);
+

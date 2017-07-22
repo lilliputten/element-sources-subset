@@ -1,0 +1,48 @@
+/* jshint camelcase: false */
+/* jshint unused: false */
+/* globals modules, debugger, applyCtx, content, applyNext, block, elem, attrs, def */
+
+/**
+ *
+ * @overview splashform__errors
+ *
+ * @author lilliputten <lilliputten@yandex.ru>
+ * @since 2017.02.02 13:26
+ * @version 2017.02.02 13:26
+ *
+ * $Date: 2017-07-11 19:47:15 +0300 (Tue, 11 Jul 2017) $
+ * $Id: splashform__errors.bemhtml 8733 2017-07-11 16:47:15Z miheev $
+ *
+*/
+
+/*
+ * @module splashform__errors
+ */
+
+block('splashform').elem('errors')(
+
+    content()(function(){
+        this.escapeContent = false;
+        var ctx = this.ctx,
+            content = applyNext(),
+            undef
+        ;
+
+        if ( content && !Array.isArray(content) ) {
+            content = [ content ];
+        }
+
+        if ( Array.isArray(content) ) {
+            content = content.map(function(item){
+                if ( typeof item === 'string' ) {
+                    item = { elem : 'errors_item', content : item };
+                }
+                return item;
+            });
+        }
+
+        return content;
+    })
+
+);
+

@@ -1,0 +1,55 @@
+// $Date: 2017-02-21 18:22:06 +0300 (Tue, 21 Feb 2017) $
+// $Id: splashform.styl 7360 2017-02-21 15:22:06Z miheev $
+
+@require "__defaults.styl"
+
+.splashform
+
+    width: 500px
+    // width: auto
+
+    // background-color: $layout-background-color
+    background-color: lighten($layout-background-color,3)
+    // background-color: $layout-light-background-color
+    border-radius: 8px
+    border: 1px solid $medium-border-color
+    margin: 0 auto
+    overflow: hidden
+
+    padding-bottom: $vspaceQuarter
+
+    &__title
+        // background-color: $accent-color
+        background-color: lighten($neutral-color,25)//$accent-color
+        // border-bottom: 1px solid $medium-border-color
+        color: lighten($default-text-color,30)
+        text-transform: uppercase
+        // font-weight: bold
+        text-align: center
+        padding: 12px $hspace
+        margin-bottom: $vspace //round( $vspace / 2 )
+        font-size: $font-size-l
+    &__inputs
+    &__actions
+        text-align: center
+        // margin: $vspace 0px
+        margin: $vspace $hspaceHalf
+        padding-top: $vspaceHalf
+    &__actions
+        // margin: $vspaceHalf $hspaceHalf
+    &__errors
+    &__text
+        margin: $vspace $hspace
+        padding-top: $vspace
+        // padding: $vspace 0
+        color: darken($neutral-color,10)
+    &__errors
+        margin: 0 $hspace
+        &:empty
+            margin: 0
+            display: none
+        color: $error-color
+        &_item
+            margin: 5px 0
+
+    //

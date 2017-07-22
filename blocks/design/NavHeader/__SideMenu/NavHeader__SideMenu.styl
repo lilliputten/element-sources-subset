@@ -1,0 +1,49 @@
+// $Date: 2017-04-02 20:33:52 +0300 (Sun, 02 Apr 2017) $
+// $Id: NavHeader__SideMenu.styl 8025 2017-04-02 17:33:52Z miheev $
+
+.NavHeader
+    &__SideMenu
+
+        & ^[0]__SideMenuContainer
+            overflow: visible !important // !!! nicescroll
+
+        ^[0]_Collapsed .collapsable&
+
+            z-index: $NavHeader.zIndex + 5
+
+            position: absolute
+            // border: 1px solid green
+            background-color: alpha(#000,.5)
+
+            top: 0
+            bottom: 0
+            right: -100%
+            width: 100%
+            display: block
+            // transition: left .25s ease-in
+
+            opacity: 0
+            transition: all .25s ease-in
+
+            & ^[0]__SideMenuContainer
+                overflow: hidden !important // !!! nicescroll
+                height: 100%
+                margin-left: 10%
+                background-color: $NavHeader.SideMenu.bgColor
+                border-left: 2px solid alpha(#000,.5)
+                box-shadow: 0px -15px 20px 10px alpha(#000,.5)
+            & ^[0]__SideMenuContent
+                padding: $NavHeader.padding
+                padding-right: 10px
+
+            & .NavMenu
+                margin-top: 10px
+            // & .NavMenu__RootMenu > .NavMenu__ItemWrap
+            //     display: block
+            //     > .NavMenu__Item
+            //         height: 300px
+
+            &_show
+                opacity: 1
+                right: 0
+

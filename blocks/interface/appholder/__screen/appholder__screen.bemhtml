@@ -1,0 +1,137 @@
+/* jshint camelcase:false, unused:false, laxbreak:true, expr:true, boss:true */
+/* globals modules, project, addAttrs, addElemMods, addJs, addMix, addMods, appendContent, apply, applyCtx, applyNext, attrs, bem, block, cls, content, def, elem, elemMod, elemMods, extend, js, local, match, mix, mod, mode, mods, oninit, prependContent, replace, tag, wrap, xjstOptions */
+/**
+ *
+ * @module appholder__screen
+ * @overview appholder__screen
+ *
+ * @author lilliputten <lilliputten@yandex.ru>
+ * @since 2017.01.20 15:51
+ * @version 2017.01.20 15:51
+ *
+*/
+
+block('appholder').elem('screen')(
+
+    /*{{{ Общий код ** */def()(function(){
+        var ctx = this.ctx;
+        ctx.elemMods || ( ctx.elemMods = {} );
+        ctx.elemMods.show && ( ctx.elemMods.initial = true );
+        return applyNext();
+    }),/*}}}*/
+
+    /*{{{ Заставка загрузчика ** */elemMod('type','loader').content()(function(){
+
+        var ctx = this.ctx,
+            // content = applyNext(),
+            undef
+        ;
+
+        return [
+            { elem : 'screen_spinwrap', content :
+                { block : 'spin', mods : { theme : 'islands', size : 'xl', visible : true, color : 'accent' } }
+            },
+            { block : 'progressbar', mods : { appholder : true, current : true } },
+            { elem : 'screen_type_loader_status', content : 'Загрузка...' },
+        ];
+
+    }),/*}}}*/
+
+    /*{{{ Формы ** */elemMod('type','form')(
+
+        /*{{{ Смена типа авторизации ** */elemMod('id','formAuthTypeChange').content()(function(){
+            var ctx = this.ctx,
+                options = ctx.options || {},
+                auth_url = project.helpers.expand_path(project.config.auth_url),
+
+                /* // Опции подсовываются извне через параметр `ctx.options`
+                 * defaultOptions = [
+                 *     { val : 'form', text : 'Авторизация через форму' },
+                 *     { val : 'ntlm', text : 'Сквозная Active Directory авторизация' },
+                 * ],
+                 * locationsData = {},
+                 */
+                locations = {},
+                contentOptions = Array.isArray(options.locations) && options.locations.map(function(item){
+                    var data = { val : item.type, text : item.title/* , url : item.url */ };
+                    // title, type, url
+                    // locationsData[item.type] = data;
+                    locations[item.type] = item.url;
+                    return data;
+                }),
+
+                // block : 'splashform'
+                content = [
+                    { elem : 'inputs',
+                        js : {
+                            locations : locations,
+                        },
+                        content : [
+                            { elem : 'input', type : 'radio-group', id : 'authType',
+                                val : contentOptions.length && contentOptions[0].val,
+                                options : contentOptions,
+                            },
+                        ]
+                    },
+                    { elem : 'actions', content : [
+                        { elem : 'action', id : 'select', title : 'Выбрать', type : 'submit', buttonCls : 'button_action' },
+                        { elem : 'action', id : 'cancelformAuthTypeChange', title : 'Отказаться', buttonCls : 'button_light' },
+                    ]},
+                ],
+                undef
+            ;
+            ctx.title = ctx.title || 'Выбор типа авторизации';
+            return content;
+        }),/*}}}*/
+
+        /*{{{ Авторизация ** */elemMod('id','formAuthLogin').content()(function(){
+            var ctx = this.ctx,
+                options = ctx.options || {},
+                auth_url = project.helpers.expand_path(project.config.auth_url),
+
+                // block : 'splashform'
+                content = [
+                    { elem : 'inputs', content : [
+                        { elem : 'input', type : 'text', id : 'username', title : 'Логин' },
+                        { elem : 'input', type : 'password', id : 'password', title : 'Пароль' },
+                    ]},
+                    { elem : 'actions', content : [
+                        { elem : 'action', id : 'login', title : 'Войти', type : 'submit', buttonCls : 'button_action' },
+                        { elem : 'action', id : 'authTypeChange', title : 'Сменить тип авторизации', buttonCls : 'button_light' },
+                        { elem : 'action', id : 'cancel', title : 'Отказаться', buttonCls : 'button_light' },
+                    ]},
+                ],
+                undef
+            ;
+            ctx.title = ctx.title || 'Авторизация';
+            return content;
+        }),/*}}}*/
+
+       /*{{{ Общая разметка ** */content()(function(){
+            var ctx = this.ctx,
+                options = ctx.options || {},
+                content = applyNext(),
+                undef
+            ;
+            content.unshift({ elem : 'errors', content : options.errors });
+            if ( options.introText ) {
+                content.unshift({ elem : 'text', elemMods : { type : 'introText' }, content : options.introText });
+            }
+            if ( ctx.title ) {
+                content.unshift({ elem : 'title', content : ctx.title });
+            }
+            return [
+                { elem : 'screen_type_form_container', content : {
+                    block : 'splashform',
+                    mods : { id : ctx.elemMods.id },
+                    content : content,
+                } },
+            ];
+        })/*}}}*/
+
+    ),/*}}}*/
+
+    tag()()
+
+);
+

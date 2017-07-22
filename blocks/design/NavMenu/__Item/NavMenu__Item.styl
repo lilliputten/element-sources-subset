@@ -1,0 +1,118 @@
+// $Date: 2017-04-07 20:33:33 +0300 (Fri, 07 Apr 2017) $
+// $Id: NavMenu__Item.styl 8099 2017-04-07 17:33:33Z miheev $
+
+@require '../!Defaults.styl'
+
+.NavMenu
+    &__Item
+
+        text-decoration: none
+        display: block
+        text-decoration: none
+        border: none
+        text-align: left
+        white-space: nowrap
+        cursor: pointer
+
+        code // {{{
+            opacity: .7
+            display: inline-block
+            border-radius: 3px
+            border: 1px solid $panel-border-color
+            // margin: 0 5px
+            margin-left: 10px
+            margin-right: -5px
+            margin-top: -3px
+            padding: 2px 5px
+            // float: right
+        // }}}
+
+        &_hasChilds // {{{ Содержит подменю
+            cursor: pointer
+            .caret
+                caret()
+                color: $default-color
+                padding: 0
+                margin-left: 5px
+                opacity: .5
+        // }}}
+
+        ^[0]__RootMenu > &Wrap > & // {{{ Пункт в главном меню
+            padding: 4px 6px // Компактный размер
+            line-height: 14px // В сумме 28px
+            .NavHeader_Medium:not(.NavHeader_Compact) &
+                padding: 6px 12px
+            ^[0]_Collapsed & // Для "схлопнутого" режима
+                padding: 10px 15px
+            color: #FFF
+            border-radius: 3px
+            background: alpha(#000,.1)
+            border: 1px solid alpha(#000,.1)
+            .caret
+                color: #FFF
+                opacity: .3
+            &:hover
+            &_opened
+            &_current
+                background: $accent-color
+                border: 1px solid $accent-color
+                box-shadow: 0 0 0 1px darken($accent-color,10) //alpha(#000,.2)//$accent-color
+                color: #FFF
+                .caret
+                    opacity: 1
+            &_opened:hover
+                background: lighten($accent-color,5)
+                box-shadow: 0 0 0 2px darken($accent-color,10)
+            &_current
+                border: 1px dotted alpha(#FFF,.75)
+        // }}}
+
+        ^[0]__Submenu > &Wrap > & // {{{ Пункт в подменю
+            // &:visited
+            &
+                color: $default-color
+            text-decoration: none
+            padding: 6px 12px
+            margin: 0
+            display: block
+            text-decoration: none
+            border: none
+            text-align: left
+            white-space: nowrap
+            // &:hover:visited
+            &_current
+                background-color: mix($neutral-color,#FFF,20)
+                outline: 1px dotted $neutral-color
+            &:hover
+            &_opened
+                background-color: mix($neutral-color,#FFF,40)
+            &:hover
+            &_opened
+            &_current
+                color: $default-color
+                .caret
+                    opacity: 1
+                code
+                    border-color: darken($panel-border-color,15)
+            ^[0]:not(^[0]_Collapsed) & // {{{ Для обычного меню
+                line-height: 1em
+                min-width: 120px
+            // }}}
+            ^[0]_Collapsed & // {{{ Для мобильного меню
+                .caret
+                    color: #FFF
+                    opacity: .3
+                &:hover
+                &_opened
+                &_current
+                    background-color: alpha($accent-color,.5)
+                    .caret
+                        opacity: 1
+                color: #FFF
+                code
+                    border-color: alpha($panel-border-color,.2)
+            // }}}
+        // }}}
+
+    //
+

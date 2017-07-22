@@ -1,0 +1,173 @@
+@require "__hide_unhide_states.styl"
+
+$split_bar_width = $app_panel_spacing
+$split_bar_handler_height = 35px
+$split_bar_handler_width = $app_panel_spacing
+
+$split_bar_handler_offset_v = 5px
+$split_bar_handler_offset_h = 2px
+
+.split_view
+    height: 100%
+    width: 100%
+    // XXX app-layout 2016.08.08, 11:31
+    // $h-margin = $app_panel_spacing
+    // $v-margin = $h-margin + 1
+    // margin: $v-margin $h-margin
+    // margin-top: 0
+    // width: "calc( 100% - %s )" % ( $h-margin * 2 )
+    flex: 2
+    position: relative
+    box-sizing: border-box
+
+    &.split_view_test
+        border: 1px solid red
+
+    if $hide-overflow
+        overflow: hidden
+
+    .split_view__panel
+        height: 100%
+        position: absolute
+        if $hide-overflow
+            overflow: hidden
+
+        &.split_view__right
+            if $trace-content
+                background-color: alpha(SeaGreen,.2)
+            width: 50%
+            margin-left: 50%
+
+        &.split_view__left
+            width: 50%
+            if $trace-content
+                background-color: alpha(IndianRed,.2)
+            float: left
+            // overflow-y: scroll
+
+    .split_view__container
+        height: 100%
+        // overflow-y: auto
+        if $hide-overflow
+            overflow: hidden
+
+    .split_view__split_bar
+        background: $layout-background-color
+        // background: $layout-light-background-color
+        $handler_icon-background-color = lighten($neutral-color,35) //lighten($neutral-color,35) //lighten($accent-color,5)
+        height: 100%
+        float: right
+        width: $split_bar_width
+        cursor: ew-resize
+        text-align: center
+        position: relative
+        .handler_show
+            box-sizing: border-box
+            position: absolute
+            top: 0
+            bottom: 0
+            left: 0//$split_bar_handler_offset_h//0
+            right: 0//$split_bar_handler_offset_h//50%
+            // border: 1px solid red
+            // opacity: .5
+            // background: $handler_icon-background-color//#FFF//lighten($neutral-color,15)
+            background: darken($tabs-border-color,5)
+            // border-top: 1px solid darken($tabs-border-color,5)
+            // border-bottom: 1px solid darken($tabs-border-color,5)
+            opacity: 0
+        .handler_icon
+            box-sizing: border-box
+            width: $split_bar_width - $split_bar_handler_offset_h * 2
+            height: $split_bar_handler_height + $split_bar_handler_offset_v * 2
+            margin: $split_bar_handler_offset_v $split_bar_handler_offset_h
+            padding: $split_bar_handler_offset_v 1px
+            display: block
+            position: absolute
+            border-radius: 1px
+            &.middle
+                top: 50%
+                transform: translateY(-50%)
+            // background: darken($background-color,20%)
+            // background: #FFF
+            white-space: nowrap
+            span
+                display: inline-block
+                margin-right: 1px
+                &:last-child
+                    margin-right: 0px
+                height: $split_bar_handler_height
+                background: darken($background-color,20)
+                width: 1px
+    &.split_view_resizing .split_view__split_bar
+    .split_view__split_bar:hover
+            // background: url("/desktop.blocks/split_view/images/split_view__split_bar.gif") repeat-y center;
+            .handler_show
+                // border-right: 1px solid $handler_icon-background-color//#FFF//lighten($neutral-color,15)
+                opacity: 1
+            .handler_icon
+                // box-shadow: 0 0 0 5px #FFF
+                background: $handler_icon-background-color
+                // background: $handler_icon-background-color
+                opacity: 1
+                span
+                    // background: mix(#FFF,$handler_icon-background-color,70%)
+                    // background: mix(#FFF,$handler_icon-background-color,70%)
+                    background: lighten($neutral-color,0)
+                    // background: lighten($neutral-color,30)
+                    // background: #FFF
+
+    position: relative
+    transition: opacity .25s
+
+    .split_view__loader
+        // display: none
+        background-color: $background-color
+        top: 0
+        width: 100%
+        height: 100%
+        position: absolute
+        transition: opacity .25s
+        text-align: center
+        .split_view__loader_container
+            display: block
+            position: absolute
+            top: 50%
+            width: 100%;
+            transform: translateY(-50%)
+
+    &.split_view_ready
+        // opacity: 1
+        .split_view__loader
+            // border: 1px solid green
+            opacity: 0
+            pointer-events: none
+
+    &.split_view_resizing
+        cursor: col-resize
+        // border 4px solid red
+        // opacity: .5
+        .split_view__split_bar
+            .handler_icon
+                span
+                    opacity: 1
+
+    &_frame_no
+    &_frame_v
+    &_frame_left
+    &_frame_right
+    &_frame_top
+    &_frame_bottom
+        border-width: 0px
+    &_frame_v
+    &_frame_left
+        border-left-width: 1px
+    &_frame_v
+    &_frame_right
+        border-right: 1px
+    &_frame_v
+    &_frame_top
+        border-top-width: 1px
+    &_frame_v
+    &_frame_bottom
+        border-bottom-width: 1px
+

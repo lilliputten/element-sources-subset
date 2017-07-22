@@ -1,0 +1,73 @@
+/* jshint camelcase:false, unused:false, laxbreak:true, expr:true, boss:true */
+/* globals modules, debugger, project, def, tag, match, js, applyCtx, content, applyNext, block, elem, attrs, mix, mod */
+/**
+ *
+ * @module split_view
+ * @overview __INFO__
+ *
+ * @author lilliputten <lilliputten@yandex.ru>
+ * @since 2016
+ * @version 2017.05.30, 20:05
+ *
+ * $Date: 2017-07-11 19:47:15 +0300 (Tue, 11 Jul 2017) $
+ * $Id: split_view.bemhtml 8733 2017-07-11 16:47:15Z miheev $
+ *
+ */
+block('split_view')(
+
+    js()(function(){
+        var ctx = this.ctx;
+        return this.extend(ctx.params, {
+            id : ctx.id,
+        });
+    }),
+
+    attrs()(function(){
+        var ctx = this.ctx;
+        return this.extend(ctx.attrs, {
+            id : ctx.id,
+        });
+    }),
+
+    content()(function() {
+        var ctx = this.ctx;
+        // DBG('split_view left params', ctx.left.params);
+        // TODO: extend left & right components with cuctom parameters!
+        var content = [];
+
+        //'<span class="handler_show"></span><span class="handler_icon"><span></span><span></span><span></span></span>' },
+        content.push({ elem : 'panel', mix : { elem : 'left' }, content : [
+            { elem : 'split_bar', content : [
+                { tag : 'span', cls : 'handler_show' },
+                { tag : 'span', cls : 'handler_icon', content : [
+                    { tag : 'span' },
+                    { tag : 'span' },
+                    { tag : 'span' },
+                ] },
+            ] },
+            Object.assign({}, ctx.left, {
+                block : 'panelbox',
+                id : ( ctx.left && ctx.left.params && ctx.left.params.id ) || 'default_left_panel',
+                js : ( ctx.left && ctx.left.params ) || {},
+                mods : ctx.left.mods || {},
+                mix : ctx.left.mix || [],
+            }),
+        ] });
+
+        content.push({ elem : 'panel', mix : { elem : 'right' }, content : [
+            Object.assign({}, ctx.right, {
+                block : 'panelbox',
+                id : ( ctx.right && ctx.right.params && ctx.right.params.id ) || 'default_right_panel',
+                js : ( ctx.right && ctx.right.params ) || {},
+                mods : ctx.right.mods || {},
+                mix : ctx.right.mix || [],
+            }),
+        ] });
+
+        // content.push({ elem : 'progress' });
+
+        content.push({ block : 'screenholder' });
+        return content;
+    })
+
+);

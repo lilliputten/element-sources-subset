@@ -1,0 +1,138 @@
+block('popup_dialog')( elem('popup')(
+
+    def()(function(){
+        var ctx = this.ctx;
+        var options = ctx.options;
+
+        if ( !ctx.mix ) { ctx.mix = []; }
+
+        if ( ctx.options.mode ) {
+            ctx.mix.push({ elem : ctx.elem+'_'+ctx.options.mode });
+        }
+
+        if ( ctx.options.noposition ) {
+            ctx.mix.push({ block : 'noposition' });
+        }
+
+        return applyNext();
+    }),
+
+    content()(function(){
+        var ctx = this.ctx;
+        var options = ctx.options;
+
+        var content = [];
+
+        if ( options.close_button ) {
+            content.push({ elem : 'close_button', options : options });
+        }
+        if ( options.title ) {
+            content.push({ elem : 'title', options : options });
+        }
+        content.push({ elem : 'container', options : options, content : ctx.content });
+
+        var actions_container_content = []
+        /*{{{*/if ( options.actions && Array.isArray(options.actions) ) {
+            var options_actions = {
+                elem : 'actions',
+                content : [],
+            };
+            var process_actions = function (actions, level) {
+                var content = [];
+                level = level || 0;
+                if ( Array.isArray(actions) ) {
+                    var group = [];
+                    actions.forEach(function(action) {
+                        group.push(process_actions(action, level+1));
+                    });
+                    if ( level ) {
+                        group = {
+                            elem : 'actions_group',
+                            content : group,
+                        };
+                    }
+                    return group;
+                }
+                else if ( typeof actions === 'string' ) {
+                    var id = actions;
+                    var action_ctx = {
+                        block : 'button',
+                        id : id,
+                        js : { id : id },
+                        attrs : {},
+                        mix : [
+                            { block : 'button_type_action' },
+                            { block : 'button_action_' + id },
+                        ],
+                        mods : { theme : 'islands', size : 'm' },
+                        text : id,
+                        name : id,
+                    };
+                    if ( project.config.buttons_data[id] ) {
+                        if ( project.config.buttons_data[id].title ) {
+                            action_ctx.text = project.config.buttons_data[id].title;
+                        }
+                        if ( project.config.buttons_data[id].hint ) {
+                            action_ctx.attrs.title = project.config.buttons_data[id].hint;
+                        }
+                        action_ctx.icon = project.helpers.get_button_icon(id);
+                    }
+                    return action_ctx;
+                }
+                return '';
+            };
+            options_actions.content = process_actions(options.actions);
+            actions_container_content.push(options_actions);
+        }/*}}}*/
+        /*{{{*/if ( options.buttons && Array.isArray(options.buttons) ) {
+            var options_buttons = {
+                elem : 'buttons',
+                content : [],
+            };
+            options.buttons.forEach(function(id) {
+                var button_ctx = {
+                    block : 'button',
+                    id : id,
+                    js : { id : id },
+                    attrs : {},
+                    mix : [
+                        { block : 'button_action_light' },
+                        { block : 'button_type_button' },
+                        { block : 'button_button_' + id },
+                    ],
+                    mods : { theme : 'islands', size : 'm', id : id }, // Дублируем id из-за бага с bem-components:js()
+                    text : id,
+                    name : id,
+                };
+                if ( project.config.buttons_data[id] ) {
+                    if ( project.config.buttons_data[id].title ) {
+                        button_ctx.text = project.config.buttons_data[id].title;
+                    }
+                    if ( project.config.buttons_data[id].hint ) {
+                        button_ctx.attrs.title = project.config.buttons_data[id].hint;
+                    }
+                    button_ctx.icon = project.helpers.get_button_icon(id);
+                }
+                options_buttons.content.push(button_ctx);
+            });
+            actions_container_content.push(options_buttons);
+        }/*}}}*/
+        var actions_container = {
+            elem : 'actions_container',
+            content : actions_container_content,
+            mix : [],
+        };
+        if ( options.actions_combine ) {
+            actions_container.mix.push({ block : 'combined' });
+        }
+        if ( actions_container_content.length ) {
+            content.push(actions_container);
+        }
+
+        return content;
+    }),
+
+    def()()
+
+));
+

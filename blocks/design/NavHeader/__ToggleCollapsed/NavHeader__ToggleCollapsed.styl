@@ -1,0 +1,36 @@
+// $Date: 2017-04-02 20:33:52 +0300 (Sun, 02 Apr 2017) $
+// $Id: NavHeader__ToggleCollapsed.styl 8025 2017-04-02 17:33:52Z miheev $
+
+$IconColor = #FFF
+
+.NavHeader
+    &__ToggleCollapsed
+        .button
+            z-index: $NavHeader.zIndex + 10
+            opacity: .5
+            // background: #FFF
+            background: none
+            // background: alpha(#000,.1)
+            box-shadow: inset 0 0 0 1px alpha($IconColor,.3)
+            &:before
+                // background: $accent-color
+                background: none
+            .icon
+                position: relative
+                top: 2px
+                &__bar
+                    // display: block
+                    background-color: $IconColor
+                    margin: 3px 5px auto
+                    height: 2px
+            &_hovered
+                opacity: .7
+                // box-shadow: 0 0 3px 1px $IconColor, inset 0 0 2px 1px $IconColor
+                box-shadow: inset 0 0 2px 1px $IconColor
+            &_checked
+                opacity: .8
+            &_hovered^[-1..-1]_checked
+                opacity: 1
+
+        //
+

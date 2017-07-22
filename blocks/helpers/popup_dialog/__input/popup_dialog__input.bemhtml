@@ -1,0 +1,55 @@
+block('popup_dialog')( elem('input')(
+
+    def()(function(){
+        var ctx = this.ctx;
+
+        var opt = ctx.opt || {};
+        ctx.type = ctx.type || 'text';
+        ctx.title = ctx.title || ctx.id;
+        // ctx.data_id = ctx.id;
+
+        if ( !ctx.cls ) { ctx.cls = ''; }
+        if ( !ctx.mix ) { ctx.mix = []; }
+        if ( !ctx.attrs ) { ctx.attrs = {}; }
+        // ctx.mix.push({ block : 'test' });
+
+        ctx.attrs.id = ctx.id;
+
+        if ( ctx.type == 'hidden' ) {
+            ctx.cls += ' hidden';
+        }
+
+        // if ( ctx.datasets ) {
+        //     ctx.cls += ' dataset dataset_' + ctx.datasets.replace(/,/g,' dataset_');
+        // }
+
+        // return applyCtx(ctx);
+        return applyNext();
+    }),
+
+    content()(function(){
+        var ctx = this.ctx;
+
+        // DBG( 'xxx content' );
+
+        if ( ctx.type == 'selector' ) {
+            // DBG( 'selector', ctx );
+        }
+
+        var content = [
+            // ctx.content,
+        ];
+
+        content.push({ elem : 'input_label', parent : ctx });
+        // content.push({ elem : 'input_show', parent : ctx });
+        // if ( !ctx.readonly ) {
+        content.push({ elem : 'input_edit', parent : ctx });
+        // }
+
+        return content;
+    }),
+
+    def()()
+
+));
+

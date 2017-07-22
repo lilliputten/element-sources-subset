@@ -1,0 +1,110 @@
+// Показываес/прячем элементы в зависимости от размера экрана (шапки)
+
+.NavHeader
+
+    // По умолчанию...
+    & ^[0]__Logo
+        // Прячем логотип
+        display: none
+    & ^[0]__TitleFull
+    & ^[0]__TitleBrief
+    & ^[0]__TitlePlus
+        line-height: 28px
+    & ^[0]__TitleFull
+        // Прячем полный заголовок
+        display: none
+    & ^[0]__TitleBrief
+    & ^[0]__TitlePlus
+        display: inline-block
+        margin-right: 5px
+    & ^[0]__TitleBox
+        float: left
+    & ^[0]__ToggleCollapsed
+        float: right
+    & ^[0]__UserBox
+    & ^[0]__Status
+        margin-right: 15px
+        float: left
+    & ^[0]__UserRole
+        display: none
+
+    // "Узкий" режим
+    &_Compact
+    &:not(&_Medium):not(&_Large)
+        .button
+        & ^[0]__Status
+        & ^[0]__TitleFull
+        & ^[0]__TitleBrief
+        & ^[0]__TitlePlus
+            // box-shadow: 0 0 2px 1px green
+            line-height: 26px
+        // & ^[0]__Logo
+        //     // Показываем логотип
+        //     // display: block
+        //     width: $NavHeader.Logo.sizeSmall
+        //     height: $NavHeader.Logo.sizeSmall
+
+    // &_Compact
+    &_Small // {{{ ( >= Small )
+        &
+            // Минимальная высота под логотип
+            min-height: $NavHeader.Logo.sizeSmall
+        & ^[0]__Container
+            // Оставляем место для логотипа
+            margin-left: $NavHeader.Logo.sizeSmall + $NavHeader.padding
+        & ^[0]__Logo
+            // Показываем логотип
+            display: block
+            width: $NavHeader.Logo.sizeSmall
+            height: $NavHeader.Logo.sizeSmall
+        // Позиционируем информацию о статусах и пользователе справа
+        & ^[0]__Status
+        & ^[0]__UserBox
+        & ^[0]__InfoBox
+            float: right
+            text-align: right
+            margin-left: 15px
+            margin-right: 0
+        & ^[0]__TitleBox
+            float: left
+    // }}}
+    &_Medium:not(&_Compact) // {{{ ( >= Medium )
+        &
+            // Минимальная высота под логотип
+            min-height: $NavHeader.Logo.size
+        & ^[0]__Container
+            // Оставляем место для логотипа
+            margin-left: $NavHeader.Logo.size + $NavHeader.padding
+        & ^[0]__Logo
+            // Показываем логотип
+            display: block
+            width: $NavHeader.Logo.size
+            height: $NavHeader.Logo.size
+        & ^[0]__TitleBrief
+            // Прячем короткий заголовок
+            display: none
+        & ^[0]__TitleFull
+            // Показываем полный заголовок
+            display: block
+        & ^[0]__UserRole
+            display: block
+    // }}}
+
+    &:not(&_Collapsed)
+        & ^[0]__ToggleCollapsed
+            display: none
+        & ^[0]__MenuBox
+            float: left
+    &_Collapsed
+        & ^[0]__Expand
+            display: none
+        & .collapsable
+            display: none
+        & ^[0]__MenuBox
+            margin-top: 5px
+        & ^[0]__InfoBox
+            clear: both
+        & ^[0]__UserRole
+            display: block
+
+

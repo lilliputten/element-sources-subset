@@ -1,0 +1,54 @@
+$padding_box_offset = 10px
+$padding_offset = 10px
+$buttons_offset = 5px
+$text_offset = 5px
+
+$hide_color = #000
+
+$input_label_width = 40%
+$input_field_width = 100% - $input_label_width
+$input_line_height = 28px
+
+input_line_item()
+    //overflow: hidden
+    line-height: $input_line_height
+    min-height: $input_line_height
+    // padding: 0 5px
+    // margin: 0 -5px
+$input_line_item
+    input_line_item()
+
+input_label()
+    // @extend $input_line_item
+    input_line_item()
+    float: left
+    width: $input_label_width
+    text-overflow: ellipsis
+    box-sizing: border-box
+    padding-right: 10px
+    text-align: right
+    color: $light-text-color
+    // box-shadow: inset 0 0 0 1px red
+$input_label
+    input_label()
+
+input_field()
+    // @extend $input_line_item
+    input_line_item()
+    float: right
+    width: $input_field_width
+    // text-overflow: ellipsis
+    // box-shadow: inset 0 0 0 1px red
+$input_field
+    input_field()
+
+debug_item()
+    background: alpha($panel-border-color,.25)
+    border: 2px solid $panel-border-color
+    line-height: 20px
+    // margin: 10px
+    padding: 10px 0
+$debug_item
+    debug_item()
+
+

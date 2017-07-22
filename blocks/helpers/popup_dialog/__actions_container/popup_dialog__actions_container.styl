@@ -1,0 +1,72 @@
+@require "../__defaults.styl"
+
+.popup_dialog__actions_container
+    clearfix()
+
+.popup_dialog__actions
+    // &:not(:empty)
+    .button
+        margin-right: 5px
+        margin-top: 5px
+.popup_dialog__buttons
+    // &:not(:empty)
+    //     margin-top: 5px
+    .button
+        margin-right: 5px
+        margin-top: 5px
+.popup_dialog__actions
+    .button_theme_islands
+        background: none
+        &:before
+            background: none
+        .icon
+            color: $accent-color
+            // color: $accent-color
+            // color: $light-text-color
+            // font-size: 18px
+            font-size: 17px
+            top: 2px
+        &.button_hovered
+            background: none
+            &:before
+                background: none
+                box-shadow: none
+            .button__text
+                color: $accent-color
+                text-decoration: underline
+            color: lighten($accent-color,20%)
+            .icon
+                // color: lighten($accent-color,20%)
+.popup_dialog__buttons
+    .button_theme_islands
+        .icon
+            color: $accent-color
+            // color: $accent-color
+            // color: $light-text-color
+            // font-size: 18px
+            margin-left: 5px
+            // margin-right: 2px
+            // width: auto
+        &.button_hovered
+            color: #FFF
+            &:before
+                background: $accent-color
+            .icon
+                color: #FFF
+                // color: #FFF
+
+.popup_dialog__actions_container
+    &.combined
+        clearfix()
+        .popup_dialog__buttons
+            float: right
+            .button
+                margin-right: 0px
+                margin-left: 5px
+        .popup_dialog__actions
+            float: left
+            .button_theme_islands
+                .button__text
+                .icon:after
+                    display: none
+

@@ -1,0 +1,23 @@
+@require "../__defaults.styl"
+
+.appholder__container
+    // width: 100%
+    // min-height: 200px
+
+    if $appholderDebug
+        border: 1px solid green
+
+    // position: relative
+
+    height: 50%
+    @media ( max-height: $verticalTreshold )
+        height: 70%
+
+    // border: 3px solid red
+    box-sizing: border-box
+
+    display: flex
+    flex-direction: column
+    justify-content: center
+
+    //

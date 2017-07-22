@@ -1,0 +1,34 @@
+/* jshint camelcase: false, unused: false */
+/* globals modules, debugger, project, def, tag, match, js, applyCtx, content, applyNext, block, elem, attrs */
+
+/**
+ *
+ * @module page_message
+ * @overview page_message
+ *
+ * @author lilliputten <lilliputten@yandex.ru>
+ * @since 2017.03.23 14:03:57
+ * @version 2017.03.23 14:03:57
+ *
+ * $Date: 2017-03-23 14:03:45 +0300 (Чт, 23 мар 2017) $
+ * $Id: page_message.bemhtml 7901 2017-03-23 11:03:45Z miheev $
+ *
+*/
+
+block('page_message')(
+
+    def()(function(){
+        this.escapeContent = false;
+        return applyNext();
+    }),
+
+    content()(function(){
+        return [
+            { elem : 'container', content : this.ctx.content },
+        ];
+    }),
+
+    tag()()
+
+);
+

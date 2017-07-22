@@ -1,0 +1,38 @@
+/* jshint camelcase: false, unused: false */
+/* globals modules, debugger, project, def, tag, match, js, applyCtx, content, applyNext, block, elem, attrs */
+
+/**
+ *
+ * @module NavHeader__Expand
+ * @overview NavHeader__Expand
+ * @author lilliputten <lilliputten@yandex.ru>
+ *
+ * @since 2017.03.30 19:35:53
+ * @version 2017.03.30 19:35:53
+ *
+ * $Date: 2017-04-02 20:33:52 +0300 (Вс, 02 апр 2017) $
+ * $Id: 00NavHeader__Expand.bemhtml 8025 2017-04-02 17:33:52Z miheev $
+ *
+*/
+
+block('NavHeader').elem('Expand')(
+
+    content()(function(){
+        return {
+            block : 'button',
+            cls : 'button_no_frame button_on_dark button_icon',
+            attrs : {
+                title : 'Компактный/полный вид',
+            },
+            mods : {
+                id : 'Expand',
+                theme : 'islands',
+                size : 'm',
+                // togglable : 'check',
+            },
+            icon : { block : 'icon', cls : 'icon-turnaround ti-angle-up', mods : { /* hamburger : true */ } },
+        };
+    })
+
+);
+

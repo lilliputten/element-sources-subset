@@ -1,0 +1,54 @@
+@require "../__defaults.styl"
+
+.progressbar
+    &__progress
+        position: relative
+        height: $default_progress_height
+        padding: $app_panel_spacing 0
+        margin: 0 $app_panel_spacing
+        overflow-x: hidden
+        &_show
+            background: alpha($neutral-color,.1)
+            height: 100%
+            transition: background 400ms linear, box-shadow 400ms linear
+        &_bar
+            background: $progress_bar_color
+            border-radius: 1px
+            height: 100%
+            width: 0
+            transition: opacity 400ms linear
+            opacity: 0
+
+    &_js_inited
+        &:not(^[0]_noDetails)
+            cursor: pointer
+        &^[0]_expanded ^[0]__progress
+        &:not(^[0]_noDetails) ^[0]__progress:hover
+            height: $default_progress_height + 2px
+            padding: ( $app_panel_spacing - 1px ) 0
+        &^[0]_expanded ^[0]__progress:hover
+            height: $default_progress_height + 3px
+            padding-top: $app_panel_spacing - 2px
+
+    &__progress
+        &_active
+            & ^[1]_show
+                background: alpha($neutral-color,.4)
+            & ^[1]_bar
+                opacity: 1
+
+        // .progressbar_expanded &
+        ^[0]:not(^[0]_noDetails) &:hover
+            & ^[1]_show
+                background: alpha($neutral-color,.6)
+            & ^[1]_bar
+                background: lighten($progress_bar_color,2)
+
+.progressbar__progress_active.progressbar__progress_done
+.progressbar__progress_done
+    .progressbar__progress_glow
+        display: none
+    .progressbar__progress_show
+        background: $progress_bar_color
+        box-shadow: $progress_glow_color 0 0 4px 0px
+

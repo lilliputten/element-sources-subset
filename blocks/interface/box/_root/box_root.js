@@ -119,9 +119,9 @@ var box_root = /** @lends box_root.prototype */ {
         // Первичное обновление всех вложенных секций
         // DEBUG!
         console.log('box_root before updatePromise');
-        var updatePromise = vow.delay(null, 10)
+        this.initPromise = vow.delay(null, 1000)
         .then(function(){
-            console.log('box_root in updatePromise');
+            console.log('box_root in this.initPromise');
             return this.updateAllChilds({
                 // onlySameLayout : true,
                 noAnimation : true,
@@ -129,12 +129,14 @@ var box_root = /** @lends box_root.prototype */ {
             });
         }, this);
 
-        updatePromise
+        this.initPromise
             .then(function(changesInfo){
                 console.log('box_root updatedOnInit event!');
                 this._emit('updatedOnInit', { changesInfo : changesInfo });
             }, this)
         ;
+
+        return this.initPromise; // ???
 
     },/*}}}*/
 

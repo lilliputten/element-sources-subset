@@ -1,0 +1,38 @@
+/* jshint camelcase: false, unused: false */
+/* globals modules, debugger, project, def, tag, match, js, applyCtx, content, applyNext, block, elem, attrs */
+
+/**
+ *
+ * @module NavHeader__ToggleCollapsed
+ * @overview NavHeader__ToggleCollapsed
+ * @author lilliputten <lilliputten@yandex.ru>
+ *
+ * @since 2017.03.31 19:44:48
+ * @version 2017.03.31 19:44:48
+ *
+ * $Date: 2017-07-11 19:47:15 +0300 (Tue, 11 Jul 2017) $
+ * $Id: NavHeader__ToggleCollapsed.bemhtml 8733 2017-07-11 16:47:15Z miheev $
+ *
+*/
+
+block('NavHeader').elem('ToggleCollapsed')(
+
+    content()(function(){
+        return {
+            block : 'button',
+            mods : {
+                id : 'ToggleCollapsed',
+                theme : 'islands',
+                size : 'm',
+                togglable : 'check',
+            },
+            icon : { block : 'icon', mods : { hamburger : true }, content : [
+                { elem : 'bar' },
+                { elem : 'bar' },
+                { elem : 'bar' },
+            ] }
+        };
+    })
+
+);
+

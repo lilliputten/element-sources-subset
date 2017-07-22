@@ -1,0 +1,27 @@
+{
+    "result": true,
+    "resp": [
+        {
+            "DetailResult": {
+                "IdMonObject": 7680,
+                "ListIdDivision": [
+
+                ],
+                "ListIdGroup": [
+                    0,
+                    97,
+                    148
+                ],
+                "AllPointsCount": 0,
+                "NoDataTime": 11829998,
+                "WorkTime": 0,
+                "ServAbility": true
+            },
+            "CommonResult": {
+                "AllMonObjectCount": 395,
+                "AllMonObjectInUse": 60,
+                "AllNotWorkComplect": 390
+            }
+        }
+    ]
+}

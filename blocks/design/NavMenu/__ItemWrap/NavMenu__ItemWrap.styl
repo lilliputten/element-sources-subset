@@ -1,0 +1,18 @@
+// $Date: 2017-04-03 15:13:03 +0300 (Mon, 03 Apr 2017) $
+// $Id: NavMenu__ItemWrap.styl 8034 2017-04-03 12:13:03Z miheev $
+
+@require '../!Defaults.styl'
+
+.NavMenu
+    &__ItemWrap
+        ^[0]__RootMenu > &
+            display: inline-block
+            margin-right: 5px
+            margin-top: 2px
+            margin-bottom: 3px
+
+        ^[0]_Collapsed &
+            display: block
+            // padding-left: 8px
+            overflow: hidden
+

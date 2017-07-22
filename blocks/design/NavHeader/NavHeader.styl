@@ -1,0 +1,46 @@
+// $Date: 2017-06-26 19:56:05 +0300 (Mon, 26 Jun 2017) $
+// $Id: NavHeader.styl 8630 2017-06-26 16:56:05Z miheev $
+
+@require 'NavHeader_Sizes.styl'
+
+.NavHeader
+
+    // DEBUG
+    // height: 100px
+    // border: 1px solid red
+
+    clearfix()
+
+    z-index: $NavHeader.zIndex
+
+    background-color: $NavHeader.Background.color
+    if $NavHeader.Background.image
+        background-image: $NavHeader.Background.image
+        // background-repeat: no-repeat
+        // background-size: cover
+        background-position: top center
+        background-size: 100% 100%
+
+    default-font-style()
+    color: $NavHeader.defaultColor
+
+    padding: $NavHeader.padding // ( $NavHeader.Padding - 5px ) $NavHeader.Padding
+
+    border-top: 5px solid alpha(#000,.6)
+    border-bottom: 2px solid alpha(#000,.2)
+    box-shadow: 4px 0 0px 4px alpha(#000,.1)
+
+    /*
+    position: relative
+
+    &:before
+        position: absolute
+        display: block
+        content: ''
+        left: 0
+        top: 0
+        bottom: 0
+        right: 0
+        gradient-vertical(alpha($NavHeader.Gradient.Color,$NavHeader.Gradient.StartOpacity), alpha($NavHeader.Gradient.Color,0))
+        // border-top: 2px solid alpha(#000,.5)
+    */

@@ -1,0 +1,63 @@
+/* jshint camelcase: false */
+/* jshint unused: false */
+/* globals modules, debugger, applyCtx, content, applyNext, block, elem, attrs, def, tag, js, wrap */
+
+/**
+ *
+ * @overview appholder
+ *
+ * @author lilliputten <lilliputten@yandex.ru>
+ * @since 2017.01.20 15:51
+ * @version 2017.01.20 15:51
+ *
+*/
+
+/*
+ *  @module appholder
+ */
+
+block('appholder')(
+
+    js()(true),
+
+    /*
+
+    js()(function(){
+        var ctx = this.ctx;
+        var id = ctx.id; // if defined?
+        return { id : id };
+    }),
+
+    */
+
+    def()(function(){
+        var ctx = this.ctx;
+
+        // if ( !ctx.cls ) { ctx.cls = ''; }
+        if ( !ctx.mix ) { ctx.mix = []; }
+        if ( !ctx.mods ) { ctx.mods = {}; }
+
+        // ctx.mix.push({ mods : {
+        //     // layoutCreated : true,
+        // }});
+
+        if ( !ctx.mods.mode ) {
+            ctx.mods.mode = 'loader';
+            ctx.mix.push({ mods : { loader : true } });
+        }
+
+        return applyNext();
+    }),
+
+    //
+    content()(function(){
+        var ctx = this.ctx;
+        var content = [
+            { elem : 'layout', rootCtx : ctx, content : ctx.content },
+            { block : 'screenholder', mods : { ready : true, show : 'none', /* show : 'waiting', */ id : 'appholderOver', theme : 'darkalpha' } },
+        ];
+        return content;
+    })
+
+);
+

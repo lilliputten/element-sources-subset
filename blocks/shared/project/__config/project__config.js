@@ -66,9 +66,9 @@ var
      * Статика (eg logo.png)
      * ---------------------
      *
-     *     (REAL) http://localhost/release/core/i/logo.png
+     *     (REAL) http://localhost/release/core/i/NavHeader/logo.png
      *
-     *     (ENB) http://localhost:8080/core/i/logo.png
+     *     (ENB) http://localhost:8080/core/i/NavHeader/logo.png
      *
      */
     USE_ENB_URLS = true && root.LOCAL_ENB && root.YENV !== 'inject' && !root.LOCAL_NGINX,
@@ -223,7 +223,7 @@ var config = objects.extend(root, /** @lends project__config.prototype */{
     },
 
     /** Логотип проекта */
-    prjLogo : '{{assetsUrl}}i/logo.png',
+    prjLogo : '{{assetsUrl}}i/NavHeader/logo.png',
     /** Заголовок проекта */
     prjTitle : 'ВНУТРЕННИЕ ВОЙСКА МВД РОССИИ',
     /** Краткий заголовок проекта */

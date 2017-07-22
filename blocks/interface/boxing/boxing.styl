@@ -1,0 +1,63 @@
+.boxing
+    clearfix()
+
+    $h_padded_margin = 10px
+    $v_padded_margin = 10px
+
+    &_sz_crop
+        white-space: nowrap
+        overflow: hidden
+
+    &_hidden
+        display: none
+
+    &_sz_target
+        position: relative
+
+    &_framed
+        &:not(:empty)
+            border: 1px solid $tabs-border-color
+            border-top-width: 0
+
+    &_hc_padded > .boxing_container
+    &_h_padded
+        padding-left: $h_padded_margin
+        padding-right: $h_padded_margin
+
+    &_hx_padded
+        margin-left: $h_padded_margin
+        margin-right: $h_padded_margin
+        width: calc( 100% - 20px )
+        overflow: hidden
+
+    &_vz_padded > .boxing_container
+        top: $h_padded_margin
+        bottom: $h_padded_margin
+
+    &_vc_padded > .boxing_container
+    &_v_padded
+        padding-top: $h_padded_margin
+        padding-bottom: $h_padded_margin
+
+    &_vx_padded
+        margin-top: $h_padded_margin
+        margin-bottom: $h_padded_margin
+        height: calc( 100% - 20px )
+        overflow: hidden
+
+    box-sizing: border-box
+    // border: 0px solid $medium-background-color
+    border: 0px solid $panel-border-color
+    &_frame_h
+    &_frame_left
+        border-left: 1px
+    &_frame_h
+    &_frame_right
+        border-right-width: 1px
+    &_frame_v
+    &_frame_top
+        border-top-width: 1px
+    &_frame_v
+    &_frame_bottom
+        border-bottom-width: 1px
+

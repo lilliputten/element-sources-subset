@@ -1,0 +1,68 @@
+block('popup_dialog')(
+
+    def()(function(){
+        var ctx = this.ctx;
+
+        this.escapeContent = false;
+
+        if ( !ctx.cls ) { ctx.cls = ''; }
+        if ( !ctx.mix ) { ctx.mix = []; }
+        if ( !ctx.attrs ) { ctx.attrs = {}; }
+        if ( !ctx.options ) { ctx.options = {}; }
+
+        var options = ctx.options;
+
+        ctx.mix.push({ block : 'popup' });
+
+        if ( options.id ) {
+            ctx.mix.push({ block : 'popup_dialog_id_'+options.id });
+        }
+
+        ctx.mix.push({ block : 'popup_theme_islands' });
+        if ( options.target ) {
+            ctx.mix.push({ block : 'popup_target_'+options.target });
+        }
+
+        if ( options.noautoclose ) {
+            ctx.mix.push({ block : 'popup_dialog_noautoclose' });
+        }
+        if ( options.noblackout ) {
+            ctx.mix.push({ block : 'popup_dialog_noblackout' });
+        }
+        if ( options.noposition ) {
+            ctx.mix.push({ block : 'popup_dialog_noposition' });
+        }
+        if ( options.noautobuttons ) {
+            ctx.mix.push({ block : 'popup_dialog_noautobuttons' });
+        }
+        if ( options.autodestroy ) {
+            ctx.mix.push({ block : 'popup_dialog_autodestroy' });
+        }
+
+        return applyNext();
+    }),
+
+    js()(function(){
+        var ctx = this.ctx;
+        var options = ctx.options;
+        return {
+            channel_id : options.channel_id,
+            event_id : options.event_id,
+            id : options.id,
+            options : options,
+        };
+    }),
+
+    content()(function(){
+        var ctx = this.ctx;
+        var options = ctx.options;
+
+        return [
+            { elem : 'popup', options : options, content : ctx.content },
+        ];
+    }),
+
+    tag()()
+
+);
+

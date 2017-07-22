@@ -1,0 +1,22 @@
+/* jshint camelcase:false, unused:false, laxbreak:true, expr:true, boss:true */
+/* globals modules, debugger, project, def, tag, match, js, applyCtx, content, applyNext, block, elem, attrs, mix */
+/**
+ *
+ * @module screenholder__info_show
+ * @overview screenholder__info_show
+ * @author lilliputten <lilliputten@yandex.ru>
+ *
+ * @since 2017.04.25 19:49:13
+ * @version 2017.04.25 19:49:13
+ *
+ * $Date: 2017-07-11 19:47:15 +0300 (Tue, 11 Jul 2017) $
+ * $Id: screenholder__info_show.bemhtml 8733 2017-07-11 16:47:15Z miheev $
+ *
+*/
+
+block('screenholder').elem('info_show')(
+
+    tag()('span')
+
+);
+

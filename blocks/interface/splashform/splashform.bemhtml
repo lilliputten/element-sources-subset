@@ -1,0 +1,27 @@
+/* jshint camelcase: false */
+/* jshint unused: false */
+/* globals modules, debugger, applyCtx, content, applyNext, block, elem, attrs, def, tag, js, wrap */
+
+/**
+ *
+ * @overview splashform
+ *
+ * @author lilliputten <lilliputten@yandex.ru>
+ * @since 2017.02.02 13:26
+ * @version 2017.02.02 13:26
+ *
+ * $Date: 2017-07-11 19:47:15 +0300 (Tue, 11 Jul 2017) $
+ * $Id: splashform.bemhtml 8733 2017-07-11 16:47:15Z miheev $
+ *
+*/
+
+/*
+ * @module splashform
+ */
+
+block('splashform')(
+
+    tag()('form')
+
+);
+

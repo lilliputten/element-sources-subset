@@ -1,0 +1,33 @@
+@require "../__defaults.styl"
+
+.progressbar__details_title
+    // font-size: $font-size-l
+    position: relative
+    //
+
+.progressbar__details_title_hide
+    &.button
+        position: absolute
+        right: -5px
+        top: -8px
+        .icon
+            color: alpha(#FFF,.4)
+        &.button_hovered
+            .icon
+                color: alpha(#FFF,1)
+
+.progressbar__details_title_text
+    margin-bottom: 5px
+    margin-left: 6px
+    opacity: .5
+
+.progressbar
+    .progressbar__details_title_text_active
+        display: none
+    .progressbar__details_title_text_done
+        display: block
+.progressbar_active
+    .progressbar__details_title_text_active
+        display: block
+    .progressbar__details_title_text_done
+        display: none

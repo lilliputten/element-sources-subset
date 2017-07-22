@@ -1,0 +1,41 @@
+block('popup_dialog')( elem('close_button')(
+
+    def()(function(){
+        var ctx = this.ctx;
+
+        // if ( !ctx.cls ) { ctx.cls = ''; }
+        // if ( !ctx.mix ) { ctx.mix = []; }
+        // if ( !ctx.mods ) { ctx.mods = {}; }
+        if ( !ctx.attrs ) { ctx.attrs = {}; }
+
+        ctx.attrs.title = 'Закрыть окно';
+
+        return applyNext();
+    }),
+
+    /*
+
+    js()(function(){
+        var ctx = this.ctx;
+        var id = ctx.id; // if defined?
+        return { id : id };
+    }),
+
+    content()(function(){
+        var ctx = this.ctx;
+        var content = [
+            // { elem : 'inner', content : ctx.content },
+        ];
+        return content;
+    }),
+
+    */
+
+    content()( [
+        { block : 'icon', tag : 'span', cls : 'ti-close' },
+    ] ),
+
+    def()()
+
+));
+

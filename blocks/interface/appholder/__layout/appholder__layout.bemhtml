@@ -1,0 +1,38 @@
+/* jshint camelcase:false, unused:false, laxbreak:true, expr:true, boss:true */
+/* globals modules, project, addAttrs, addElemMods, addJs, addMix, addMods, appendContent, apply, applyCtx, applyNext, attrs, bem, block, cls, content, def, elem, elemMod, elemMods, extend, js, local, match, mix, mod, mode, mods, oninit, prependContent, replace, tag, wrap, xjstOptions */
+/**
+ *
+ * @module appholder__layout
+ * @overview appholder__layout
+ *
+ * @author lilliputten <lilliputten@yandex.ru>
+ * @since 2017.01.20 15:51
+ * @version 2017.01.20 15:51
+ *
+ * Разметка содержимого блока appholder.
+ *
+ * Состав экранов см. в `__container`
+ *
+*/
+
+block('appholder').elem('layout')(
+
+    content()(function(){
+
+        var ctx = this.ctx;
+
+        // Если не используем appholder...
+        if ( !project.config.useAppholder ) {
+            return [];
+        }
+
+        return [
+            { elem : 'header' },
+            { elem : 'container' },
+            { elem : 'credits' },
+        ];
+
+    })
+
+);
+

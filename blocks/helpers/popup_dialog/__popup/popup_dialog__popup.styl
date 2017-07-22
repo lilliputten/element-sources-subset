@@ -1,0 +1,56 @@
+@require "../__defaults.styl"
+
+.popup_dialog__popup // {{{
+
+    &:not(.noposition)
+        position: absolute
+        top: 50%
+        left: 50%
+        transform: translate(-50%, -50%)
+
+        // !!! Solution for fight `transform: translate` splash blur bug:
+        // position: relative;
+        // width: 600px;
+        // margin: 20px auto;
+
+    background-color: #FFF
+    // border: 1px solid mix($hide_color,#FFF,20%)
+    // border: 1px solid rgba(0,0,0,0.2)
+    border-radius: 3px
+    // box-shadow: 0px 5px 20px alpha($hide_color,.3)//, inset 0 0 0 1px mix($hide_color,#FFF,50%)
+    box-shadow: 0 0 0 0 rgba(0,0,0,0.2), 0 10px 20px -5px rgba(0,0,0,0.4)
+
+    // min-width: 400px
+
+    padding: $padding_box_offset
+
+    // &.popup_dialog__popup_content
+    //     .popup_dialog__container
+    //         margin-bottom: 10px
+
+    // }}}
+
+    max-height: 80%
+    max-width: 80%
+    display: flex
+    flex-direction: column
+
+.popup_dialog__popup_spin// {{{
+    border: none
+    border-radius: 40px
+    box-shadow: none
+    padding: 15px
+    // background: none
+    // background: $neutral-color
+    background: $accent-color
+    opacity: .8
+    .popup_dialog__container
+        overflow: hidden
+    // }}}
+
+.popup_dialog__popup_form_padded// {{{
+    .popup_dialog__container
+        overflow: hidden
+        margin: 5px 10px 15px 10px
+    // }}}
+

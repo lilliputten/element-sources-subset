@@ -1,0 +1,62 @@
+/* jshint camelcase: false, unused: false */
+/* globals modules, debugger, project, def, tag, match, js, applyCtx, content, applyNext, block, elem, attrs */
+
+/**
+ *
+ * @module NavHeader
+ * @overview NavHeader
+ *
+ * @author lilliputten <lilliputten@yandex.ru>
+ * @since 2017.03.30 17:56:14
+ * @version 2017.03.30 17:56:14
+ *
+ * $Date: 2017-07-11 19:47:15 +0300 (Tue, 11 Jul 2017) $
+ * $Id: NavHeader.bemhtml 8733 2017-07-11 16:47:15Z miheev $
+ *
+*/
+
+block('NavHeader')(
+
+    def()(function(){
+        var ctx = this.ctx;
+
+        if ( !ctx.mix ) { ctx.mix = []; }
+
+        ctx.mix.push({ block : 'vlayout', elem : 'item', elemMods : { fixed : true } });
+
+        return applyNext();
+    }),
+
+    content()(function(){
+        var ctx = this.ctx;
+        var content = [
+            { elem : 'Logo' },
+            { elem : 'Container', content : [
+                /*{{{*/{ elem : 'MainBox', content : [
+                    /*{{{*/{ elem : 'TitleBox', content : [
+                        { elem : 'TitleFull', content : project.config.prjTitle },
+                        { elem : 'TitleBrief', content : project.config.prjTitleBrief },
+                        { elem : 'TitlePlus', content : project.config.prjReference },
+                    ] },/*}}}*/
+                    { elem : 'ToggleCollapsed', content : 'ToggleCollapsed' },
+                    { elem : 'SideMenu', cls : 'collapsable', content :
+                        { elem : 'SideMenuContainer', content :
+                            { elem : 'SideMenuContent', content : [
+                                { elem : 'InfoBox'/* , cls : 'collapsable' */  },
+                                { elem : 'MenuBox'/* , cls : 'collapsable' */ },
+                                { elem : 'Expand' },
+                            ] },
+                        },
+                    },
+                ]},/*}}}*/
+            ]},
+        ];
+        return content;
+    }),
+
+    js()(true),
+
+    tag()()
+
+);
+

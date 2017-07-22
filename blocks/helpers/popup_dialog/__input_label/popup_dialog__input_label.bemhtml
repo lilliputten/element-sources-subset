@@ -1,0 +1,19 @@
+block('popup_dialog')( elem('input_label')(
+
+    attrs()(function(){
+        var ctx = this.ctx;
+        if ( ctx.parent && ctx.parent.title ) {
+            return { title : ctx.parent.title };
+        }
+    }),
+
+    content()(function(){
+        var ctx = this.ctx;
+        var content = ctx.parent.title + ':';
+        return content;
+    }),
+
+    def()()
+
+));
+

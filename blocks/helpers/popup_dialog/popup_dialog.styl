@@ -1,0 +1,35 @@
+@require "__defaults.styl"
+
+.popup_dialog // {{{
+    &.popup_theme_islands
+
+        // // position: absolute
+        // left: 0
+        // top: 0
+        // bottom: 0
+        // right: 0
+        background: none
+        // // width: 100%
+        // // height: 100%
+
+        default-font-style()
+
+        &:not(.noposition)
+            position: absolute
+            position: fixed
+            top: 0
+            bottom: 0
+            left: 0
+            right: 0
+        // z-index: 1100
+        // z-index: 40
+        &:not(.noblackout)
+            background-color: alpha($hide_color,.3)
+            // &.popup_dialog_spin
+            //     background-color: alpha(#FFF,.5)
+        &.popup_dialog_spin
+            background-color: alpha($hide_color,.15)
+        box-shadow: none
+        // opacity: 0
+        // pointer-events: none
+    // }}}

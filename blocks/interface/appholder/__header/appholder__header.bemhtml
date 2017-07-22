@@ -1,0 +1,29 @@
+/* jshint camelcase:false, unused:false, laxbreak:true, expr:true, boss:true */
+/* globals modules, project, addAttrs, addElemMods, addJs, addMix, addMods, appendContent, apply, applyCtx, applyNext, attrs, bem, block, cls, content, def, elem, elemMod, elemMods, extend, js, local, match, mix, mod, mode, mods, oninit, prependContent, replace, tag, wrap, xjstOptions */
+/**
+ *
+ * @module appholder__header
+ * @overview appholder__header
+ *
+ * @author lilliputten <lilliputten@yandex.ru>
+ * @since 2017.01.20 15:51
+ * @version 2017.01.20 15:51
+ *
+*/
+
+block('appholder').elem('header')(
+
+    content()(function(){
+        var ctx = this.ctx;
+        var content = [
+            { elem : 'prjLogo', tag : 'img', attrs : { src : project.helpers.expand_path(project.config.prjLogo) } },
+            { elem : 'prjTitle', content : project.config.prjTitle },
+            { elem : 'prjReference', content : project.config.prjReference },
+        ];
+        return content;
+    }),
+
+    tag()()
+
+);
+

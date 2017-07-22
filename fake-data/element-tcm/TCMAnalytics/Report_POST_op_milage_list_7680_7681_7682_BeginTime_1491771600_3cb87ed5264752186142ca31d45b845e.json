@@ -1,0 +1,26 @@
+{
+    "result": true,
+    "resp": [
+        {
+            "IdMonObject": 7680,
+            "Dist": 1131.28847717,
+            "MoveTime": 98011,
+            "AvgSpeed": 1.57123399607,
+            "AvgMoveSpeed": 41.5528717983
+        },
+        {
+            "IdMonObject": 7681,
+            "Dist": 1271.72460038,
+            "MoveTime": 115716,
+            "AvgSpeed": 1.7662841672,
+            "AvgMoveSpeed": 39.5641792092
+        },
+        {
+            "IdMonObject": 7682,
+            "Dist": 1298.55961724,
+            "MoveTime": 114520,
+            "AvgSpeed": 1.80355502395,
+            "AvgMoveSpeed": 40.8209450058
+        }
+    ]
+}

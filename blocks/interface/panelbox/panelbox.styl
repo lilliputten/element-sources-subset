@@ -1,0 +1,28 @@
+
+.panelbox
+    background: $paper-color
+    // display: none
+    // margin-top 20px
+    &.panelbox__box_test
+        border: 1px solid red
+    height: 100%
+    if $hide-overflow
+        overflow: hidden
+    box-sizing: border-box
+    border: 1px solid $panel-border-color
+    &_frame_no
+    &_frame_v
+    &_frame_top
+    &_frame_bottom
+        border-width: 0px
+    &_frame_v
+    &_frame_top
+        border-top-width: 1px
+    &_frame_v
+    &_frame_bottom
+        border-bottom-width: 1px
+    // border-radius: 3px
+
+// ???
+.panelbox_selected
+    display: block

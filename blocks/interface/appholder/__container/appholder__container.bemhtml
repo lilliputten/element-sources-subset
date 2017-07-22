@@ -1,0 +1,45 @@
+/* jshint camelcase: false */
+/* jshint unused: false */
+/* globals modules, debugger, applyCtx, content, applyNext, block, elem, attrs, def */
+
+/**
+ *
+ * @overview appholder__container
+ *
+ * @author lilliputten <lilliputten@yandex.ru>
+ * @since 2017.01.20 15:51
+ * @version 2017.01.20 15:51
+ *
+ * Состав экранов блока appholder. Базовую разметку см. в `__layout`.
+ *
+*/
+
+/*
+ * @module appholder__container
+ */
+
+block('appholder').elem('container')(
+
+    content()(function(){
+        var ctx = this.ctx,
+            rootCtx =  ctx.rootCtx || {},
+            showLoader = ( !rootCtx.mode || rootCtx.mode === 'loader' ),
+            undef
+        ;
+        var content = [
+            // { elem : 'screen', elemMods : { type : 'form', id : 'formAuth', show : !showLoader } },
+            { elem : 'screen', elemMods : { type : 'error', id : 'error', show : !showLoader },
+                mix : [
+                    { block : 'screenholder', mods : { show : 'error', id : 'appholderErrors' } },
+                ],
+                content : [
+                    { block : 'screenholder', elem : 'error', /* content : 'TEST<br>Текст ошибки' */ },
+                ],
+            },
+            { elem : 'screen', elemMods : { type : 'loader', id : 'loader', show : showLoader } },
+        ];
+        return content;
+    })
+
+);
+

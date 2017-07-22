@@ -1,0 +1,25 @@
+// nicescroll styles
+// .nicescroll-rails//.nicescroll-rails-hr
+.nicescroll-rails//.nicescroll-rails-vr
+    // opacity: 1 !important
+    // pointer-events: none !important
+    .nicescroll-cursors
+        // opacity: 1 !important
+        // pointer-events: none !important
+        background-color: alpha($default-color,.2) !important
+        border: 1px solid alpha(#FFF,.2) !important
+        transition: background .15s, border .15s
+    &:hover .nicescroll-cursors
+    .nicescroll-cursors:hover
+        background-color: alpha($default-color,.4) !important
+        border: 1px solid alpha(#FFF,.4) !important
+
+// Прячем скроллбар во время изменения размеров панелей в split_view
+.menu_resizing
+.split_view_resizing
+    .nicescroll-rails
+    .nicescroll-cursors
+        display: none !important
+        opacity: 0 !important
+        background-color: red
+

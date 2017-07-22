@@ -1,0 +1,56 @@
+@require "../__defaults.styl"
+
+$tail_width = 180px
+$tip_width = 20px
+$tail_offset = 90px//210px // ???
+$glow_extra = 5px
+
+$normal_opacity = .8
+$flash_opacity = .2
+
+.progressbar__progress_glow
+    position: relative
+    height: 100%
+    float: right
+    display: none
+.progressbar__progress_active
+    .progressbar__progress_glow
+        display: block
+        animation-duration: 2s
+        animation-name: progress_flashing
+        animation-iteration-count: infinite
+        animation-timing-function: linear
+
+.progressbar__progress_glow_tail
+.progressbar__progress_glow_tip
+    height: 100%
+    top: 0
+    bottom: 0
+    position: absolute
+    // background: $progress_show_color
+    box-shadow: $progress_glow_color 2px 0 3px 0px
+    border-radius: 100%
+
+.progressbar__progress_glow_tail
+    width: $tail_width
+    right: -80px//$tip_width
+    // clip: rect(-5px,90px,15px,-5px)
+    clip: rect( - $glow_extra, $tail_offset, $tip_width - $glow_extra, - $glow_extra * 2 )
+
+.progressbar__progress_glow_tip
+    width: $tip_width
+    right: 0
+    // clip: rect(-5px,22px,15px,10px)
+    clip: rect( - $glow_extra, $tip_width + $glow_extra, $tip_width - $glow_extra, $tip_width/2 )
+
+@keyframes progress_flashing
+  20%
+    opacity: $normal_opacity
+  40%
+    opacity: $flash_opacity
+  60%
+    opacity: $flash_opacity
+  80%
+    opacity: $normal_opacity
+
+
