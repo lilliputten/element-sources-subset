@@ -59,6 +59,7 @@
   },
   "dependencies": {},
   "scripts": {
+    "postinstall": "bower install",
     "specs": "rm -rf *specs && enb make specs",
     "tests": "npm run specs",
     "docs": "mv bower.json bower.json.SAVE && rm -rf docs tmp && bem-lib-site-data . && bem-lib-site-view tmp/data && mv bower.json.SAVE bower.json",
