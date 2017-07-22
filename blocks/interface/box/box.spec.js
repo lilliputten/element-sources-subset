@@ -23,33 +23,33 @@ var expect = chai.expect;
 
 describe('box', function() {
 
-    // /*{{{*/describe('test', function() {
-    //
-    //     var box;
-    //
-    //     beforeEach(function() {
-    //         var html = BEMHTML.apply({ block: 'box', content: 'foo' });
-    //         var dom = $(html).appendTo('body');
-    //         box = BEMDOM.init(dom).bem(Box);
-    //     });
-    //
-    //     afterEach(function() {
-    //         BEMDOM.destruct(box.domElem);
-    //     });
-    //
-    //     // it('should be focused on pressrelease on itself', function() {
-    //     //     box.hasMod('focused').should.be.false;
-    //     //     box.domElem
-    //     //         .trigger('pointerpress')
-    //     //         .trigger('pointerrelease');
-    //     //     box.hasMod('focused').should.be.true;
-    //     // });
-    //
-    //     it('isBox', function() {
-    //         box.isBox().should.be.true;
-    //     });
-    //
-    // });/*}}}*/
+    /*{{{*/describe('test', function() {
+
+        var box;
+
+        beforeEach(function() {
+            var html = BEMHTML.apply({ block: 'box', content: 'foo' });
+            var dom = $(html).appendTo('body');
+            box = BEMDOM.init(dom).bem(Box);
+        });
+
+        afterEach(function() {
+            BEMDOM.destruct(box.domElem);
+        });
+
+        // it('should be focused on pressrelease on itself', function() {
+        //     box.hasMod('focused').should.be.false;
+        //     box.domElem
+        //         .trigger('pointerpress')
+        //         .trigger('pointerrelease');
+        //     box.hasMod('focused').should.be.true;
+        // });
+
+        it('isBox', function() {
+            box.isBox().should.be.true;
+        });
+
+    });/*}}}*/
 
     /*{{{*/describe('vertical layout', function() {
 
@@ -79,7 +79,7 @@ describe('box', function() {
                                 title : 'test',
                             },
                             content : [
-                                { content : 'box1' },
+                                { content : 'box1 content' },
                                 { block : 'box', id : 'box12',
                                     mods : {
                                         resizable : true,
@@ -88,7 +88,7 @@ describe('box', function() {
                                         // size : 10,
                                     },
                                     content : [
-                                        { content : 'box12' },
+                                        { content : 'box12 content' },
                                     ],
                                 }
                             ],
@@ -101,7 +101,7 @@ describe('box', function() {
                                 // percents : 10,
                             },
                             content : [
-                                { content : 'box2' },
+                                { content : 'box2 content' },
                             ],
                         },/*}}}*/
                     ],
@@ -112,70 +112,45 @@ describe('box', function() {
 
             box = BEMDOM.init(dom).bem(Box);
 
-            // console.log('events', typeof box._events());
-            // box._events().on('updatedOnInit', function(e,data){
-            //     console.log('updatedOnInit event');
-            // });
-
         });
 
         afterEach(function() {
             BEMDOM.destruct(box.domElem);
         });
 
-        it('initialize', function(done) {
-            this.timeout(3000);
-            var spy1 = sinon.spy();
+        it('initPromise result status should be equal updateChildSizes:done', function(done){
             box.initPromise
                 .then(function(result){
-                    console.log('event called',result);
-                    expect(true).should.be.equal(true);
+                    result.status.should.be.equal('updateChildSizes:done');
                     done();
                 })
-                .fail(function(error){
-                    done(new Error(error));
-                })
+                .fail(done)
             ;
-            // setTimeout(function(){
-            //     done();
-            // }, 1000);
         });
 
-        /*
-        it('events', function(done) {
-            console.log('started');
-            this.timeout(3000);
-            // setTimeout(done, 15000);
-            var spy1 = sinon.spy();
-            // box._emit('test');
-            // var promise = new vow.Promise(function(resolve,reject){
-            //     emitter.on('updatedOnInit', resolve);
-            // });
-            emitter.on('updatedOnInit', function(data){
-                console.log('updatedOnInit called');
-                expect(true).toBe(true);
-                done();
-            });
-            // spy1.should.have.been.calledOnce;
+        it('find child box1, box1.getMod("id")=="box1"', function(done){
+            box.initPromise
+                .then(function(result){
+                    var box1 = box.findChildBox('box1');
+                    box1.should.be.object;
+                    box1.getMod('id').should.be.equal('box1');
+                    done();
+                })
+                .fail(done)
+            ;
         });
-        */
 
-        // it('find child box', function() {
-        //     box.findChildBox('box1').should.be.object;
-        // });
-        //
-        // it('get child box id (correct object)', function() {
-        //     console.log('box height', box.domElem.outerHeight());
-        //     console.log('box1 height', box.findChildBox('box1').domElem.outerHeight());
-        //     console.log('box2 height', box.findChildBox('box2').domElem.outerHeight());
-        //     box.findChildBox('box1').getMod('id').should.be.equal('box1');
-        // });
-
-        /*
-        it('box height', function() {
-            box.domElem.outerHeight().should.be.equal(100);
+        it('box1 height should be 50% of full height', function(done){
+            box.initPromise
+                .then(function(result){
+                    var fullHeight = box.domElem.outerHeight();
+                    var box1Height = box.findChildBox('box1').domElem.outerHeight();
+                    box1Height.should.be.equal(fullHeight / 2);
+                    done();
+                })
+                .fail(done)
+            ;
         });
-        */
 
     });/*}}}*/
 

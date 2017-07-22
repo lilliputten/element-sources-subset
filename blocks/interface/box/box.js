@@ -358,7 +358,7 @@ provide(BEMDOM.declBlock(this.name,  /** @lends box.prototype */ {
         this.beginChanges();
 
         // DEBUG
-        console.log('box', traceId, 'updateChildSizes start <-', 'internalSize:', internalSize, 'nonBoxesSize:', nonBoxesSize, 'availableSize:', availableSize );
+        // console.log('box', traceId, 'updateChildSizes start <-', 'internalSize:', internalSize, 'nonBoxesSize:', nonBoxesSize, 'availableSize:', availableSize );
         // debugger;
 
         // Шаг 1: Переменные для накопления изменяемых секций и учёта доступного для них размера
@@ -420,7 +420,7 @@ provide(BEMDOM.declBlock(this.name,  /** @lends box.prototype */ {
                 // Рассчитываем размер
                 var size = resizableSize * ratio;
                 // Устанавливаем размер
-                console.log('setSize', ctx.getTraceId(), size);
+                // console.log('setSize', ctx.getTraceId(), size);
                 results.push(this.setSize(ctx, size, options));
                 // Учитываем его в остающемся пространстве
                 otherSize -= size;

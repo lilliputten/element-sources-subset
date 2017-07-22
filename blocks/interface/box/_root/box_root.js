@@ -105,7 +105,7 @@ var box_root = /** @lends box_root.prototype */ {
             params = this.params
         ;
 
-        console.log('box_root onInited');
+        // console.log('box_root:onInited');
 
         // Инициализация блока-родителя
         this.__base.apply(this, arguments);
@@ -117,26 +117,22 @@ var box_root = /** @lends box_root.prototype */ {
         ;
 
         // Первичное обновление всех вложенных секций
-        // DEBUG!
-        console.log('box_root before updatePromise');
-        this.initPromise = vow.delay(null, 1000)
-        .then(function(){
-            console.log('box_root in this.initPromise');
-            return this.updateAllChilds({
-                // onlySameLayout : true,
-                noAnimation : true,
-                updateFixed : true,
-            });
-        }, this);
-
-        this.initPromise
+        this.initPromise = vow.cast() // vow.delay(null, 1000) // DEBUG delay
+            .then(function(){
+                // console.log('box_root in this.initPromise');
+                return this.updateAllChilds({
+                    // onlySameLayout : true,
+                    noAnimation : true,
+                    updateFixed : true,
+                });
+            }, this)
             .then(function(changesInfo){
-                console.log('box_root updatedOnInit event!');
+                // console.log('box_root updatedOnInit event!');
                 this._emit('updatedOnInit', { changesInfo : changesInfo });
+                return changesInfo;
+                // return vow.Promise.reject('test error!'); // DEBUG
             }, this)
         ;
-
-        return this.initPromise; // ???
 
     },/*}}}*/
 
