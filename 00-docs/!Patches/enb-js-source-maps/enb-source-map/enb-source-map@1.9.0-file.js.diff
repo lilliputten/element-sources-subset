@@ -1,0 +1,14 @@
+--- file.js.orig	2017-03-11 21:13:04.953125000 +0300
++++ file.js	2017-03-12 00:34:42.546875000 +0300
+@@ -20,7 +20,10 @@
+ 
+     this._content = [''];
+     if (opts.sourceMap) {
+-        this._map = new SourceMapGenerator({ file: path.basename(filename) });
++        this._map = new SourceMapGenerator({ file: path.basename(filename),
++            // XXX lilliputten 2017.03.12 -- Передаём параметр `sourceRoot` в `source-map/lib/source-map-generator.js`
++            sourceRoot : opts.sourceMap.sourceRoot,
++        });
+     }
+     this._opts = opts;
+ }

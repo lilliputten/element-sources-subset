@@ -1,0 +1,10 @@
+--- index.js.ORIG	2017-06-26 20:44:47.668494800 +0300
++++ index.js	2017-06-26 17:43:43.424606300 +0300
+@@ -46,6 +46,7 @@
+  * @returns {Promise<Error[]>}
+  */
+ module.exports = function(targets, opts) {
++    targets = targets.map((name) => path.resolve(name)); // Resolve targets to absolute paths
+     var config = new Config(targets, opts);
+ 
+     return scanner.scan(config)

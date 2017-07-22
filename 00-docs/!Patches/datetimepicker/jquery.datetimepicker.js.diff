@@ -1,0 +1,155 @@
+--- jquery.datetimepicker.js.orig	2017-03-10 17:59:05.057835500 +0300
++++ jquery.datetimepicker.js	2017-03-10 18:09:04.689835500 +0300
+@@ -9,7 +9,7 @@
+ 
+ var currentlyScrollingTimeDiv = false;
+ 
+-var default_options  = {
++/*{{{*/var default_options  = {
+     i18n: {
+         ar: { // Arabic
+             months: [
+@@ -606,17 +606,17 @@
+ 
+     enterLikeTab: true,
+     showApplyButton: false
+-};
++};/*}}}*/
+ 
+ var dateHelper = null,
+-    globalLocaleDefault = 'en',
+-    globalLocale = 'en';
++    globalLocaleDefault = 'ru',
++    globalLocale = 'ru';
+ 
+ var dateFormatterOptionsDefault = {
+     meridiem: ['AM', 'PM']
+ };
+ 
+-var initDateFormatter = function(){
++/*{{{*/var initDateFormatter = function(){
+     var locale = default_options.i18n[globalLocale],
+         opts = {
+             days: locale.dayOfWeek,
+@@ -628,10 +628,11 @@
+     dateHelper = new DateFormatter({
+         dateSettings: $.extend({}, dateFormatterOptionsDefault, opts)
+     });
+-};
++    $.datetimepicker && ( $.datetimepicker.dateHelper = dateHelper ); // XXX 2016.09.14, 15:50 -- export dateHelper
++};/*}}}*/
+ 
+ // for locale settings
+-$.datetimepicker = {
++/*{{{*/$.datetimepicker = {
+     setLocale: function(locale){
+         var newLocale = default_options.i18n[locale]?locale:globalLocaleDefault;
+         if(globalLocale != newLocale){
+@@ -652,13 +653,13 @@
+     RFC_1123: 'D, d M Y H:i:s O',
+     RSS: 'D, d M Y H:i:s O',
+     W3C: 'Y-m-d\TH:i:sP'
+-};
++};/*}}}*/
+ 
+ // first init date formatter
+ initDateFormatter();
+ 
+ // fix for ie8
+-if (!window.getComputedStyle) {
++/*{{{*/if (!window.getComputedStyle) {
+     window.getComputedStyle = function (el, pseudo) {
+         this.el = el;
+         this.getPropertyValue = function (prop) {
+@@ -675,8 +676,8 @@
+         };
+         return this;
+     };
+-}
+-if (!Array.prototype.indexOf) {
++}/*}}}*/
++/*{{{*/if (!Array.prototype.indexOf) {
+     Array.prototype.indexOf = function (obj, start) {
+         var i, j;
+         for (i = (start || 0), j = this.length; i < j; i += 1) {
+@@ -684,11 +685,11 @@
+         }
+         return -1;
+     };
+-}
++}/*}}}*/
+ Date.prototype.countDaysInMonth = function () {
+     return new Date(this.getFullYear(), this.getMonth() + 1, 0).getDate();
+ };
+-$.fn.xdsoftScroller = function (percent) {
++/*{{{*/$.fn.xdsoftScroller = function (percent) {
+     return this.each(function () {
+         var timeboxparent = $(this),
+             pointerEventToXY = function (e) {
+@@ -842,9 +843,9 @@
+         }
+         timeboxparent.trigger('resize_scroll.xdsoft_scroller', [percent]);
+     });
+-};
++};/*}}}*/
+ 
+-$.fn.datetimepicker = function (opt, opt2) {
++/*{{{*/$.fn.datetimepicker = function (opt, opt2) {
+     var result = this,
+         KEY0 = 48,
+         KEY9 = 57,
+@@ -866,7 +867,7 @@
+         VKEY = 86,
+         ZKEY = 90,
+         YKEY = 89,
+-        ctrlDown    =   false,
++        ctrlDown = false,
+         options = ($.isPlainObject(opt) || !opt) ? $.extend(true, {}, default_options, opt) : $.extend(true, {}, default_options),
+ 
+         lazyInitTimer = 0,
+@@ -892,7 +893,7 @@
+                 });
+         };
+ 
+-    createDateTimePicker = function (input) {
++    /*{{{*/createDateTimePicker = function (input) {
+         var datetimepicker = $('<div class="xdsoft_datetimepicker xdsoft_noselect"></div>'),
+             xdsoft_copyright = $('<div class="xdsoft_copyright"><a target="_blank" href="http://xdsoft.net/jqplugins/datetimepicker/">xdsoft.net</a></div>'),
+             datepicker = $('<div class="xdsoft_datepicker active"></div>'),
+@@ -2292,8 +2293,8 @@
+             .on('blur.xdsoft', function () {
+                 datetimepicker.trigger('close.xdsoft');
+             });
+-    };
+-    destroyDateTimePicker = function (input) {
++    };/*}}}*/
++    /*{{{*/destroyDateTimePicker = function (input) {
+         var datetimepicker = input.data('xdsoft_datetimepicker');
+         if (datetimepicker) {
+             datetimepicker.data('xdsoft_datetime', null);
+@@ -2307,7 +2308,7 @@
+                 input.unmousewheel();
+             }
+         }
+-    };
++    };/*}}}*/
+     $(document)
+         .off('keydown.xdsoftctrl keyup.xdsoftctrl')
+         .on('keydown.xdsoftctrl', function (e) {
+@@ -2371,13 +2372,13 @@
+     });
+ 
+     return result;
+-};
++};/*}}}*/
+ 
+ $.fn.datetimepicker.defaults = default_options;
+ 
+-function HighlightedDate(date, desc, style) {
++/*{{{*/function HighlightedDate(date, desc, style) {
+     "use strict";
+     this.date = date;
+     this.desc = desc;
+     this.style = style;
+-}
++}/*}}}*/

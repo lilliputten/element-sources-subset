@@ -1,0 +1,15 @@
+--- source-map-generator.js.orig	2017-03-13 13:03:55.267922300 +0300
++++ source-map-generator.js	2017-03-13 13:06:14.476841800 +0300
+@@ -97,6 +97,12 @@
+     var source = util.getArg(aArgs, 'source', null);
+     var name = util.getArg(aArgs, 'name', null);
+ 
++    // XXX lilliputten 2017.03.11 -- Posix-compatible source & relative(source)
++    source = source.replace(/\\/g,'/');
++    if (this._sourceRoot != null) {
++      source = util.relative(this._sourceRoot.replace(/\\/g,'/'), source);
++    }
++
+     if (!this._skipValidation) {
+       this._validateMapping(generated, original, source, name);
+     }

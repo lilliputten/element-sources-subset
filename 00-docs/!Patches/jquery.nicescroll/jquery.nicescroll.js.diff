@@ -1,0 +1,7 @@
+2437c2357,2360
+< 			if (!self.haswrapper) self.hide();
+---
+>             // XXX ATTENTION!!! 2016.09.19, 13:46 -- Commented out below `hide` due to bugs in `select_nicescroll`
+>             // if (!self.haswrapper) {
+>             //     self.hide();
+>             // }

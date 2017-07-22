@@ -1,0 +1,25 @@
+--- popup_autoclosable.js.orig	2016-06-14 15:37:58.627040700 +0300
++++ popup_autoclosable.js	2016-06-14 19:40:32.163486500 +0300
+@@ -41,9 +41,19 @@
+         if(this.hasMod('target', 'anchor') && dom.contains(this._anchor, $(e.target)))
+             return;
+ 
+-        this._preventHideByClick?
+-           this._preventHideByClick = null :
+-           this.delMod('visible');
++        // NOTE: prevent from hiding underlying popups
++        // for ( var i = 0; i<visiblePopupsStack.length; i++ ) {
++        //     // if ( visiblePopupsStack[i] !== this ) {
++        //         visiblePopupsStack[i]._preventHideByClick = true;
++        //     // }
++        // }
++
++        // NOTE: prevent non-active popups from close by click
++        if ( this === visiblePopupsStack[0] ) {
++            this._preventHideByClick?
++               this._preventHideByClick = null :
++               this.delMod('visible');
++        }
+     }
+ }, /** @lends popup */{
+     live : function() {

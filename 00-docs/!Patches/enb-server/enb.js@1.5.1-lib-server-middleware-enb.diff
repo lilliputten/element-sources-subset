@@ -1,0 +1,16 @@
+--- enb.js.orig	2017-03-07 02:44:18.770116500 +0300
++++ enb.js	2017-03-07 04:13:17.929499000 +0300
+@@ -4,6 +4,13 @@
+ 
+ module.exports = function (options) {
+     return function (req, res, next) {
++
++        // XXX 2017.05.09: Passing parameters to enb make
++        if ( typeof GLOBAL !== 'undefined' ) {
++          GLOBAL.enbServerRequest = req;
++          GLOBAL.enbServerParsedUrl = req._parsedUrl;
++        }
++        
+         options = options || {};
+ 
+         var startTime = new Date(),

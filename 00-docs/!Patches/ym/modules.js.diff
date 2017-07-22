@@ -1,0 +1,627 @@
+--- modules_TRACED.js	2016-08-09 17:56:45.538145800 +0300
++++ modules.js	2016-08-09 13:26:15.183303400 +0300
+@@ -1,4 +1,3 @@
+-// ex: set commentstring=/*%s*/ :
+ /**
+  * Modules
+  *
+@@ -14,304 +13,295 @@
+ 
+ var undef,
+ 
+-    /*{{{*/DECL_STATES = {
++    DECL_STATES = {
+         NOT_RESOLVED : 'NOT_RESOLVED',
+         IN_RESOLVING : 'IN_RESOLVING',
+         RESOLVED     : 'RESOLVED'
+-    },/*}}}*/
++    },
+ 
+-    /** create() ** {{{ Creates a new instance of modular system
++    /**
++     * Creates a new instance of modular system
+      * @returns {Object}
+      */
+     create = function() {
+         var curOptions = {
+-            trackCircularDependencies : true,
+-            allowMultipleDeclarations : true
+-        },
+-
+-        modulesStorage = {},
+-        waitForNextTick = false,
+-        pendingRequires = [],
+-
+-        /** define(name, deps, declFn) ** {{{ Defines module
+-         * @param {String} name
+-         * @param {String[]} [deps]
+-         * @param {Function} declFn
+-         */
+-        define = function(name, deps, declFn) {
+-            if(!declFn) {
+-                declFn = deps;
+-                deps = [];
+-            }
++                trackCircularDependencies : true,
++                allowMultipleDeclarations : true
++            },
++
++            modulesStorage = {},
++            waitForNextTick = false,
++            pendingRequires = [],
++
++            /**
++             * Defines module
++             * @param {String} name
++             * @param {String[]} [deps]
++             * @param {Function} declFn
++             */
++            define = function(name, deps, declFn) {
++                if(!declFn) {
++                    declFn = deps;
++                    deps = [];
++                }
+ 
+-            var module = modulesStorage[name];
+-            if(!module) {
+-                module = modulesStorage[name] = {
+-                    name : name,
+-                    decl : undef
++                var module = modulesStorage[name];
++                if(!module) {
++                    module = modulesStorage[name] = {
++                        name : name,
++                        decl : undef
++                    };
++                }
++
++                module.decl = {
++                    name       : name,
++                    prev       : module.decl,
++                    fn         : declFn,
++                    state      : DECL_STATES.NOT_RESOLVED,
++                    deps       : deps,
++                    dependents : [],
++                    exports    : undef
+                 };
+-            }
++            },
+ 
+-            module.decl = {
+-                name       : name,
+-                prev       : module.decl,
+-                fn         : declFn,
+-                state      : DECL_STATES.NOT_RESOLVED,
+-                deps       : deps,
+-                dependents : [],
+-                exports    : undef
+-            };
++            /**
++             * Requires modules
++             * @param {String|String[]} modules
++             * @param {Function} cb
++             * @param {Function} [errorCb]
++             */
++            require = function(modules, cb, errorCb) {
++                if(typeof modules === 'string') {
++                    modules = [modules];
++                }
+ 
+-            name=='test1' && console.info( 'ym define', Object.keys(modulesStorage).length, name, modulesStorage['test1'], modulesStorage );
++                if(!waitForNextTick) {
++                    waitForNextTick = true;
++                    nextTick(onNextTick);
++                }
+ 
+-        },/*}}}*/
+-        /** require(modules, cb, errorCb) ** {{{ Requires modules
+-         * @param {String|String[]} modules
+-         * @param {Function} cb
+-         * @param {Function} [errorCb]
+-         */
+-        require = function(modules, cb, errorCb) {
+-            if ( modulesStorage.hasOwnProperty('test1') ) {
+-                console.info( 'ym require' );
+-            }
+-            if(typeof modules === 'string') {
+-                modules = [modules];
+-            }
++                pendingRequires.push({
++                    deps : modules,
++                    cb   : function(exports, error) {
++                        error?
++                            (errorCb || onError)(error) :
++                            cb.apply(global, exports);
++                    }
++                });
++            },
+ 
+-            if(!waitForNextTick) {
+-                waitForNextTick = true;
+-                nextTick(onNextTick);
+-            }
++            /**
++             * Returns state of module
++             * @param {String} name
++             * @returns {String} state, possible values are NOT_DEFINED, NOT_RESOLVED, IN_RESOLVING, RESOLVED
++             */
++            getState = function(name) {
++                var module = modulesStorage[name];
++                return module?
++                    DECL_STATES[module.decl.state] :
++                    'NOT_DEFINED';
++            },
++
++            /**
++             * Returns whether the module is defined
++             * @param {String} name
++             * @returns {Boolean}
++             */
++            isDefined = function(name) {
++                return !!modulesStorage[name];
++            },
+ 
+-            pendingRequires.push({
+-                deps : modules,
+-                cb   : function(exports, error) {
+-                    error?
+-                        (errorCb || onError)(error) :
+-                        cb.apply(global, exports);
+-                }
+-            });
+-        },/*}}}*/
+-        /** getState(name) ** {{{ Returns state of module
+-         * @param {String} name
+-         * @returns {String} state, possible values are NOT_DEFINED, NOT_RESOLVED, IN_RESOLVING, RESOLVED
+-         */
+-        getState = function(name) {
+-            var module = modulesStorage[name];
+-            return module?
+-                DECL_STATES[module.decl.state] :
+-                'NOT_DEFINED';
+-        },/*}}}*/
+-        /** isDefined(name) ** {{{ Returns whether the module is defined
+-         * @param {String} name
+-         * @returns {Boolean}
+-         */
+-        isDefined = function(name) {
+-            return !!modulesStorage[name];
+-        },/*}}}*/
+-        /** setOptions(options) ** {{{ Sets options
+-         * @param {Object} options
+-         */
+-        setOptions = function(options) {
+-            for(var name in options) {
+-                if(options.hasOwnProperty(name)) {
+-                    curOptions[name] = options[name];
++            /**
++             * Sets options
++             * @param {Object} options
++             */
++            setOptions = function(options) {
++                for(var name in options) {
++                    if(options.hasOwnProperty(name)) {
++                        curOptions[name] = options[name];
++                    }
+                 }
+-            }
+-        },/*}}}*/
+-        /*{{{*/getStat = function() {
+-            var res = {},
+-                module;
+-
+-            for(var name in modulesStorage) {
+-                if(modulesStorage.hasOwnProperty(name)) {
+-                    module = modulesStorage[name];
+-                    (res[module.decl.state] || (res[module.decl.state] = [])).push(name);
++            },
++
++            getStat = function() {
++                var res = {},
++                    module;
++
++                for(var name in modulesStorage) {
++                    if(modulesStorage.hasOwnProperty(name)) {
++                        module = modulesStorage[name];
++                        (res[module.decl.state] || (res[module.decl.state] = [])).push(name);
++                    }
+                 }
+-            }
+ 
+-            return res;
+-        },/*}}}*/
+-        /*{{{*/onNextTick = function() {
+-            console.info( 'ym onNextTick' );
+-            waitForNextTick = false;
+-            applyRequires();
+-        },/*}}}*/
+-        /*{{{*/applyRequires = function() {
+-            if ( modulesStorage.hasOwnProperty('test1') ) {
+-                console.info( 'ym applyRequires' );
+-            }
+-            var requiresToProcess = pendingRequires,
+-                i = 0, require;
++                return res;
++            },
+ 
+-            pendingRequires = [];
++            onNextTick = function() {
++                waitForNextTick = false;
++                applyRequires();
++            },
+ 
+-            while(require = requiresToProcess[i++]) {
+-                requireDeps(null, require.deps, [], require.cb);
+-            }
+-        },/*}}}*/
+-        /*{{{*/requireDeps = function(fromDecl, deps, path, cb) {
+-            // if ( modulesStorage.hasOwnProperty('test1') ) {
+-            //     console.info( 'ym requireDeps' );
+-            // }
+-            var unresolvedDepsCnt = deps.length;
+-            if(!unresolvedDepsCnt) {
+-                cb([]);
+-            }
++            applyRequires = function() {
++                var requiresToProcess = pendingRequires,
++                    i = 0, require;
+ 
+-            var decls = [],
+-                onDeclResolved = function(_, error) {
+-                    if(error) {
+-                        cb(null, error);
+-                        return;
+-                    }
++                pendingRequires = [];
++
++                while(require = requiresToProcess[i++]) {
++                    requireDeps(null, require.deps, [], require.cb);
++                }
++            },
++
++            requireDeps = function(fromDecl, deps, path, cb) {
++                var unresolvedDepsCnt = deps.length;
++                if(!unresolvedDepsCnt) {
++                    cb([]);
++                }
++
++                var decls = [],
++                    onDeclResolved = function(_, error) {
++                        if(error) {
++                            cb(null, error);
++                            return;
++                        }
+ 
+-                    if(!--unresolvedDepsCnt) {
+-                        var exports = [],
+-                            i = 0, decl;
+-                        while(decl = decls[i++]) {
+-                            exports.push(decl.exports);
++                        if(!--unresolvedDepsCnt) {
++                            var exports = [],
++                                i = 0, decl;
++                            while(decl = decls[i++]) {
++                                exports.push(decl.exports);
++                            }
++                            cb(exports);
+                         }
+-                        cb(exports);
++                    },
++                    i = 0, len = unresolvedDepsCnt,
++                    dep, decl;
++
++                while(i < len) {
++                    dep = deps[i++];
++                    if(typeof dep === 'string') {
++                        if(!modulesStorage[dep]) {
++                            cb(null, buildModuleNotFoundError(dep, fromDecl));
++                            return;
++                        }
++
++                        decl = modulesStorage[dep].decl;
+                     }
+-                },
+-                i = 0, len = unresolvedDepsCnt,
+-                dep, decl;
+-
+-            while(i < len) {
+-                dep = deps[i++];
+-                if(typeof dep === 'string') {
+-                    if(!modulesStorage[dep]) {
+-                        cb(null, buildModuleNotFoundError(dep, fromDecl));
+-                        return;
++                    else {
++                        decl = dep;
+                     }
+ 
+-                    decl = modulesStorage[dep].decl;
+-                }
+-                else {
+-                    decl = dep;
+-                }
+-
+-                decls.push(decl);
++                    decls.push(decl);
+ 
+-                startDeclResolving(decl, path, onDeclResolved);
+-            }
+-        },/*}}}*/
+-        /*{{{*/startDeclResolving = function(decl, path, cb) {
+-            // if ( modulesStorage.hasOwnProperty('test1') ) {
+-            //     console.info( 'ym startDeclResolving' );
+-            // }
+-            if(decl.state === DECL_STATES.RESOLVED) {
+-                cb(decl.exports);
+-                return;
+-            }
+-            else if(decl.state === DECL_STATES.IN_RESOLVING) {
+-                curOptions.trackCircularDependencies && isDependenceCircular(decl, path)?
+-                    cb(null, buildCircularDependenceError(decl, path)) :
+-                    decl.dependents.push(cb);
+-                return;
+-            }
++                    startDeclResolving(decl, path, onDeclResolved);
++                }
++            },
+ 
+-            decl.dependents.push(cb);
++            startDeclResolving = function(decl, path, cb) {
++                if(decl.state === DECL_STATES.RESOLVED) {
++                    cb(decl.exports);
++                    return;
++                }
++                else if(decl.state === DECL_STATES.IN_RESOLVING) {
++                    curOptions.trackCircularDependencies && isDependenceCircular(decl, path)?
++                        cb(null, buildCircularDependenceError(decl, path)) :
++                        decl.dependents.push(cb);
++                    return;
++                }
+ 
+-            if(decl.prev && !curOptions.allowMultipleDeclarations) {
+-                provideError(decl, buildMultipleDeclarationError(decl));
+-                return;
+-            }
++                decl.dependents.push(cb);
+ 
+-            curOptions.trackCircularDependencies && (path = path.slice()).push(decl);
++                if(decl.prev && !curOptions.allowMultipleDeclarations) {
++                    provideError(decl, buildMultipleDeclarationError(decl));
++                    return;
++                }
+ 
+-            var isProvided = false,
+-                deps = decl.prev? decl.deps.concat([decl.prev]) : decl.deps;
++                curOptions.trackCircularDependencies && (path = path.slice()).push(decl);
+ 
+-            decl.state = DECL_STATES.IN_RESOLVING;
+-            requireDeps(
+-                decl,
+-                deps,
+-                path,
+-                function(depDeclsExports, error) {
+-                    if(error) {
+-                        provideError(decl, error);
+-                        return;
+-                    }
++                var isProvided = false,
++                    deps = decl.prev? decl.deps.concat([decl.prev]) : decl.deps;
+ 
+-                    depDeclsExports.unshift(function(exports, error) {
+-                        if(isProvided) {
+-                            cb(null, buildDeclAreadyProvidedError(decl));
++                decl.state = DECL_STATES.IN_RESOLVING;
++                requireDeps(
++                    decl,
++                    deps,
++                    path,
++                    function(depDeclsExports, error) {
++                        if(error) {
++                            provideError(decl, error);
+                             return;
+                         }
+ 
+-                        isProvided = true;
+-                        error?
+-                            provideError(decl, error) :
+-                            provideDecl(decl, exports);
++                        depDeclsExports.unshift(function(exports, error) {
++                            if(isProvided) {
++                                cb(null, buildDeclAreadyProvidedError(decl));
++                                return;
++                            }
++
++                            isProvided = true;
++                            error?
++                                provideError(decl, error) :
++                                provideDecl(decl, exports);
++                        });
++
++                        decl.fn.apply(
++                            {
++                                name   : decl.name,
++                                deps   : decl.deps,
++                                global : global
++                            },
++                            depDeclsExports);
+                     });
++            },
+ 
+-                    decl.fn.apply(
+-                        {
+-                            name   : decl.name,
+-                            deps   : decl.deps,
+-                            global : global
+-                        },
+-                        depDeclsExports);
+-                });
+-        },/*}}}*/
+-        /*{{{*/provideDecl = function(decl, exports) {
+-            // if ( modulesStorage.hasOwnProperty('test1') ) {
+-            //     console.info( 'ym provideDecl' );
+-            // }
+-            decl.exports = exports;
+-            decl.state = DECL_STATES.RESOLVED;
+-
+-            var i = 0, dependent;
+-            while(dependent = decl.dependents[i++]) {
+-                dependent(exports);
+-            }
++            provideDecl = function(decl, exports) {
++                decl.exports = exports;
++                decl.state = DECL_STATES.RESOLVED;
++
++                var i = 0, dependent;
++                while(dependent = decl.dependents[i++]) {
++                    dependent(exports);
++                }
+ 
+-            decl.dependents = undef;
+-        },/*}}}*/
+-        /*{{{*/provideError = function(decl, error) {
+-            decl.state = DECL_STATES.NOT_RESOLVED;
+-
+-            var i = 0, dependent;
+-            while(dependent = decl.dependents[i++]) {
+-                dependent(null, error);
+-            }
++                decl.dependents = undef;
++            },
++
++            provideError = function(decl, error) {
++                decl.state = DECL_STATES.NOT_RESOLVED;
+ 
+-            decl.dependents = [];
+-        };/*}}}*/
++                var i = 0, dependent;
++                while(dependent = decl.dependents[i++]) {
++                    dependent(null, error);
++                }
+ 
+-        /*{{{ create object... */return {
++                decl.dependents = [];
++            };
++
++        return {
+             create     : create,
+             define     : define,
+             require    : require,
+             getState   : getState,
+             isDefined  : isDefined,
+             setOptions : setOptions,
+-            getStat    : getStat,
+-
+-            modulesStorage : modulesStorage,
+-            waitForNextTick : waitForNextTick,
+-            pendingRequires : pendingRequires,
+-
+-            applyRequires : applyRequires,
+-            onNextTick : onNextTick,
+-
+-        };/*}}}*/
+-
+-    },/*}}}*/
++            getStat    : getStat
++        };
++    },
+ 
+-    /*{{{*/onError = function(e) {
++    onError = function(e) {
+         nextTick(function() {
+             throw e;
+         });
+-    },/*}}}*/
+-    /*{{{*/buildModuleNotFoundError = function(name, decl) {
++    },
++
++    buildModuleNotFoundError = function(name, decl) {
+         return Error(decl?
+             'Module "' + decl.name + '": can\'t resolve dependence "' + name + '"' :
+             'Required module "' + name + '" can\'t be resolved');
+-    },/*}}}*/
+-    /*{{{*/buildCircularDependenceError = function(decl, path) {
++    },
++
++    buildCircularDependenceError = function(decl, path) {
+         var strPath = [],
+             i = 0, pathDecl;
+         while(pathDecl = path[i++]) {
+@@ -320,14 +310,17 @@
+         strPath.push(decl.name);
+ 
+         return Error('Circular dependence has been detected: "' + strPath.join(' -> ') + '"');
+-    },/*}}}*/
+-    /*{{{*/buildDeclAreadyProvidedError = function(decl) {
++    },
++
++    buildDeclAreadyProvidedError = function(decl) {
+         return Error('Declaration of module "' + decl.name + '" has already been provided');
+-    },/*}}}*/
+-    /*{{{*/buildMultipleDeclarationError = function(decl) {
++    },
++
++    buildMultipleDeclarationError = function(decl) {
+         return Error('Multiple declarations of module "' + decl.name + '" have been detected');
+-    },/*}}}*/
+-    /*{{{*/isDependenceCircular = function(decl, path) {
++    },
++
++    isDependenceCircular = function(decl, path) {
+         var i = 0, pathDecl;
+         while(pathDecl = path[i++]) {
+             if(decl === pathDecl) {
+@@ -335,11 +328,9 @@
+             }
+         }
+         return false;
+-    },/*}}}*/
+-    /*{{{*/nextTick = (function() {
+-        // if ( modulesStorage.hasOwnProperty('test1') ) {
+-            // console.info( 'ym nextTick' );
+-        // }
++    },
++
++    nextTick = (function() {
+         var fns = [],
+             enqueueFn = function(fn) {
+                 return fns.push(fn) === 1;
+@@ -376,7 +367,6 @@
+             }
+ 
+             if(isPostMessageAsync) {
+-                // console.info('nextTick isPostMessageAsync');
+                 var msg = '__modules' + (+new Date()),
+                     onMessage = function(e) {
+                         if(e.data === msg) {
+@@ -390,7 +380,6 @@
+                     global.attachEvent('onmessage', onMessage);
+ 
+                 return function(fn) {
+-                    console.info( 'ym nextTick' );
+                     enqueueFn(fn) && global.postMessage(msg, '*');
+                 };
+             }
+@@ -417,17 +406,13 @@
+         return function(fn) { // old browsers
+             enqueueFn(fn) && setTimeout(callFns, 0);
+         };
+-    })();/*}}}*/
+-
+-    /*{{{ initialize... */
+-
+-    if(typeof exports === 'object') {
+-        module.exports = create();
+-    }
+-    else {
+-        global.modules = create();
+-    }
++    })();
+ 
+-    /*}}}*/
++if(typeof exports === 'object') {
++    module.exports = create();
++}
++else {
++    global.modules = create();
++}
+ 
+ })(typeof window !== 'undefined' ? window : global);

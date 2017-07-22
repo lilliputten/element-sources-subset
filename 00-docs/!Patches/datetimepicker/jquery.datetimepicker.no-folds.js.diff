@@ -1,0 +1,21 @@
+--- jquery.datetimepicker.no-folds.js	2017-03-10 18:12:46.900835500 +0300
++++ jquery.datetimepicker.js.orig	2017-03-10 18:13:29.458835500 +0300
+@@ -609,8 +609,8 @@
+ };
+ 
+ var dateHelper = null,
+-    globalLocaleDefault = 'ru',
+-    globalLocale = 'ru';
++    globalLocaleDefault = 'en',
++    globalLocale = 'en';
+ 
+ var dateFormatterOptionsDefault = {
+     meridiem: ['AM', 'PM']
+@@ -628,7 +628,6 @@
+     dateHelper = new DateFormatter({
+         dateSettings: $.extend({}, dateFormatterOptionsDefault, opts)
+     });
+-    $.datetimepicker && ( $.datetimepicker.dateHelper = dateHelper ); // XXX 2016.09.14, 15:50 -- export dateHelper
+ };
+ 
+ // for locale settings

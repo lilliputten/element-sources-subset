@@ -1,0 +1,20 @@
+--- enb-beautify-html.orig.js	2016-04-10 17:18:07.078125000 +0400
++++ enb-beautify-html.js	2016-04-10 20:49:51.546875000 +0400
+@@ -20,7 +20,16 @@
+ 
+         return vfs.read(htmlFileName, 'utf-8')
+             .then(function(html) {
+-                return beautifyHtml(html);
++                return beautifyHtml(html, {
++                    indent_handlebars: true,
++                    indent_inner_html: true,
++                    preserve_newlines: false,
++                    max_preserve_newlines: 1,
++                    brace_style: 'expand',
++                    indent_char: ' ',
++                    indent_size: 2,
++                    wrap_line_length: 0
++                } );
+             })
+             .fail(function(data) {
+                 console.log('Fail with: ', data);
