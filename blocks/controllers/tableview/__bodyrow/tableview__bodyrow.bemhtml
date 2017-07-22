@@ -1,0 +1,27 @@
+/* jshint camelcase:false, unused:false, laxbreak:true, expr:true, boss:true */
+/* globals modules, project, addAttrs, addElemMods, addJs, addMix, addMods, appendContent, apply, applyCtx, applyNext, attrs, bem, block, cls, content, def, elem, elemMod, elemMods, extend, js, local, match, mix, mod, mode, mods, oninit, prependContent, replace, tag, wrap, xjstOptions */
+/**
+ *
+ * @module tableview__bodyrow
+ * @overview tableview__bodyrow
+ *
+ * @author lilliputten <lilliputten@yandex.ru>
+ * @since 2016.10.31 13:31
+ * @version 2016.10.31 13:31
+ *
+*/
+
+block('tableview').elem('bodyrow')(
+
+    def()(function(){
+        var ctx = this.ctx;
+        ctx.attrs = this.extend(ctx.attrs, {
+            id : ctx.row_no,
+        });
+        return applyNext();
+    }),
+
+    tag()('tr')
+
+);
+

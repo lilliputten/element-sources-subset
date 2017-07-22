@@ -1,0 +1,60 @@
+/* jshint camelcase:false, unused:false, laxbreak:true, expr:true, boss:true */
+/* globals modules, project, addAttrs, addElemMods, addJs, addMix, addMods, appendContent, apply, applyCtx, applyNext, attrs, bem, block, cls, content, def, elem, elemMod, elemMods, extend, js, local, match, mix, mod, mode, mods, oninit, prependContent, replace, tag, wrap, xjstOptions */
+/**
+ *
+ * @module 00block_00mod
+ * @overview __INFO__
+ *
+ * @author lilliputten <lilliputten@yandex.ru>
+ * @since __DATE__
+ * @version __DATE__
+ *
+ * $Date: 2017-07-17 14:16:38 +0300 (Mon, 17 Jul 2017) $
+ * $Id: 00block_00mod.bemhtml 8762 2017-07-17 11:16:38Z miheev $
+ *
+ */
+
+block('00block').mod('00mod', true)(
+
+    /*{{{ (BEMHTML Samples)
+
+    def()(function(){
+        var ctx = this.ctx;
+
+        if ( !ctx.cls ) { ctx.cls = ''; }
+        if ( !ctx.mix ) { ctx.mix = []; }
+        if ( !ctx.mods ) { ctx.mods = {}; }
+        if ( !ctx.attrs ) { ctx.attrs = {}; }
+
+        // return applyCtx(ctx);
+        return applyNext();
+    }),
+
+    attrs()(function(){
+        var ctx = this.ctx;
+        return {
+            id : ctx.id,
+            href : ctx.url,
+        };
+    }),
+
+    js()(function(){
+        var ctx = this.ctx;
+        return {
+             id : ctx.id,
+        };
+    }),
+
+    content()(function(){
+        var ctx = this.ctx;
+        var content = [
+            // { elem : 'inner', content : ctx.content },
+        ];
+        return content;
+    }),
+
+    }}}*/
+
+    tag()()
+
+);

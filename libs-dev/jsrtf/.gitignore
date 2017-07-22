@@ -1,0 +1,8 @@
+*.sw?
+*.tmp
+*.bak
+*~
+*_
+node_modules
+examples/*.rtf
+*.session

@@ -1,0 +1,40 @@
+// @require "__default.styl"
+
+// @require "../common/buttons.styl"
+
+.app
+    // position: relative
+    // height: 100%
+    // width: 100%
+
+    if $trace-content
+        box-shadow: inset 0 0 0 8px red
+
+    if $hide-overflow
+        overflow: hidden
+
+    // margin-bottom: $app_panel_spacing
+    // see `body.app_layout` for bottom spacing
+
+    // height: 50px
+    // full-height-block()
+    position: absolute
+    top: 200px
+    bottom: $app_panel_spacing
+    left: $app_panel_spacing
+    right: $app_panel_spacing
+
+.app__container
+    // height: 100%
+    // position: relative
+    if $trace-content
+        box-shadow: inset 0 0 0 10px #333
+    // margin: 0 $app_panel_spacing // временно убираем -- см. абсолютное позиционирование для .app выше
+    if $hide-overflow
+        overflow: hidden
+    full-height-block()
+    // position: absolute
+    // width: 100%
+    // height: 100%
+    //
+

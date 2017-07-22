@@ -1,0 +1,630 @@
+// vim: ft=javascript
+/* jshint camelcase: false, unused: false, eqeqeq: false, undef: false */
+/* globals LOCAL_ENB, module */
+/**
+ *
+ * @overview Страница Test
+ * @author lilliputten <lilliputten@yandex.ru>
+ *
+ * @since 2016.12.07, 17:54
+ * @version 2016.12.07, 17:54
+ *
+ * $Date: 2017-07-21 22:01:17 +0300 (Fri, 21 Jul 2017) $
+ * $Id: Test.bemjson 8794 2017-07-21 19:01:17Z miheev $
+ *
+ */
+
+var promise = new ( require('vow') ).Promise (function(resolve, reject) { // Begin Promise - Экспорт модуля
+require('../../System.js').then(function(System) { // Begin System - Ждём завершения отработки окружения
+try { // Begin Try - Перехватываем ошибки
+
+/*{{{ Begin bemjson creation - Создаём описание страницы */
+
+var
+
+    // Идентификатор страницы (из пути файла)
+    pageId = System.getPageId(__dirname),
+
+    /** sampleContent ** {{{ Тестовый контент из bem-components */
+    sampleContent = [
+        /*{{{ size:s */{
+            block : 'line',
+            mods : { size : 's' },
+            content : [
+                'size s (24px height) ',
+                {
+                    block : 'link',
+                    mods : { theme : 'islands', size : 's' },
+                    content : 'link'
+                },
+                ' ',
+                {
+                    block : 'input',
+                    mods : { theme : 'islands', size : 's', 'has-clear' : true },
+                    val : 'value',
+                    placeholder : 'placeholder'
+                },
+                ' ',
+                {
+                    block : 'button',
+                    mods : { theme : 'islands', size : 's' },
+                    text : 'button'
+                },
+                ' ',
+                {
+                    block : 'button',
+                    mods : { theme : 'islands', size : 's' },
+                    text : 'button',
+                    icon : { block : 'icon', mods : { action : 'download' } }
+                },
+                ' ',
+                {
+                    block : 'radio-group',
+                    mods : { theme : 'islands', size : 's', type : 'button' },
+                    name : 'radio-sizes-s',
+                    val : 2,
+                    options : [
+                        { val : 1, text : 'first' },
+                        { val : 2, text : 'second' }
+                    ]
+                },
+                ' ',
+                {
+                    block : 'checkbox',
+                    mods : { theme : 'islands', size : 's', type : 'button' },
+                    val : 1,
+                    text : 'check'
+                },
+                ' ',
+                {
+                    block : 'dropdown',
+                    mods : { switcher : 'button', theme : 'islands', size : 's' },
+                    switcher : 'dropdown',
+                    popup : { block : 'popup', mods : { theme : 'islands' }, content : 'popup' }
+                },
+                ' ',
+                {
+                    block : 'select',
+                    mods : { mode : 'radio-check', theme : 'islands', size : 's' },
+                    name : 'select',
+                    text : 'first',
+                    val : 1,
+                    options : [
+                        { val : 1, text : 'first' },
+                        { val : 2, text : 'second' }
+                    ]
+                },
+                ' ',
+                {
+                    block : 'spin',
+                    mods : { theme : 'islands', size : 's', visible : true }
+                }
+            ]
+        },/*}}}*/
+        { tag : 'br' },
+        /*{{{ size:m */{
+            block : 'line',
+            mods : { size : 'm' },
+            content : [
+                'size m (28px height) ',
+                {
+                    block : 'link',
+                    mods : { theme : 'islands', size : 'm' },
+                    content : 'link'
+                },
+                ' ',
+                {
+                    block : 'input',
+                    mods : { theme : 'islands', size : 'm', 'has-clear' : true },
+                    val : 'value',
+                    placeholder : 'placeholder'
+                },
+                ' ',
+                {
+                    block : 'button',
+                    mods : { theme : 'islands', size : 'm' },
+                    text : 'button'
+                },
+                ' ',
+                {
+                    block : 'button',
+                    mods : { theme : 'islands', size : 'm' },
+                    text : 'button',
+                    icon : { block : 'icon', mods : { action : 'download' } }
+                },
+                ' ',
+                {
+                    block : 'radio-group',
+                    mods : { theme : 'islands', size : 'm', type : 'button' },
+                    name : 'radio-sizes-m',
+                    val : 2,
+                    options : [
+                        { val : 1, text : 'first' },
+                        { val : 2, text : 'second' }
+                    ]
+                },
+                ' ',
+                {
+                    block : 'radio',
+                    mods : { theme : 'islands', size : 'm', checked : true },
+                    val : 1,
+                    text : 'radio'
+                },
+                ' ',
+                {
+                    block : 'checkbox',
+                    mods : { theme : 'islands', size : 'm', checked : true },
+                    val : 1,
+                    text : 'check'
+                },
+                ' ',
+                {
+                    block : 'checkbox',
+                    mods : { theme : 'islands', size : 'm', type : 'button', checked : true },
+                    val : 1,
+                    text : 'check'
+                },
+                ' ',
+                {
+                    block : 'dropdown',
+                    mods : { switcher : 'button', theme : 'islands', size : 'm' },
+                    switcher : 'dropdown',
+                    popup : { block : 'popup', mods : { theme : 'islands' }, content : 'popup' }
+                },
+                ' ',
+                {
+                    block : 'select',
+                    mods : { mode : 'radio-check', theme : 'islands', size : 'm' },
+                    name : 'select',
+                    text : 'first',
+                    val : 1,
+                    options : [
+                        { val : 1, text : 'first' },
+                        { val : 2, text : 'second' }
+                    ]
+                },
+                ' ',
+                {
+                    block : 'spin',
+                    mods : { theme : 'islands', size : 'm', visible : true }
+                }
+            ]
+        },/*}}}*/
+        { tag : 'br' },
+        /*{{{ size:l */{
+            block : 'line',
+            mods : { size : 'l' },
+            content : [
+                'size l (32px height) ',
+                {
+                    block : 'link',
+                    mods : { theme : 'islands', size : 'l' },
+                    content : 'link'
+                },
+                ' ',
+                {
+                    block : 'input',
+                    mods : { theme : 'islands', size : 'l', 'has-clear' : true },
+                    val : 'value',
+                    placeholder : 'placeholder'
+                },
+                ' ',
+                {
+                    block : 'button',
+                    mods : { theme : 'islands', size : 'l' },
+                    text : 'button'
+                },
+                ' ',
+                {
+                    block : 'button',
+                    mods : { theme : 'islands', size : 'l' },
+                    text : 'button',
+                    icon : { block : 'icon', mods : { action : 'download' } }
+                },
+                ' ',
+                {
+                    block : 'radio-group',
+                    mods : { theme : 'islands', size : 'l', type : 'button' },
+                    name : 'radio-sizes-l',
+                    val : 2,
+                    options : [
+                        { val : 1, text : 'first' },
+                        { val : 2, text : 'second' }
+                    ]
+                },
+                ' ',
+                {
+                    block : 'radio',
+                    mods : { theme : 'islands', size : 'l', checked : true },
+                    val : 1,
+                    text : 'radio'
+                },
+                ' ',
+                {
+                    block : 'checkbox',
+                    mods : { theme : 'islands', size : 'l', checked : true },
+                    val : 1,
+                    text : 'check'
+                },
+                ' ',
+                {
+                    block : 'checkbox',
+                    mods : { theme : 'islands', size : 'l', type : 'button' },
+                    val : 1,
+                    text : 'check'
+                },
+                ' ',
+                {
+                    block : 'dropdown',
+                    mods : { switcher : 'button', theme : 'islands', size : 'l' },
+                    switcher : 'dropdown',
+                    popup : { block : 'popup', mods : { theme : 'islands' }, content : 'popup' }
+                },
+                ' ',
+                {
+                    block : 'select',
+                    mods : { mode : 'radio-check', theme : 'islands', size : 'l' },
+                    name : 'select',
+                    text : 'first',
+                    val : 1,
+                    options : [
+                        { val : 1, text : 'first' },
+                        { val : 2, text : 'second' }
+                    ]
+                },
+                ' ',
+                {
+                    block : 'spin',
+                    mods : { theme : 'islands', size : 'l', visible : true }
+                }
+            ]
+        },/*}}}*/
+        { tag : 'br' },
+        /*{{{ size:xl */{
+            block : 'line',
+            mods : { size : 'xl' },
+            content : [
+                'size xl (38px height) ',
+                {
+                    block : 'link',
+                    mods : { theme : 'islands', size : 'xl' },
+                    content : 'link'
+                },
+                ' ',
+                {
+                    block : 'input',
+                    mods : { theme : 'islands', size : 'xl', 'has-clear' : true },
+                    val : 'value',
+                    placeholder : 'placeholder'
+                },
+                ' ',
+                {
+                    block : 'button',
+                    mods : { theme : 'islands', size : 'xl' },
+                    text : 'button'
+                },
+                ' ',
+                {
+                    block : 'button',
+                    mods : { theme : 'islands', size : 'xl' },
+                    text : 'button',
+                    icon : { block : 'icon', mods : { action : 'download' } }
+                },
+                ' ',
+                {
+                    block : 'radio-group',
+                    mods : { theme : 'islands', size : 'xl', type : 'button' },
+                    name : 'radio-sizes-xl',
+                    val : 2,
+                    options : [
+                        { val : 1, text : 'first' },
+                        { val : 2, text : 'second' }
+                    ]
+                },
+                ' ',
+                {
+                    block : 'checkbox',
+                    mods : { theme : 'islands', size : 'xl', type : 'button' },
+                    val : 1,
+                    text : 'check'
+                },
+                ' ',
+                {
+                    block : 'dropdown',
+                    mods : { switcher : 'button', theme : 'islands', size : 'xl' },
+                    switcher : 'dropdown',
+                    popup : { block : 'popup', mods : { theme : 'islands' }, content : 'popup' }
+                },
+                ' ',
+                {
+                    block : 'select',
+                    mods : { mode : 'radio-check', theme : 'islands', size : 'xl' },
+                    name : 'select',
+                    text : 'first',
+                    val : 1,
+                    options : [
+                        { val : 1, text : 'first' },
+                        { val : 2, text : 'second' }
+                    ]
+                },
+                ' ',
+                {
+                    block : 'spin',
+                    mods : { theme : 'islands', size : 'xl', visible : true }
+                }
+            ]
+        },/*}}}*/
+    ],/*}}}*/
+
+    // /** box1content ** {{{ */
+    // box1content = [
+    //     { content : 'box1' },
+    // ],/*}}}*/
+    // /** box2content ** {{{ */
+    // box2content = [
+    //     { content : 'box2' },
+    //     sampleContent,
+    // ],/*}}}*/
+
+    /** testVLayout1 ** {{{ Контент страницы */
+    testVLayout1 = [
+
+        /*{{{*/{ block : 'box', id : 'testBoxset',
+            mods : {
+                // vlayout : true,
+                root : true,
+                // maximized : true,
+            },
+            js : {
+                // resizable : false,
+            },
+            content : [
+                /*{{{*/{ block : 'box', id : 'testBox1',
+                    mods : {
+                        resizable : 'ratio',
+                    },
+                    js : {
+                        // size : 100,
+                        ratio : .5,
+                    },
+                    content : [
+                        { content : 'box1' },
+                        { block : 'box', id : 'testBox12',
+                            mods : {
+                                resizable : true,
+                            },
+                            js : {
+                                // size : 10,
+                            },
+                            content : [
+                                { content : 'box12' },
+                            ],
+                        }
+                    ],
+                },/*}}}*/
+                // /*{{{ box_actions:main: Основная секция с элементами управления страницей (from Report) */{
+                //     block : 'box_actions', mods : { filters : true, role : 'main', id : 'mainFilter' },
+                //     // mix : [
+                //     //     {
+                //     //         block : 'box', id : 'boxActions',
+                //     //         mods : {
+                //     //             resizable : 'fixed',
+                //     //         },
+                //     //     },
+                //     // ],
+                //     boxing : [ 'sz_origin', 'sz_crop', 'h_padded', 'frame_bottom' ],
+                //     box_id : 'box_actions_main',
+                //     content : [
+                //         /*{{{ Тип отчёта */{ elem : 'group', id : 'type', type : [ 'left' ], content : [
+                //             { elem : 'select', id : 'reportType'/*, allow_null : true, val : 'detailmove'*/, hint : 'Выбрать вид отчёта', text : 'Выбрать вид отчёта', options : [
+                //                 { val : 'detailmove', text : 'Пробег за период' },
+                //                 // TODO: Заменить все значения на реальные идентификаторы отчётов
+                //                 { disabled : true, val : '_01', text : 'Сводный отчет по движению' },
+                //                 { disabled : true, val : '_03', text : 'Детальный отчет по движению' },
+                //                 { disabled : true, val : '_04', text : 'История изменения состояний' },
+                //                 { disabled : true, val : '_05', text : 'Проблемы' },
+                //                 { disabled : true, val : '_06', text : 'Контроль скорости' },
+                //                 { disabled : true, val : '_07', text : 'Посещение объектов' },
+                //                 { disabled : true, val : '_08', text : 'Прохождение ЗК' },
+                //                 { disabled : true, val : '_09', text : 'История движения по карте' },
+                //                 { disabled : true, val : '_10', text : 'Работа внешних устройств' },
+                //                 { disabled : true, val : '_11', text : 'Расход топлива' },
+                //             ]},
+                //         ] },/*}}}*/
+                //         /*{{{ Отчётный период */{ elem : 'group', id : 'mainFilters', type : [ 'filters', 'left' ], content : [
+                //             { elem : 'text', content : 'Отчётный период с' },
+                //             { elem : 'input',
+                //                 type : 'date',
+                //                 id : 'BeginTime',
+                //                 placeholder : 'Начало периода',
+                //             },
+                //             { elem : 'text', content : 'по' },
+                //             { elem : 'input',
+                //                 type : 'date',
+                //                 id : 'EndTime',
+                //                 placeholder : 'Конец периода',
+                //             },
+                //         ] },/*}}}*/
+                //         /*{{{ Кнопка показа панелей для выбора КО */{ elem : 'group', type : [ 'left' ], content : [
+                //             /*{{{*/{ elem : 'action',
+                //                 id : 'ko_filter_control',
+                //                 mods : {
+                //                     boxing_controller : true,
+                //                     checked : true,
+                //                 },
+                //                 js : { boxes : [
+                //                     'box_group_ko_filter',
+                //                 ], },
+                //                 title : 'Выбрать КО',
+                //                 icon : 'icon-turnaround ti ti-angle-down',
+                //                 cls : 'button_action_light',
+                //             },/*}}}*/
+                //         ] },/*}}}*/
+                //         /*{{{ Кнопки действий */{ elem : 'group', type : [ 'right', 'actions' ], id : 'actions', content : [
+                //             { elem : 'button', id : 'apply' },
+                //         ] },/*}}}*/
+                //     ],
+                // },/*}}}*/
+                /*{{{*/{ block : 'box', id : 'testBox2',
+                    mods : {
+                        resizable : true,
+                    },
+                    js : {
+                        // percents : 10,
+                    },
+                    content : [
+                        { content : 'box2' },
+                    ],
+                },/*}}}*/
+            ],
+        },/*}}}*/
+
+    ],/*}}}*/
+
+    /** testHLayout1 ** {{{ Контент страницы */
+    testHLayout1 = [
+
+        /*{{{*/{ block : 'box', id : 'testBoxset',
+            mods : {
+                hlayout : true,
+                root : true,
+                maximized : true,
+            },
+            js : {
+                // resizable : false,
+            },
+            content : [
+                /*{{{*/{ block : 'box', id : 'testBox1',
+                    mods : {
+                        // resizable : true,
+                        // resizable : 'ratio',
+                        // resizable : false, // false='fixed',
+                    },
+                    js : {
+                        size : 100,
+                        // ratio : .2,
+                    },
+                    content : [
+                        // { content : 'box1' },
+                        { block : 'box', id : 'testBox11',
+                            mods : {
+                                resizable : true,
+                            },
+                            js : {
+                                // size : 10,
+                            },
+                            content : [
+                                { content : 'box11' },
+                            ],
+                        },
+                        { block : 'box', id : 'testBox12',
+                            mods : {
+                                resizable : true,
+                            },
+                            js : {
+                                // size : 10,
+                            },
+                            content : [
+                                { content : 'box12' },
+                            ],
+                        },
+                    ],
+                },/*}}}*/
+                // /*{{{ box_actions:main: Основная секция с элементами управления страницей (from Report) */{
+                //     block : 'box_actions', mods : { filters : true, role : 'main', id : 'mainFilter' },
+                //     // mix : [
+                //     //     {
+                //     //         block : 'box', id : 'boxActions',
+                //     //         mods : {
+                //     //             resizable : 'fixed', // false,
+                //     //         },
+                //     //     },
+                //     // ],
+                //     boxing : [ 'sz_origin', 'sz_crop', 'h_padded', 'frame_bottom' ],
+                //     box_id : 'box_actions_main',
+                //     content : [
+                //         /*{{{ Тип отчёта */{ elem : 'group', id : 'type', type : [ 'left' ], content : [
+                //             { elem : 'select', id : 'reportType'/*, allow_null : true, val : 'detailmove'*/, hint : 'Выбрать вид отчёта', text : 'Выбрать вид отчёта', options : [
+                //                 { val : 'detailmove', text : 'Пробег за период' },
+                //                 // TODO: Заменить все значения на реальные идентификаторы отчётов
+                //                 { disabled : true, val : '_01', text : 'Сводный отчет по движению' },
+                //                 { disabled : true, val : '_03', text : 'Детальный отчет по движению' },
+                //                 { disabled : true, val : '_04', text : 'История изменения состояний' },
+                //                 { disabled : true, val : '_05', text : 'Проблемы' },
+                //                 { disabled : true, val : '_06', text : 'Контроль скорости' },
+                //                 { disabled : true, val : '_07', text : 'Посещение объектов' },
+                //                 { disabled : true, val : '_08', text : 'Прохождение ЗК' },
+                //                 { disabled : true, val : '_09', text : 'История движения по карте' },
+                //                 { disabled : true, val : '_10', text : 'Работа внешних устройств' },
+                //                 { disabled : true, val : '_11', text : 'Расход топлива' },
+                //             ]},
+                //         ] },/*}}}*/
+                //         /*{{{ Отчётный период */{ elem : 'group', id : 'mainFilters', type : [ 'filters', 'left' ], content : [
+                //             { elem : 'text', content : 'Отчётный период с' },
+                //             { elem : 'input',
+                //                 type : 'date',
+                //                 id : 'BeginTime',
+                //                 placeholder : 'Начало периода',
+                //             },
+                //             { elem : 'text', content : 'по' },
+                //             { elem : 'input',
+                //                 type : 'date',
+                //                 id : 'EndTime',
+                //                 placeholder : 'Конец периода',
+                //             },
+                //         ] },/*}}}*/
+                //         /*{{{ Кнопка показа панелей для выбора КО */{ elem : 'group', type : [ 'left' ], content : [
+                //             /*{{{*/{ elem : 'action',
+                //                 id : 'ko_filter_control',
+                //                 mods : {
+                //                     boxing_controller : true,
+                //                     checked : true,
+                //                 },
+                //                 js : { boxes : [
+                //                     'box_group_ko_filter',
+                //                 ], },
+                //                 title : 'Выбрать КО',
+                //                 icon : 'icon-turnaround ti ti-angle-down',
+                //                 cls : 'button_action_light',
+                //             },/*}}}*/
+                //         ] },/*}}}*/
+                //         /*{{{ Кнопки действий */{ elem : 'group', type : [ 'right', 'actions' ], id : 'actions', content : [
+                //             { elem : 'button', id : 'apply' },
+                //         ] },/*}}}*/
+                //     ],
+                // },/*}}}*/
+                /*{{{*/{ block : 'box', id : 'testBox2',
+                    mods : {
+                        resizable : true,
+                    },
+                    js : {
+                        // percents : 10,
+                    },
+                    content : [
+                        { content : 'box2' },
+                    ],
+                },/*}}}*/
+            ],
+        },/*}}}*/
+
+    ],/*}}}*/
+
+    /** bemjson **  Вся страница */
+    bemjson = System.app({
+        pageId : pageId,
+        content : testVLayout1,
+    }),
+
+    undef
+;
+
+/* End bemjson creation }}}*/
+
+resolve(bemjson);
+
+} catch (e) { console.error(e); reject(e); } // End Try
+}); // End System
+}); // End Promise
+
+module.exports = promise; // Возвращаем результат
+

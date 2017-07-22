@@ -1,0 +1,30 @@
+/* jshint camelcase:false, unused:false, laxbreak:true, expr:true, boss:true */
+/* globals modules, project, addAttrs, addElemMods, addJs, addMix, addMods, appendContent, apply, applyCtx, applyNext, attrs, bem, block, cls, content, def, elem, elemMod, elemMods, extend, js, local, match, mix, mod, mode, mods, oninit, prependContent, replace, tag, wrap, xjstOptions */
+block('ObjectsSelector')(
+
+    js()(function(){
+        var ctx = this.ctx;
+        var id = ctx.id; // if defined?
+
+        return { id : id };
+    }),
+
+    def()(function(){
+        var ctx = this.ctx;
+
+        project.helpers.process_boxing_properties(ctx);
+
+        return applyNext();
+    }),
+
+    content()(function(){
+        var ctx = this.ctx;
+        return [
+            { elem : 'container', mix : [{ block : 'boxing_container' }] },
+            { block : 'screenholder', mods : { size : 's' } },
+        ];
+
+    })
+
+);
+

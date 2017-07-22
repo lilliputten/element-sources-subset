@@ -1,0 +1,53 @@
+s('/* blocks/!includes/all.styl:begin */')
+/*! blocks/.includes
+ * @overview Подключение общих описаний и параметров стилей
+ * $Date: 2017-06-02 13:05:22 +0300 (Fri, 02 Jun 2017) $
+ * $Id: all.styl 8476 2017-06-02 10:05:22Z miheev $
+ */
+
+// Переменные из сборщика enb
+s('/* YENV: %s */', YENV)
+s('/* FROM_NGINX: %s */', FROM_NGINX)
+s('/* CSS_CORE_URL: %s */', CSS_CORE_URL)
+s('/* CSS_LIBS_URL: %s */', CSS_LIBS_URL)
+s('/* CSS_BLOCKS_URL: %s */', CSS_BLOCKS_URL)
+
+// SAMPLES:
+// body
+//     background: s('url(%s' + 'image.png)', unquote(CSS_BLOCKS_URL))
+//
+// if FROM_NGINX
+//     s('/* FROM_NGINX! */')
+// if YENV == 'enb'
+//     s('/* ENB! */')
+//
+// OLD:
+// if ENB_MODE is defined
+//     s('/* enb: %s / %s */', unquote(ENB_MODE), unquote(ENB_EXT))
+// else
+//     s('/* enb: none */')
+
+// Общие параметры сборки
+$hide-overflow = true
+$trace-content = false
+
+// Подключаем определения bootstrap
+@require '../helpers/bootstrap-components/bootstrap-components.styl'
+
+// Подключаем локальные определения...
+
+@require 'named-colors.styl'
+
+@require 'colors.styl'
+@require 'fonts.styl'
+@require 'dimensions.styl'
+@require 'inputs.styl'
+@require 'buttons.styl'
+@require 'group-tools.styl'
+@require 'mixins.styl'
+
+@require 'urls.styl'
+
+@require 'NavHeader.styl'
+
+s('/* blocks/!includes/all.styl:end */')

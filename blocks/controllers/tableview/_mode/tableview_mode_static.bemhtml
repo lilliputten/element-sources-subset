@@ -1,0 +1,144 @@
+/* jshint camelcase:false, unused:false, laxbreak:true, expr:true, boss:true */
+/* globals modules, debugger, project, def, tag, match, js, applyCtx, content, applyNext, block, elem, attrs, mix */
+/**
+ *
+ * @module tableview_mode
+ * @overview __INFO__
+ *
+ * @author lilliputten <lilliputten@yandex.ru>
+ * @since 2017.05.22 14:21:44
+ * @version 2017.05.22 14:21:44
+ *
+ * $Date: 2017-07-11 19:47:15 +0300 (Tue, 11 Jul 2017) $
+ * $Id: tableview_mode_static.bemhtml 8733 2017-07-11 16:47:15Z miheev $
+ *
+ */
+
+block('tableview').mod('mode', 'static')(
+
+    match(function(){ return this.ctx.rootCtx && this.ctx.rootCtx.data; })(
+
+    elem('underheadcell').attrs()(function(){
+        var ctx = this.ctx,
+            rootCtx = ctx.rootCtx,
+            data = rootCtx.data,
+            columns = data.columns
+        ;
+        return {
+            colspan : columns.length,
+        };
+    }),
+
+    elem('head').content()(function(){
+        var ctx = this.ctx,
+            rootCtx = ctx.rootCtx,
+            data = rootCtx.data,
+            columns = data.columns,
+            content = columns.map(function(column,n){
+                /*
+                 * Return sample:
+                 *  {
+                 *      datasets : undefined,
+                 *      elem : 'headcell',
+                 *      id : 'typeID',
+                 *      mix : [{ block : 'column_id_typeID' }],
+                 *      n : 0,
+                 *      show : true,
+                 *      title : 'Тип КО',
+                 *  }
+                 *
+                 */
+                return {
+                    rootCtx : rootCtx,
+                    // datasets : undefined,
+                    elem : 'headcell',
+                    id : column.id,
+                    mix : [{ block : 'column', mods : { id : column.id }}],
+                    js : {
+                        id : column.id,
+                        title : column.title,
+                    },
+                    n : n,
+                    show : column.show && !column.hidden,
+                    title : column.title,
+                };
+            })
+        ;
+        return {
+            elem : 'headrow',
+            content : content,
+        };
+    }),
+
+    elem('bodyrow').content()(function(){
+        var ctx = this.ctx,
+            row_no = ctx.row_no,
+            rootCtx = ctx.rootCtx,
+            data = rootCtx.data,
+            columns = data.columns,
+            rows = data.rows,
+            content = columns.map(function(column,n){
+                /*
+                 * datasets : undefined
+                 * elem : 'bodycell'
+                 * id : 'typeID'
+                 * n : 0
+                 * row_no : 0
+                 * show : true
+                 * title : 'Тип КО'
+                 * val : 'ТС'
+                 * width : 63
+                 */
+                return {
+                    rootCtx : rootCtx,
+                    // datasets : undefined,
+                    elem : 'bodycell',
+                    id : column.id,
+                    // mix : [{ block : 'column_id_' + column.id }],
+                    row_no : row_no,
+                    n : n,
+                    show : column.show && !column.hidden,
+                    title : column.title,
+                    val : rows[row_no][column.id],
+                    // width : 63,
+                };
+            })
+        ;
+        return content;
+    }),
+
+    elem('body').content()(function(){
+        var ctx = this.ctx,
+            rootCtx = ctx.rootCtx,
+            data = rootCtx.data,
+            rows = data.rows,
+            content = rows.map(function(row,row_no){
+                return {
+                    // datasets : undefined,
+                    rootCtx : rootCtx,
+                    elem : 'bodyrow',
+                    row_no : row_no,
+                };
+            })
+        ;
+        /*
+         * row_bemjson = {
+         *     block : 'tableview',
+         *     mods : this.getMods(),
+         *     elem : 'bodyrow',
+         *     row_no : row_no,
+         *     elemMods : {
+         *         selected : typeof params.selected !== 'undefined' && ( params.selected === row_no ) ? true : false,
+         *     },
+         *     // checked : this.is_row_checked(row_no),
+         *     content : itemsBemjson,
+         * },
+         */
+        return content;
+    })
+
+    ),
+
+    tag()()
+
+);

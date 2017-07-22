@@ -1,0 +1,151 @@
+[
+    [{
+        "block": "menu-item",
+        "mods": {
+            "tree": true,
+            "level": 0,
+            "has_childs": true,
+            "theme": "islands"
+        },
+        "attrs": {
+            "role": "option"
+        },
+        "id": "uniq14745487417561",
+        "val": 1,
+        "js": {
+            "has_childs": true
+        },
+        "content": [{
+            "elem": "tree_toggle"
+        }, {
+            "elem": "tree_line"
+        }, {
+            "elem": "tree_toggle"
+        }, "item 1"]
+    }, {
+        "elem": "subtree",
+        "elemMods": {
+            "parent": 1,
+            "level": 0,
+            "closed": true
+        },
+        "content": [
+            [{
+                "block": "menu-item",
+                "mods": {
+                    "tree": true,
+                    "level": 1,
+                    "parent": 1,
+                    "has_childs": true,
+                    "theme": "islands"
+                },
+                "attrs": {
+                    "role": "option"
+                },
+                "id": "uniq14745487417563",
+                "val": 11,
+                "js": {
+                    "has_childs": true
+                },
+                "content": [{
+                    "elem": "tree_toggle"
+                }, {
+                    "elem": "tree_line"
+                }, {
+                    "elem": "tree_toggle"
+                }, "item 11"]
+            }, {
+                "elem": "subtree",
+                "elemMods": {
+                    "parent": 11,
+                    "level": 1,
+                    "closed": true
+                },
+                "content": [{
+                    "block": "menu-item",
+                    "mods": {
+                        "tree": true,
+                        "level": 2,
+                        "parent": 11,
+                        "theme": "islands"
+                    },
+                    "attrs": {
+                        "role": "option"
+                    },
+                    "id": "uniq14745487417565",
+                    "val": 111,
+                    "js": {},
+                    "content": [{
+                        "elem": "tree_toggle"
+                    }, {
+                        "elem": "tree_line"
+                    }, {
+                        "elem": "tree_toggle"
+                    }, "item 111"]
+                }, {
+                    "block": "menu-item",
+                    "mods": {
+                        "tree": true,
+                        "level": 2,
+                        "parent": 11,
+                        "theme": "islands"
+                    },
+                    "attrs": {
+                        "role": "option"
+                    },
+                    "id": "uniq14745487417566",
+                    "val": 112,
+                    "js": {},
+                    "content": [{
+                        "elem": "tree_toggle"
+                    }, {
+                        "elem": "tree_line"
+                    }, {
+                        "elem": "tree_toggle"
+                    }, "item 112"]
+                }]
+            }], {
+                "block": "menu-item",
+                "mods": {
+                    "tree": true,
+                    "level": 1,
+                    "parent": 1,
+                    "theme": "islands"
+                },
+                "attrs": {
+                    "role": "option"
+                },
+                "id": "uniq14745487417564",
+                "val": 12,
+                "js": {},
+                "content": [{
+                    "elem": "tree_toggle"
+                }, {
+                    "elem": "tree_line"
+                }, {
+                    "elem": "tree_toggle"
+                }, "item 12"]
+            }
+        ]
+    }], {
+        "block": "menu-item",
+        "mods": {
+            "tree": true,
+            "level": 0,
+            "theme": "islands"
+        },
+        "attrs": {
+            "role": "option"
+        },
+        "id": "uniq14745487417562",
+        "val": 2,
+        "js": {},
+        "content": [{
+            "elem": "tree_toggle"
+        }, {
+            "elem": "tree_line"
+        }, {
+            "elem": "tree_toggle"
+        }, "item 2"]
+    }
+]

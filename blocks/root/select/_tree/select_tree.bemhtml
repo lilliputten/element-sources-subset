@@ -1,0 +1,82 @@
+/* jshint camelcase:false, unused:false, laxbreak:true, expr:true, boss:true */
+/* globals modules, debugger, project, def, tag, match, js, applyCtx, content, applyNext, block, elem, attrs, mix, mod */
+block('select').mod('tree', true)(
+
+    elem('menu').def()(function() {
+        var mods = this.mods,
+            optionToMenuItem = function(option) {
+                var item = {
+                        block : 'menu',
+                        elem : 'item',
+                        elemMods : { disabled : mods.disabled || option.disabled },
+                        attrs : { role : 'option' },
+                        id : option.id,
+                        val : option.val,
+                        js : { checkedText : option.checkedText },
+                        content : option.text
+                    }
+                ;
+
+                if ( option.parent ) {
+                    item.parent = option.parent;
+                }
+
+                if(option.icon) {
+                    item.js.text = option.text;
+                    item.content = [
+                        option.icon,
+                        item.content
+                    ];
+                }
+
+                return item;
+            },
+            new_ctx = {
+                block : 'menu',
+                mix : { block : this.block, elem : this.elem },
+                mods : {
+                    tree : true,
+                    size : mods.size,
+                    theme : mods.theme,
+                    disabled : mods.disabled,
+                    mode : mods.mode,
+                },
+                val : this._select.val,
+                attrs : { role : undefined, tabindex : undefined },
+                content : this._select.options.map(function(option) {
+                    return optionToMenuItem(option);
+                })
+            },
+            result = applyCtx(new_ctx);
+
+        return result;
+
+    }),
+
+    /*{{{*/content()(function() {
+
+        // DBG( 'select_tree', this.ctx.content );
+        // return this.ctx.content;
+
+        // @see select btmhtml content from project/libs/bem-components/common.blocks/select/select.bemhtml
+        // var content = [
+        //     { elem : 'button' },
+        //     {
+        //         block : 'popup',
+        //         mods : { target : 'anchor', theme : this.mods.theme, autoclosable : true },
+        //         directions : ['bottom-left', 'bottom-right', 'top-left', 'top-right'],
+        //         content : { block : this.block, mods : this.mods, elem : 'menu' }
+        //     }
+        // ];
+        var content = applyNext();
+
+        // Добавляем мод `tree` в блок `select__menu`
+        if ( content[1] && content[1].content && content[1].content.mods ) {
+            content[1].content.mods.tree = true;
+        }
+
+        return content;
+
+    })/*}}}*/
+
+);

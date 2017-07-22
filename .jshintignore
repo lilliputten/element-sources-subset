@@ -1,0 +1,14 @@
+node_modules/
+blocks.specs/
+core/
+fake-data/
+index/
+templates/
+!UNUSED/
+examples/
+00-bem-templates/
+dist/
+libs/
+libs-dev/
+.svn/
+.git/

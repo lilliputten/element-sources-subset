@@ -1,0 +1,35 @@
+/* jshint camelcase: false */
+/* jshint unused: false */
+/* globals modules, debugger, applyCtx, content, applyNext, block, elem, attrs, def */
+
+/**
+ *
+ *  @overview tableview__container
+ *
+ *  @author lilliputten <lilliputten@yandex.ru>
+ *  @since 2016.10.31 13:31
+ *  @version 2016.10.31 13:31
+ *
+*/
+
+/*
+ *  @module tableview__container
+ */
+
+block('tableview').elem('container')(
+
+    content()(function(){
+        var ctx = this.ctx;
+        var content = applyNext();
+        Array.isArray(content) || ( content = [] );
+        content.push({ elem : 'table', content : [
+            // { elem : 'underhead' },
+            { elem : 'head', rootCtx : ctx.rootCtx },
+            { elem : 'body', rootCtx : ctx.rootCtx },
+        ] });
+        // DBG( 'pre unshift normal content', ctx, content );
+        return content;
+    })
+
+);
+

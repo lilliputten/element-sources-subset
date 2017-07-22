@@ -1,0 +1,21 @@
+// $Date: 2017-07-21 16:21:40 +0300 (Fri, 21 Jul 2017) $
+// $Id: box__container.styl 8790 2017-07-21 13:21:40Z miheev $
+
+// @require '../!Defaults.styl'
+
+.box
+    &__container
+        clearfix()
+        position: relative
+        height: 100%
+        width: 100%
+        box-sizing: border-box
+
+        // Горизонтальная разметка...
+        ^[0]_hlayout > &
+            // float: left
+            // full-height-container()
+            // position: relative
+            background-color: alpha(green,.2) // WORKS!
+            white-space: no-wrap
+

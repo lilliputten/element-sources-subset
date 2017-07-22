@@ -1,0 +1,36 @@
+.input.input_theme_islands
+    .input__box.align_with_select
+        padding-left: 5px
+    border-radius: $input-border-radius-m
+    background: $input-border-color
+    // border: 1px solid $input-border-color
+    box-shadow: $input-glow
+    // overflow: hidden // ??? for -webkit-autofill
+    &:before
+        border-radius: ( $input-border-radius-m - 1px )
+        box-shadow: none
+    &.input_size_l
+        border-radius: $input-border-radius-l
+        &:before
+            border-radius: ( $input-border-radius-l - 1px )
+    &.input_hovered
+        background: $input-border-hovered-color
+        box-shadow: $input-glow-hovered
+        &:before
+            box-shadow: none
+    &.input_focused
+        background: $input-border-focused-color
+        box-shadow: $input-glow-focused
+        &:before
+            box-shadow: none
+    .input__box
+        // background: none
+        input.input__control
+            border-radius: $input-border-radius-m
+            &:-webkit-autofill // WTF???
+                -webkit-box-shadow: 0 0 0px 1000px alpha(white,1) inset
+                border: 1px solid $input-border-color
+            &::selection
+                background-color: $element-color
+                color: #FFF
+

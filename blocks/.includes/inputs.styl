@@ -1,0 +1,96 @@
+/**
+ * @overview Элементы форм
+ * $Date: 2017-03-09 22:37:35 +0300 (Thu, 09 Mar 2017) $
+ * $Id: inputs.styl 7531 2017-03-09 19:37:35Z miheev $
+ */
+
+// input
+
+$input-border-radius-m = 3px
+$input-border-radius-l = 4px
+
+$input-border-color = mix($neutral-color,#FFF,50)//rgba(0,0,0,0.2)
+$input-border-hovered-color = mix($neutral-color,#FFF,80)//rgba(0,0,0,0.3)
+$input-border-focused-color = mix($neutral-color,#FFF,80)//rgba(0,0,0,0.4)
+
+$input-glow = none//0px 0px 3px 0px alpha($islands-active-color,.3)
+$input-glow-hovered = 0px 0px 3px 0px alpha($islands-active-color,.4)
+$input-glow-focused = 0px 0px 3px 1px alpha($islands-active-color,.6)
+
+$input-glow-neutral-hovered = 0px 0px 3px 0px alpha($neutral-color,1)
+$input-glow-neutral-focused = 0px 0px 3px 1px alpha($neutral-color,1)
+
+// select
+
+$select-background-color = #FFF
+$select-text-color = $light-text-color
+$select-background-hovered-color = mix($islands-active-color,#FFF,20)
+$select-background-focused-color = $select-background-hovered-color
+
+$select-glow = none//0px 0px 4px 1px alpha($islands-active-color,.3)
+$select-glow-hovered = 0px 0px 4px 1px alpha($islands-active-color,.4)
+$select-glow-focused = 0px 0px 4px 2px alpha($islands-active-color,.6)
+
+// button
+
+$button-background-color = none//$brand-primary
+$button-border-color = none//darken($button-background-color,10)
+$button-text-color = $default-color//#FFF
+
+$button-background-hovered-color = lighten($islands-active-color,70%)//lighten($button-background-color,5)
+$button-border-hovered-color = lighten($islands-active-color,70%)//darken($button-background-hovered-color,10)
+$button-text-hovered-color = $button-text-color//#FFF
+$button-glow-hovered = none//0px 0px 4px 1px alpha($button-background-color,.5)
+
+$button-background-checked-color = lighten($islands-active-color,40%)
+$button-border-checked-color = darken($islands-border-color,20%)
+$button-text-checked-color = #FFF
+$button-glow-checked = none//0px 0px 4px 1px alpha($button-background-color,.5)
+
+// TODO: other sizes?
+$button-icon-size = 17px
+
+// TODO: make buttons as mixins and extends!
+
+// button_action
+
+$button-action-background-color = $brand-primary
+$button-action-border-color = darken($button-action-background-color,10)
+$button-action-text-color = #FFF
+$button-action-icon-size = $button-icon-size
+$button-action-icon-color = #FFF
+
+$button-action-background-hovered-color = lighten($button-action-background-color,5)
+$button-action-border-hovered-color = darken($button-action-background-hovered-color,10)
+$button-action-text-hovered-color = #FFF
+$button-action-glow-hovered = 0px 0px 4px 1px alpha($button-action-background-color,.5)
+$button-action-icon-hovered-color = #FFF
+
+// $button-action-background-checked-color = darken($button-action-background-color,5)
+// $button-action-border-checked-color = darken($button-action-background-checked-color,10)
+$button-action-background-checked-color = darken($button-action-background-color,0)
+$button-action-border-checked-color = darken($button-action-background-checked-color,0)
+$button-action-text-checked-color = #FFF
+$button-action-glow-checked = 0px 0px 4px 1px alpha($button-action-background-color,.5)
+$button-action-icon-checked-color = #FFF
+
+// button_light
+
+$button-light-background-color = #FFF
+$button-light-border-color = $input-border-color
+$button-light-text-color = $default-color
+$button-light-icon-size = $button-icon-size
+$button-light-icon-color = $brand-primary
+
+$button-light-background-hovered-color = $button-action-background-hovered-color
+$button-light-border-hovered-color = $button-action-border-hovered-color
+$button-light-text-hovered-color = $button-action-text-hovered-color
+$button-light-glow-hovered = $button-action-glow-hovered
+$button-light-icon-hovered-color = $button-action-icon-hovered-color
+
+$button-light-background-checked-color = $button-action-background-checked-color
+$button-light-border-checked-color = $button-action-border-checked-color
+$button-light-text-checked-color = $button-action-text-checked-color
+$button-light-glow-checked = $button-action-glow-checked
+$button-light-icon-checked-color = $button-action-icon-checked-color
+

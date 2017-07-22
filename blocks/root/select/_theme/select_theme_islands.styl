@@ -1,0 +1,104 @@
+.select_theme_islands
+    // select select_mode_radio select_theme_islands select_size_m box_actions__select box_actions__select_page_number select_select_page_number i-bem select_js_inited
+    .select__button.button_theme_islands
+        color: $light-text-color
+        &.button_checked
+        &//.button
+            color: $light-text-color
+            background: $input-border-color
+            &:before
+                background: $select-background-color
+                box-shadow: $select-glow
+        &.button_hovered
+            background: $input-border-hovered-color
+            // color: $default-color
+            &:before
+                background: $select-background-hovered-color
+                box-shadow: $select-glow-hovered
+        &.button_focused
+            background: $input-border-focused-color
+            // color: $default-color
+            &:before
+                background: $select-background-focused-color
+                box-shadow: $select-glow-focused
+        &.button_checked
+            color: $default-color
+
+        // adust spacing for other inputs
+        .button__text
+            margin-left: 8px
+            .icon
+                // Временно? Для показа демо выбора иконок в fake-pages
+                color: $accent-color
+                color: $default-color
+        &.button_size_l
+            // adust spacing for other inputs
+            .button__text
+                margin-left: 10px
+
+    &.select_mode_radio
+        color: $default-color
+        .button
+            color: $default-color
+
+    //
+        // color: $light-text-color
+        // &:before
+        //     background: #FFF
+        // &.button_checked
+        //     // // background: rgba(153, 122, 0, 0.5)
+        //     // // border: 1px solid red
+        //     // // background: darken($islands-active-color,-20%)
+        //     // background: darken($islands-border-color,20%)
+        //     // // background: alpha($islands-active-color,.6)
+        //     background: rgba(0,0,0,0.2)
+        //     &:before
+        //         background: #FFF
+        //         box-shadow: none
+        //         // background: lighten($islands-active-color,40%)
+        //         // box-shadow: 0px 0px 4px 2px alpha($islands-active-color,.3)
+        //
+/*
+.select_theme_islands
+    max-width: 100%;
+
+    vertical-align: bottom;
+
+    .select__button
+        width: 100%;
+
+        text-align: left;
+        vertical-align: top;
+
+        .button__text
+            display: block;
+
+            &:empty:before
+                content: '\00a0';
+
+        &.button_size_m
+            .button__text
+                padding-right: 28px;
+
+            .icon
+                width: 29px;
+
+    .select__tick
+        position: absolute;
+        top: 0;
+        right: 0;
+
+        background-image: url(../../theme/_islands/arrow.svg);
+
+        transition: transform 0.1s ease-out;
+
+    &.select_size_s .select__tick
+      background-image: url(../../theme/_islands/arrow-s.svg);
+
+    &.select_opened .select__tick
+        transform: rotate(-180deg);
+
+    &.select_width_available
+        width: 100%;
+
+*/

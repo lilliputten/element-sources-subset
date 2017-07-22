@@ -1,0 +1,138 @@
+--- base.bemhtml.js	2016-07-12 18:24:23.454867100 +0300
++++ bemhtml_engine.js	2016-08-03 17:12:54.532944300 +0300
+@@ -1,11 +1,23 @@
+-/* begin:/base.bemhtml.js */
++/* begin:/bemhtml_engine.js */
++/**
++ *
++ * Patched base.bemhtml.js
++ *
++ * Для патча: `diff -u base.bemhtml.js bemhtml_engine.js > bemhtml_engine.js.diff`
++ *
++ * version: 2016.07.27, 15:39
++ *
++ * См. определение `window.BEMHTML_QUEUE_PROCESS` и использование `window.BEMHTML_QUEUE` ниже.
++ * Также принудительно устанавливается флаг `defineAsGlobal` -- см. в конце модуля.
++ *
++ */
+ var BEMHTML;
+ 
+ (function(global) {
+     function buildBemXjst(__bem_xjst_libs__) {
+         var exports = {};
+ 
+-        /// -------------------------------------
++/// -------------------------------------
+ /// --------- BEM-XJST Runtime Start ----
+ /// -------------------------------------
+ var BEMHTML = function(module, exports) {
+@@ -991,7 +1003,6 @@
+   return res;
+ };
+ 
+-
+ BEMXJST.prototype.runEmpty = function runEmpty() {
+   this.context._listLength--;
+   return '';
+@@ -1973,38 +1984,60 @@
+ /// --------- BEM-XJST Runtime End ------
+ /// -------------------------------------
+ 
++// Определяем глобальную функцию для добавления шаблонов.
++// `BEMHTML_JS_LOADED` может переопределяться -- напр., в `spa_loader`.
++window.BEMHTML_JS_LOADED = window.BEMHTML_QUEUE_PROCESS = function () {
++// Внутри тела функции...
++
+ var api = new BEMHTML({});
+ /// -------------------------------------
+ /// ------ BEM-XJST User-code Start -----
+ /// -------------------------------------
+ api.compile(function(match, once, wrap, block, elem, mode, mod, elemMod, def, tag, attrs, cls, js, bem, mix, content, replace, extend, oninit, xjstOptions, local, applyCtx, applyNext, apply) {
+-/*{{CONTENT}}*/oninit(function(exports, context) {
++
++// console.info( 'base.bemhtml', global.BEMHTML_QUEUE );
++
++/// Парсим описания bemhtml из глобального массива
++if ( typeof window.BEMHTML_QUEUE !== 'undefined' && Array.isArray(window.BEMHTML_QUEUE) && !window.BEMHTML_QUEUE_NOW_PROCESSING ) {
++    window.BEMHTML_QUEUE_NOW_PROCESSING = true;
++    while ( bemhtml_pack = window.BEMHTML_QUEUE.shift() ) {
++        if ( typeof bemhtml_pack === 'function' ) {
++            bemhtml_pack.apply(this, arguments);
++        }
++    }
++    window.BEMHTML_QUEUE_NOW_PROCESSING = false;
++}
++
++/*{{CONTENT}}*/
++
++oninit(function(exports, context) {
+     var BEMContext = exports.BEMContext || context.BEMContext;
+     // Provides third-party libraries from different modular systems
+     BEMContext.prototype.require = function(lib) {
+        return __bem_xjst_libs__[lib];
+     };
+-});;
++});
+ });
+ api.exportApply(exports);
++
++// Окончание тела глобальной функции для добавления шаблонов
++};
++
++// Вызываем один раз для обработки уже имеющихся шаблонов (массив очищается)
++window.BEMHTML_QUEUE_PROCESS();
++
+ /// -------------------------------------
+ /// ------ BEM-XJST User-code End -------
+ /// -------------------------------------
+ 
+-
+         return exports;
+     };
+ 
+-    
+-
+     var defineAsGlobal = true;
+ 
+     // Provide with CommonJS
+     if (typeof module === 'object' && typeof module.exports === 'object') {
+-        exports['BEMHTML'] = buildBemXjst({
+-    
+-}
+-);
++        exports['BEMHTML'] = buildBemXjst({});
+         defineAsGlobal = false;
+     }
+ 
+@@ -2015,25 +2048,19 @@
+             [],
+             function(
+                 provide
+-                
++
+                 ) {
+-                    provide(buildBemXjst({
+-    
+-}
+-));
++                    provide(buildBemXjst({}));
+                 }
+             );
+-
+-        defineAsGlobal = false;
++        // defineAsGlobal = false;
+     }
+ 
+     // Provide to global scope
+     if (defineAsGlobal) {
+-        BEMHTML = buildBemXjst({
+-    
+-}
+-);
++        BEMHTML = buildBemXjst({});
+         global['BEMHTML'] = BEMHTML;
+     }
++
+ })(typeof window !== "undefined" ? window : global || this);
+-/* end:/base.bemhtml.js */
++/* end:/bemhtml_engine.js */

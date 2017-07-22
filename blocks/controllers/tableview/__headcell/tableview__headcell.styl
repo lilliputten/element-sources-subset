@@ -1,0 +1,16 @@
+@require "../__defaults.styl"
+
+.tableview__headcell
+    @extend $default_cell
+    white-space: nowrap
+    text-align: left
+    min-height: $head_height
+    height: $head_height
+    box-sizing: border-box
+
+    background-color: $head_bg_color
+    color: #FFF
+
+    &:not(.show)
+        display: none
+

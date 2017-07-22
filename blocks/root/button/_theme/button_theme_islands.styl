@@ -1,0 +1,402 @@
+// $Id: button_theme_islands.styl 8623 2017-06-22 14:23:10Z miheev $
+// $Date: 2017-06-22 17:23:10 +0300 (Thu, 22 Jun 2017) $
+
+$button__text_padding = 6px
+$button__text_padding_wide = 16px
+
+button__text()
+    // :not(.checkbox) ^[0..-1]
+    .icon + .button__text
+        &:after
+            content: ' '
+            display: inline-block
+            width: $button__text_padding
+    &.button_wide
+        .icon
+            margin-left: round( $button__text_padding_wide / 2 )
+        .icon + .button__text
+            &:after
+                width: $button__text_padding_wide
+
+icon_pos()// {{{
+    position: relative
+    // top: 1px
+    // left: 4px
+    min-width: $input_size
+    &.ti
+        top: 1px
+    // &:after
+    //     width: 10px;
+    //     display: inline-block;
+// }}}
+
+button_default()// {{{
+    background: $button-action-light-border-color
+    color: $button-action-light-text-color
+    &:before
+        background: $button-action-light-background-color
+    .icon:not(.select__tick)
+        icon_pos()
+    button__text()
+    // &.button_pressed
+    &.button_focused-hard
+    &.button_hovered:not(.button_disabled)
+        background: $button-border-hovered-color
+        color: $button-text-hovered-color
+        &:before
+            background: $button-background-hovered-color
+            box-shadow: $button-glow-hovered
+// }}}
+button_action()// {{{
+    background: $button-action-border-color
+    color: $button-action-text-color
+    &:before
+        background: $button-action-background-color
+    .icon:not(.select__tick)
+        icon_pos()
+    //     color: $button-action-icon-color
+    //     font-size: $button-action-icon-size
+    button__text()
+    &.button_checked
+        background: $button-action-border-checked-color
+        color: $button-action-text-checked-color
+        &:before
+            background: $button-action-background-checked-color
+            box-shadow: none //$button-action-glow-checked
+        // .icon:not(.select__tick)
+        //     color: $button-action-icon-checked-color
+    &.button_focused-hard
+    &.button_hovered:not(.button_disabled)
+        background: $button-action-border-hovered-color
+        color: $button-action-text-hovered-color
+        &:before
+            background: $button-action-background-hovered-color
+            box-shadow: $button-action-glow-hovered
+        // .icon:not(.select__tick)
+        //     color: $button-action-icon-hovered-color
+// }}}
+button_light(make_icon)// {{{
+    background: $button-light-border-color
+    color: $button-light-text-color
+    &:before
+        background: $button-light-background-color
+    if make_icon
+        .icon:not(.select__tick)
+            icon_pos()
+            color: $button-light-icon-color
+        //     font-size: $button-light-icon-size
+    button__text()
+    &.button_focused-hard
+    &.button_hovered:not(.button_disabled)
+        background: $button-light-border-hovered-color
+        color: $button-light-text-hovered-color
+        &:before
+            background: $button-light-background-hovered-color
+            box-shadow: $button-light-glow-hovered
+        .icon:not(.select__tick)
+            color: $button-light-icon-hovered-color
+    &.button_checked
+        background: $button-light-border-checked-color
+        color: $button-light-text-checked-color
+        &:before
+            background: $button-light-background-checked-color
+            box-shadow: none //$button-light-glow-checked
+        &.button_hovered:not(.button_disabled)
+            background: $button-light-border-checked-color
+            color: $button-light-text-checked-color
+            &:before
+                background: $button-light-background-hovered-color
+                box-shadow: $button-light-glow-hovered
+        if make_icon
+            .icon:not(.select__tick)
+                color: $button-light-icon-checked-color
+// }}}
+button_neutral_light(make_icon)// {{{
+
+    $normal_color = darken($neutral-color,20)
+    $hovered_color = darken($normal_color,40)
+
+    background: $button-light-border-color
+    // color: $button-light-text-color
+    &:before
+        background: $button-light-background-color
+    if make_icon
+        .icon:not(.select__tick)
+            icon_pos()
+            // color: $button-light-icon-color
+        //     font-size: $button-light-icon-size
+    button__text()
+    // &.button_hovered:not(.button_disabled)
+    //     // background: $button-light-border-hovered-color
+    //     // color: $button-light-text-hovered-color
+    //     &:before
+    //         // background: $button-light-background-hovered-color
+    //         // box-shadow: $button-light-glow-hovered
+    //     .icon:not(.select__tick)
+    //         // color: $button-light-icon-hovered-color
+    // &.button_checked
+    //     background: $button-light-border-checked-color
+    //     // color: $button-light-text-checked-color
+    //     &:before
+    //         background: $button-light-background-checked-color
+    //         box-shadow: none //$button-light-glow-checked
+    //     &.button_hovered:not(.button_disabled)
+    //         background: $button-light-border-checked-color
+    //         // color: $button-light-text-checked-color
+    //         &:before
+    //             background: $button-light-background-hovered-color
+    //             box-shadow: $button-light-glow-hovered
+    //     if make_icon
+    //         .icon:not(.select__tick)
+    //             // color: $button-light-icon-checked-color
+    &
+    &.button_checked
+        if make_icon
+            .icon:not(.select__tick)
+                color: $normal_color
+        .button__text
+            color: $normal_color
+    &.button_checked.button_hovered:not(.button_disabled)
+    &.button_hovered:not(.button_disabled)
+        background: none
+        // color: $button-light-text-hovered-color
+        &:before
+            background: none
+            box-shadow: $input-glow-neutral-hovered
+        if make_icon
+            .icon:not(.select__tick)
+                color: $hovered_color
+        .button__text
+            color: $hovered_color
+
+// }}}
+
+.button_theme_islands
+
+    // &
+    &.button_default
+        button_default()
+
+    // button_action
+    &.button_action
+        button_action()
+    &.button_action_light
+        button_light(true)
+    &.button_action_neutral_light
+        button_neutral_light(true)
+
+    &
+    &.button_light
+        button_light(false)
+
+    &.button_icon
+        min-width: $input_size
+        .icon:not(.select__tick)
+            &
+            &.ti
+                min-width: auto
+                // top: 1px // ???
+                top: 3px
+                font-size: 17px
+        .icon:after
+        .button__text
+            display:none
+
+    &.button_text
+        .button__text
+            // padding-right: $button__text_padding
+            &:before
+            &:after
+                content: ' '
+                display: inline-block
+                width: $button__text_padding
+
+    &.button_no_frame
+        .button__text
+            margin-right: 0px
+        &
+        &:before
+        &.button_checked
+        &.button_checked:before
+            background: none
+            box-shadow: none
+        &.button_focused-hard
+            background: none
+            box-shadow: none
+            &:before
+                box-shadow: none
+        .icon
+        &:not(.button_action_light):not(.button_light):not(.button_hovered)
+            // background: $button-border-hovered-color
+            &.button_checked
+                color: $button-text-hovered-color
+            .button__text
+                color: darken($neutral-color,20)
+        &.button_on_dark
+            .icon
+            .button__text
+                color: #FFF
+
+    &.button_focused-hard
+        // background: rgba(178, 142, 0, 0.6);
+        background: darken($islands-border-color,10%)
+        box-shadow: 0 0 0 1px alpha($islands-active-color,.6), inset 0 0 0 1px alpha($islands-active-color,.6);
+
+    // &.button_disabled.button_disabled,
+    &.button_disabled
+        // background: rgba(0, 0, 0, 0.08)
+        opacity: .5
+        cursor: default
+        &.button_checked:before
+            // display: block
+            background: alpha(#FFF,.8)
+
+common_red_square_button_type($type) // {{{
+
+    $icon_size = 24px
+    $normal_color = lighten($accent-color,0)
+    $hovered_color = lighten($accent-color,10)
+    $icon_padding = round( $icon_size / 3 ) // 8px
+    if $type == 'sm'
+        $icon_size = 12px
+        $normal_color = lighten($neutral-color,10)
+        $hovered_color = darken($neutral-color,20)
+    $icon_box_size = ( $icon_size + $icon_padding * 2 )
+    $icon_top_offset = 1px
+    $icon_offset = 7px
+    $text_offset = $icon_size + $icon_top_offset + $icon_offset
+
+    $button_top_offset = 6px
+
+    &.button.button_theme_islands
+        // border: 1px solid red
+        background: none
+        position: relative
+        // margin-top: $button_top_offset
+        box-sizing: border-box
+        if $type != 'default'
+            width: $icon_box_size
+            height: $icon_box_size
+        if $type == 'sm'
+            // border: 1px solid red
+            line-height: $icon_box_size // 30px
+            vertical-align: top
+        // transition: all .25s
+        &:before
+            // transition: all .25s
+            background: none
+            box-shadow: none
+        &, .icon
+            color: $normal_color
+        .icon
+            top: 3px
+            if $type == 'sm'
+                top: 1px
+            // color: $normal_color
+            font-size: $icon_size
+            box-sizing: border-box
+            &:after
+                display: none
+        .button__text
+            display: none
+
+        &.button_hovered
+            background: none
+            &:before
+                // background: lighten($islands-active-color,90%)
+                box-shadow: none
+            &, .icon
+                color: $hovered_color
+            // .icon
+            //     // color: $hovered_color
+            .button__text
+                color: #333
+
+        // &.button_focused-hard
+        //     background: darken($islands-border-color,10%)
+        //     box-shadow: 0 0 0 1px alpha($islands-active-color,.6), inset 0 0 0 1px alpha($islands-active-color,.6);
+        &.button_focused-hard
+            // background: darken($islands-border-color,10%)
+            background: none
+            // background: darken($accent-color,10%)
+            box-shadow: 0 0 0 1px alpha($accent-color,.6), inset 0 0 0 1px alpha($accent-color,.6);
+
+        &.button_unhide_left
+        &.button_unhide_right
+            &:before
+                // background: lighten($accent-color,10%)
+                background: lighten($neutral-color,80%)
+            .icon
+                // color: #FFF
+
+    &.button_disabled
+        // @extend $button_disabled
+        button_disabled()
+    //     background: none
+    //     .icon
+    //         color: darken($neutral-color,40%)
+
+    // }}}
+
+.common_nav_button// {{{
+    &.button.button_theme_islands
+        background: none
+        width: $icon_box_width
+        // height: $icon_box_size
+        // height: $box_actions_height
+        height: $elem_height
+
+        &:before
+            background: none
+
+        color: #777
+        .icon
+            top: 0
+            width: $icon_box_width
+            padding: 0px 1px
+            &:before
+                color: #777
+                position: relative
+                top: 1px
+                font-size: $icon_font_size
+                // line-height: $icon_font_size
+
+        &.button_hovered
+            background: none
+            &:before
+                // background: lighten($islands-active-color,90%)
+                background: none
+                box-shadow: none
+            color: #000// !important
+            .icon
+                &:before
+                    color: #000// !important
+                //
+// }}}
+
+// TODO 2016.10.17, 17:41 -- перенести определения в `blocks/root/button/_theme/button_theme_islands.styl`
+
+common_red_square_button()
+    common_red_square_button_type('normal')
+.common_red_square_button
+    common_red_square_button()
+
+common_red_square_button_default()
+    common_red_square_button_type('default')
+.common_red_square_button_default
+    common_red_square_button_default()
+
+common_red_square_button_sm()
+    common_red_square_button_type('sm')
+.common_red_square_button_sm
+    common_red_square_button_sm()
+
+//
+
+.box_actions__group_tools .box_actions__button
+.view_panel__toolbox_item_buttons_tools .button
+    // @extend .common_red_square_button_sm
+    common_red_square_button_sm()
+    &.button_theme_islands
+        margin-top: 0px
+

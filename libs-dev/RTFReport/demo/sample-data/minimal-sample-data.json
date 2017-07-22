@@ -1,0 +1,102 @@
+[
+  {
+    "elem": "Title",
+    "content": "Отчет о пробеге за период"
+  },
+  {
+    "elem": "Group",
+    "id": "detailmove_object_2",
+    "title": "ТС x101xx180 (АНК-М)",
+    "mods": {
+      "showTitle": true,
+      "showStat": true,
+      "showTable": true
+    },
+    "Stat": [
+      {
+        "elem": "Item",
+        "id": "test",
+        "title": "Тестовый параметр",
+        "val": "Очень длинное значение. Крайне длинная строка текста для проверки переносов и умещаемости текста... Тестовое значение"
+      },
+      {
+        "elem": "Item",
+        "id": "typeID",
+        "title": "Тип КО",
+        "val": "ТС"
+      }
+    ],
+    "Table": {
+      "columns": [
+        "Тип периода",
+        "Средняя скорость"
+      ],
+      "rows": [
+        [
+          "Нет данных",
+          0
+        ]
+      ]
+    }
+  },
+  {
+    "elem": "Group",
+    "id": "detailmove_object_2",
+    "title": "ТС x101xx180 (АНК-М)",
+    "mods": {
+      "showTitle": true,
+      "showStat": true,
+      "showTable": true
+    },
+    "Stat": [
+      {
+        "elem": "Item",
+        "id": "typeID",
+        "title": "Тип КО",
+        "val": "ТС"
+      }
+    ],
+    "Table": {
+      "columns": [
+        "Длительность",
+        "Начало движения"
+      ],
+      "rows": [
+        [
+          "2 ч. 49 м. 9 с.",
+          "28.11.2016 21:10"
+        ]
+      ]
+    }
+  },
+  {
+    "elem": "Group",
+    "id": "detailmove_object_2",
+    "title": "ТС x101xx180 (АНК-М)",
+    "mods": {
+      "showTitle": true,
+      "showStat": true,
+      "showTable": true
+    },
+    "Stat": [
+      {
+        "elem": "Item",
+        "id": "typeID",
+        "title": "Тип КО",
+        "val": "ТС"
+      }
+    ],
+    "Table": {
+      "columns": [
+        "Тип периода",
+        "Средняя скорость"
+      ],
+      "rows": [
+        [
+          "Нет данных",
+          0
+        ]
+      ]
+    }
+  }
+]

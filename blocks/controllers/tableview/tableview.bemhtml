@@ -1,0 +1,73 @@
+/* jshint camelcase:false, unused:false, laxbreak:true, expr:true, boss:true */
+/* globals modules, debugger, project, match, block, elem, mod, elemMod, oninit, xjstOptions, wrap, replace, extend, mode, def, content, appendContent, prependContent, attrs, addAttrs, js, addJs, mix, addMix, mods, addMods, addElemMods, elemMods, tag, cls, bem, local, applyCtx, applyNext, apply */
+/**
+ *
+ * @overview tableview
+ *
+ * @author lilliputten <lilliputten@yandex.ru>
+ * @since 2016.10.31 13:31
+ * @version 2016.10.31 13:31
+ *
+*/
+
+/*
+ *  @module tableview
+ */
+
+block('tableview')(
+
+    def()(function(){
+        var ctx = this.ctx,
+
+            boxing_sync_with = ctx.sync_with, // || 'default_sync',
+            boxing_sync_offset = 0,
+
+            undef
+        ;
+
+        // project.helpers.process_boxing_properties(ctx);
+
+        ctx.mods || ( ctx.mods = {} );
+        ctx.mix || ( ctx.mix = [] );
+
+        // Автоматическая синхронизация (boxing_sync)
+        if ( boxing_sync_with ) {
+            // Рассчитываем величины оступов для автоматической настройки высоты секций (panelbox, boxing*)
+            ( ctx.mods.vpadded === true || ctx.mods.vpadded === 'both' ) && ( boxing_sync_offset -= 20 );
+            ( ctx.mods.vpadded === 'top' || ctx.mods.vpadded === 'bottom' ) && ( boxing_sync_offset -= 10 );
+            ctx.mods.resizable && ( boxing_sync_offset -= 50 );
+            // Устанавливаем параметры автоматической синхронизации высот секций (panelbox, boxing*).
+            ctx.mix.push({ block : 'boxing_sync', js : {
+                sync_with : boxing_sync_with,
+                sync_offset : boxing_sync_offset,
+            }});
+        }
+
+        ctx.mix.push({ block : 'full-height-block' });
+
+        return applyNext();
+    }),
+
+    // addMix()(function(){
+    //     return { block : 'exportable' };
+    // }),
+    //
+    addJs()(function(){
+        var ctx = this.ctx,
+            data = applyNext(),
+            id = ctx.id || ( data && data.id )
+        ;
+        return Object.assign({}, data, { id : id });
+    }),
+
+    content()(function(){
+        var ctx = this.ctx;
+        return [
+            { elem : 'container', rootCtx : ctx },
+            { block : 'screenholder', mods : { size : 'm', theme : 'white' } },
+        ];
+
+    })
+
+);
+

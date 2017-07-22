@@ -1,0 +1,25 @@
+/* jshint camelcase:false, unused:false, laxbreak:true, expr:true, boss:true */
+/* globals modules, project, addAttrs, addElemMods, addJs, addMix, addMods, appendContent, apply, applyCtx, applyNext, attrs, bem, block, cls, content, def, elem, elemMod, elemMods, extend, js, local, match, mix, mod, mode, mods, oninit, prependContent, replace, tag, wrap, xjstOptions */
+/*
+ * $Date: 2017-07-17 14:16:38 +0300 (Mon, 17 Jul 2017) $
+ * $Id: app.bemhtml 8762 2017-07-17 11:16:38Z miheev $
+ */
+
+block('app')(
+
+    addJs()(true),
+
+    cls()('vlayout__item_flex'),
+
+    content()(function(){
+        var ctx = this.ctx;
+        return [
+            { elem : 'container', content : ctx.content },
+            { block : 'screenholder' },
+        ];
+    }),
+
+    tag()()
+
+);
+

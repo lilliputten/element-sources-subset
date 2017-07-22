@@ -1,0 +1,123 @@
+$show_items_for_leafs = true // Показывать стрелочки без рамки на конечных листьях дерева
+
+$level_indent = 25px
+$level_indent_half = floor( $level_indent / 2 )
+$level_plus_offset = 0px
+
+$level_height = 24px
+$level_height_half = ceil( $level_height / 2 )
+
+$level_color = #BBB
+$level_active_color = $element-color
+$level_active_bg_color = mix($element-color,#FFF,20)
+
+$toggle_size = 9px
+$toggle_width = $toggle_size //$level_indent_half
+$toggle_height = $toggle_size //$level_indent_half
+
+$toggle_top_offset = floor( ( $level_height - $toggle_height ) / 2 )
+$toggle_left_offset = - ceil( $level_indent - ( $level_indent - $toggle_width ) / 2 ) + $level_plus_offset
+
+// for $level in (0..10)
+//     // .menu__item_level_{$level}
+//     .menu__subtree_level_{$level}
+//         $indent_width = $level_indent * ( $level + 1 )
+
+.menu_tree
+    padding-left: $level_indent
+    padding-right: 8px
+
+// extra classes for override theme defaults
+.menu_tree.menu_size_m .menu__item_tree.menu__item_theme_islands
+        background-position-x: 3px
+        padding-left: 22px
+
+.menu__item_tree
+    &:focus
+        background: mix($element-color,#FFF,15%)
+        outline: 1px dotted #000
+        outline-style: inset
+
+    // ???
+    &.menu__item_tree_toggle_over.menu__item_hovered
+        background-color: #FFF
+        &.menu__item_has_childs
+            // outline-style: inset
+            // outline: 1px dotted $neutral-color // $level_color //alpha(#000,50)
+            // box-shadow: 0 0 0 1px $level_active_bg_color
+            background-color: mix($element-color,#FFF,10)
+
+.menu__subtree
+    position: relative
+    padding-left: $level_indent
+    &:before
+        border-right: 1px dotted $level_color
+        display: block
+        content: ' '
+        left: - $level_indent //( - $level_indent_half + $level_plus_offset )
+        top: - $toggle_top_offset
+        bottom: ( $level_height_half )
+        width: $level_indent_half
+        position: absolute
+    &.menu__subtree_closed
+        display: none
+
+.menu__tree_line
+    cursor: default
+    pointer-events: none
+    .menu__subtree &
+        z-index: 10
+        position: absolute
+        width: $level_indent
+        height: $level_height_half
+        top: 0
+        left: - $level_indent - $level_indent_half
+        border-bottom: 1px dotted $level_color
+
+.menu__tree_toggle
+    left: $toggle_left_offset
+    top: $toggle_top_offset
+    width: $toggle_width
+    height: $toggle_height
+    z-index: 20
+    position: absolute
+    if $show_items_for_leafs
+        background-color: #FFF
+    border: 1px solid transparent
+    cursor: default
+    &:before
+        content: ' '
+        width: $toggle_width
+        height: $toggle_height
+        display: block
+        opacity: .25
+        if $show_items_for_leafs
+            background-image: url("/libs/bem-components/design/common.blocks/theme/_islands/arrow-s.svg");
+            background-position: center 0
+        background-repeat: no-repeat
+        // background-position: center
+        background-size: 7px
+        transform: rotate(-90deg)
+    .menu__item_has_childs &
+        cursor: pointer
+        transition: all .15s
+        if not $show_items_for_leafs
+            background-color: #FFF
+        border: 1px solid $level_color
+        &:before
+            if not $show_items_for_leafs
+                background-image: url("/libs/bem-components/design/common.blocks/theme/_islands/arrow-s.svg");
+            background-position: center
+            opacity: .5
+            // transform: rotate(-90deg)
+            transition: all .15s
+        &:hover
+            background-color: $level_active_bg_color
+            border-color: #FFF
+            box-shadow: 0 0 0 2px $level_active_color
+            &:before
+                opacity: 1
+        ^[1..1].menu__item_open ^[0..0]:before // -> .menu__item_has_childs.menu__item_open .menu__item__tree_toggle:before
+            transform: rotate(0deg) // opened
+            opacity: 1
+

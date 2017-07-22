@@ -1,0 +1,25 @@
+$spin_color = $neutral-color // #FFF
+$spin_color_accent = $accent-color
+
+.spin_theme_islands
+
+    cursor: default
+
+    borderWidth = 2px
+    border: borderWidth solid transparent
+
+    &.spin_visible
+        background-image: none // Запрещаем gif в подложке
+        border-top-color: $spin_color
+        border-left-color: $spin_color
+        animation: spin_theme_islands_new 1s infinite linear
+        &.spin_color_accent
+            border-top-color: $spin_color_accent
+            border-left-color: $spin_color_accent
+
+@keyframes spin_theme_islands_new
+    from
+        transform: rotate(0)
+    to
+        transform: rotate(360deg)
+

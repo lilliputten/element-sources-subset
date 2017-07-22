@@ -1,0 +1,85 @@
+/**
+ * @overview Общие утилиты и макросы
+ * $Date: 2017-05-17 20:36:51 +0300 (Wed, 17 May 2017) $
+ * $Id: mixins.styl 8391 2017-05-17 17:36:51Z miheev $
+ */
+
+not-selectable()// {{{
+    // stop selection (on dblclick)!
+    s('-webkit-user-select: none;') // webkit (safari, chrome) browsers
+    s('-moz-user-select: none;') // mozilla browsers
+    s('-khtml-user-select: none;') // webkit (konqueror) browsers
+    s('-ms-user-select: none;') // IE10+
+// }}}
+.not-selectable
+    not-selectable()
+
+// $full-height-blocks = 'relative'
+$full-height-blocks ?= 'absolute'
+
+full-height-block()// {{{
+
+    // Относительное расположение:
+    if $full-height-blocks == 'relative'
+        position: relative
+        height: 100%
+
+    // Абсолютное расположение:
+    if $full-height-blocks == 'absolute'
+        position: absolute
+        height: 100%
+        width: 100%
+
+    // overflow: hidden
+    // overflow: auto
+
+    clearfix()
+// }}}
+full-height-container()// {{{
+
+    if $full-height-blocks == 'relative'
+        position: relative
+        height: 100%
+
+    if $full-height-blocks == 'absolute'
+        position: absolute
+        height: 100%
+        width: 100%
+        top: 0
+        bottom: 0
+
+    // overflow: hidden
+    // overflow: auto
+
+    clearfix()
+// }}}
+scrollable-container()// {{{
+    full-height-container()
+    // overflow: hidden
+    -webkit-overflow-scrolling: touch
+    overflow: auto
+// }}}
+.full-height-block
+    full-height-block()
+.full-height-container
+    full-height-container()
+.scrollable-container
+    scrollable-container()
+    .boxing_vz_padded &
+        height: auto
+
+caret()// {{{ Dropdown arrow/caret
+    display inline-block
+    width 0
+    height 0
+    margin-left 2px
+    vertical-align middle
+    border-top $caret-width-base dashed
+    border-top s("%s solid \9", $caret-width-base) // IE8
+    border-right $caret-width-base solid transparent
+    border-left $caret-width-base solid transparent
+// }}}
+
+//.caret
+//    caret()
+

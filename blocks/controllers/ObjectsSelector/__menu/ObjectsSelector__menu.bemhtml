@@ -1,0 +1,23 @@
+/* jshint camelcase:false, unused:false, laxbreak:true, expr:true, boss:true */
+/* globals modules, project, addAttrs, addElemMods, addJs, addMix, addMods, appendContent, apply, applyCtx, applyNext, attrs, bem, block, cls, content, def, elem, elemMod, elemMods, extend, js, local, match, mix, mod, mode, mods, oninit, prependContent, replace, tag, wrap, xjstOptions */
+block('ObjectsSelector').elem('menu')(
+
+    def()(function(){
+        var ctx = this.ctx;
+        var elemMods = ctx.elemMods || {};
+        return applyCtx({
+            block : 'menu',
+            js : true,
+            mix : { block : this.block, elem : this.elem },
+            mods : {
+                mode : elemMods.mode || this.mods.mode || 'check',
+                theme : 'islands',
+                size : 'm',
+            },
+            content : this.ctx.content,
+        });
+
+    })
+
+);
+

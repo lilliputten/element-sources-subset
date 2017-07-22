@@ -1,0 +1,81 @@
+/* jshint camelcase:false, unused:false, laxbreak:true, expr:true, boss:true */
+/* globals modules, debugger, project, def, tag, match, js, applyCtx, content, applyNext, block, elem, attrs, mix, mod */
+block('menu').mod('tree', true)(
+
+    content()(function() {/*{{{*/
+        var mods = this.mods || this.ctx.mods || {},
+            /*{{{*/optionToMenuItem = function (option, level, childs) {
+                var
+                    has_childs = childs && Array.isArray(childs) && childs.length,
+                    item = Object.assign({}, option)
+                ;
+
+                if ( !item.js ) { item.js = {}; }
+                // if ( !item.mods ) { item.mods = {}; }
+                item.elemMods = Object.assign({}, item.elemMods, {
+                    tree : true,
+                    level : level,
+                    // has_childs : has_childs,
+                });
+
+                item.id = item.val;
+                item.content = [
+                    { elem : 'tree_line' },
+                    { elem : 'tree_toggle' },
+                    item.content,
+                ];
+
+                if ( option.icon ) {
+                    item.js.text = option.text;
+                    item.content.unshift(option.icon);
+                }
+
+                if ( has_childs ) {
+                    item.js.has_childs = item.elemMods.has_childs = true;
+                    item = [
+                        item,
+                        {
+                            elem : 'subtree',
+                            elemMods : {
+                                parent : option.val,
+                                level : level,
+                                closed : true,
+                            },
+                            content : childs,
+                        },
+                    ];
+                }
+
+                // item.addJs = item.js; delete item.js;
+
+                return item;
+            },/*}}}*/
+            options = this.ctx.content,
+            /*{{{*/makeTree = function (parent_id, level) {
+
+                level = level || 0;
+
+                var tree_level = [];
+
+                // for ( var n in options ) {
+                options.map(function(item){
+                    // var item = options[n];
+                    // Если имеет искомого родителя
+                    if ( ( !parent_id && !item.parent ) || String(item.parent) === parent_id ) {
+                        var childs = makeTree(String(item.val), level + 1); // Возможно, стоит сделать защиту от зацикливания
+                        var item_ctx = optionToMenuItem(item, level, childs);
+                        tree_level.push(item_ctx);
+                    }
+                });
+
+                return tree_level;
+
+            },/*}}}*/
+            tree = makeTree('')
+        ;
+
+        return tree;
+    })/*}}}*/
+
+
+);

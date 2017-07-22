@@ -1,0 +1,190 @@
+
+# $Date: 2017-07-17 21:24:09 +0300 (Mon, 17 Jul 2017) $
+# $Id: gulpfile.config.yaml 8771 2017-07-17 18:24:09Z miheev $
+
+# SET_DEBUG_VALUE: true # NOTE: Не используется 2017.03.14, 14:47
+
+DEBUG: true # NOTE: Не используется 2017.03.14, 14:47
+# INJECT_MIN_VERSIONS: true
+INJECT_MINIFIED_ASSETS: false # Минимифицируем инсталлируемые пакеты
+
+ONLY_INJECT_TEMPLATE: true # don't overwrite target templates
+
+APP_PAGE_NAME: &APP_PAGE_NAME 'App'
+
+SHARED_ID: *APP_PAGE_NAME
+
+INCLUDE_LINKS_SAMPLE: true
+
+PREPROCESS_STATIC_CSS: true
+PREPROCESS_STATIC_JS: true
+MINIMIZE_LOCAL_CSS: true
+MINIMIZE_LOCAL_JS: true
+MINIMIZE_STATIC_CSS: true
+MINIMIZE_STATIC_JS: true
+
+EXPORT_VARIABLES:
+    - projectName
+    - projectVersion
+    - dateTag
+    - hashTag
+    - projectTag
+
+EXPORT_VARIABLES_FILE: &EXPORT_VARIABLES_FILE 'scripts/php/app-config/generated_bem_variables.php'
+EXPORT_VARIABLES_TEMPLATE: 'export_variables.php.template'
+
+PAGES:
+    App:
+        save: true
+        replace_to_shared: 'App'
+        # use_template: false
+        # template: 'layout'
+        file: 'application/layout.html'
+        url: 'core/application/layout.html'
+        replace_script_links:
+            - 'SHARED.browser.js'
+            - 'SHARED.bemhtml.js'
+        replace_style_links:
+            - 'SHARED.styles.css'
+    default:
+        force_process: true
+        use_template: false
+        file: 'application/{{page}}.html'
+        url: 'core/application/{{page}}.html'
+        replace_script_links:
+            - 'SHARED.browser.js'
+            - '{{page}}.browser.js'
+            - 'SHARED.bemhtml.js'
+            - '{{page}}.bemhtml.js'
+            # - '{{page}}.all+SHARED.js'
+        replace_style_links:
+            - '{{page}}.styles.css'
+            - 'SHARED.styles.css'
+            # - '{{page}}+SHARED.css'
+
+STATIC_PATH: 'static/'
+LOCAL_ROOT_PATH: 'root/'
+LOCAL_CORE_PATH: 'core/'
+COPY_ROOT_FILES: false
+LIBS_PATH: 'libs/'
+LIBS_DEV_PATH: 'libs-dev/'
+DEPS_PATH: 'deps/'
+INJECT_BLOCKS_ASSETS_PATH: &INJECT_BLOCKS_ASSETS_PATH 'libs/bem-blocks-assets/'
+INJECT_LIBS_PATH: &INJECT_LIBS_PATH 'libs/bem/'
+INJECT_DEPS_PATH: &INJECT_DEPS_PATH 'libs/bem/'
+FAKE_DATA_PATH: 'fake-data/'
+PAGES_PATH: 'pages/'
+DEST_PATH: 'maket/'
+# DEST_PATH: 'WEB_TINTS/core/'
+GENERATED_YAML: './.generated.yaml'
+PACK_PATH: './' # 'maket-pack/'
+INJECT_TEMPLATES_PATH: 'inject_templates/'
+INJECT_TEMPLATES_EXT: '.template'
+# INJECT_PATH: '../WEB_TINTS/'
+INJECT_PATH: '../release/'
+CORE_SUBURL: 'core/'
+GENERATED_ASSETS_FOLDER: 'generated.assets/'
+
+# Папка, в которую сохраняются сгенерированные слепки bemjson страниц
+GENERATED_BEMJSON_FOLDER: 'bemjson/' # generated.bemjson // NOTE: NOT USED!
+GENERATED_BEMJSON_EXT: '.json'
+BEMJSON_PAGES_FOLDER: 'js/bemjson/'
+
+MATCH_FIRST_FILES_RE: '[\/](index|base\.browser|bemhtml_engine)\.[^\.]*$'
+
+URL_ADD_MIN_SUFFIX: true
+URL_ADD_HASH_TAG: true
+
+TAGSFILE: '.tags'
+
+COMBINE_DIRS_ORDER:
+    - '/libs/bem-core'
+    - '/libs/bem-components'
+    - '/blocks/!includes'
+    - '/blocks/root'
+    - '/blocks/shared'
+    # - '/blocks/loaders'
+    # - '/blocks/helpers'
+    # - '/blocks/custom'
+    # - '/blocks/pages'
+
+COMBINE_SHARED_CONFIG_FILE: 'combine_shared_config.yaml'
+COMBINE_CONFIG_FILE: 'combine_config.yaml'
+# SHARED_BEMHTML_PREFIX: "(window.BEMHTML_QUEUE||(window.BEMHTML_QUEUE=[])).push(function(match,once,wrap,block,elem,mode,mod,elemMod,def,tag,attrs,cls,js,bem,mix,content,replace,extend,oninit,xjstOptions,local,applyCtx,applyNext,apply){\n\n"
+# SHARED_BEMHTML_POSTFIX: "\n});typeof(window.BEMHTML_QUEUE_PROCESS)==='function'&&window.BEMHTML_QUEUE_PROCESS('package:bemhtml.js:{{id}}');\n"
+SHARED_BEMHTML_PREFIX: "BEMHTML.compile(function() {\n\n"
+SHARED_BEMHTML_POSTFIX: "\n});\n"
+# SHARED_BEMHTML_POSTFIX: "\n});typeof(window.BEMHTML_QUEUE_PROCESS)==='function'&&window.BEMHTML_QUEUE_PROCESS('{{id}}');\n"
+SHARED_BROWSER_PREFIX: ""
+SHARED_BROWSER_POSTFIX: ""
+# SHARED_BROWSER_POSTFIX: "\ntypeof(window.BROWSER_JS_LOADED)==='function'&&window.BROWSER_JS_LOADED('package:browser.js:{{id}}');\n"
+
+JSDOC_FILES:
+    - 'README.md'
+    # - 'common.blocks/**/*.js'
+    # - 'desktop.blocks/**/*.js'
+    - 'blocks/**/*.js'
+
+VENDOR_PATHS:
+    css: 'css/bem/'
+    js: 'js/bem/'
+
+# blocks/* ???
+# INJECT_BLOCKS_FIND_RE: '((?:common|desktop)\.blocks\/)'
+INJECT_BLOCKS_FIND_RE: '(blocks\/\w+\/)'
+INJECT_BLOCKS_ASSETS_FILES:
+    # - '{common,desktop}.blocks/**/*.{gif,jpg,jpg,png,ico}'
+    - 'blocks/**/*.{gif,jpg,jpg,png,ico}'
+
+DEPS_FILES:
+    # - 'bootstrap/dist/'
+    - 'secure_ajax/{secure_ajax.js,*.md}'
+LIBS_FILES:
+    # - 'bootstrap/dist/'
+    - 'jquery/dist/'
+    - 'font-awesome/{css,fonts}/'
+    - 'themify-icons/{css,fonts}/' # http://themify.me/themify-icons
+    # - 'owlcarousel/owl-carousel/'
+    # - 'jquery/*.js'
+    - 'bem-components/design/common.blocks/{spin,theme}/'
+    - 'bem-components/test.blocks/**/*.{svg,png}'
+    - 'jquery-resizable-columns/dist/'
+    - 'store.js/dist/'
+    - 'jquery.nicescroll-3.6.8/*.js' # OLD version!
+    - 'jquery.nicescroll/*.js'
+    - 'jquery-mousewheel/*.js'
+    - 'jquery-md5/*.js'
+    - 'datetimepicker/build/'
+    - 'pdfmake/build/'
+    - 'file-saver/*.js'
+    - 'jQuery-Word-Export/*.js'
+    - 'jquery-md5/*.js'
+    - 'socket.io-client/dist/'
+LIBS_DEV_FILES:
+    - 'RTFReport/dist/'
+    - 'jsrtf/dist/'
+
+CACHE_FILES:
+    - core/scripts/php/app/cache/*
+    - application/scripts/php/app/cache/*
+    - element-dc/scripts/php/app/cache/*
+    - element-tcm/scripts/php/app/cache/*
+    - element-umto/scripts/php/app/cache/*
+LOGS_FILES:
+    - core/scripts/php/app/logs/*
+    - application/scripts/php/app/logs/*
+    - element-dc/scripts/php/app/logs/*
+    - element-tcm/scripts/php/app/logs/*
+    - element-umto/scripts/php/app/logs/*
+
+CLEAN_INJECT_FILES:
+    - 'css/bem/'
+    - 'js/bem/'
+    - 'js/bemjson/'
+    - *EXPORT_VARIABLES_FILE
+
+CLEAN_INIT_FILES:
+    - *INJECT_LIBS_PATH
+    - *INJECT_DEPS_PATH
+    - *INJECT_BLOCKS_ASSETS_PATH
+

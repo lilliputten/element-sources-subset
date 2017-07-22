@@ -1,0 +1,67 @@
+@require "../__defaults.styl"
+
+$item_width = 120px
+$menu_columns = false
+// $checked_transparency = .4
+$hovered_mix = 15
+$checked_mix = 40
+$checked_hovered_mix = 55
+
+.ObjectsSelector__menu.menu
+    if $menu_columns
+        columns: $item_width // 8 200px
+        column-gap: 0
+    &.menu_theme_islands
+        background: none
+        &:after
+        &:before
+            display: none
+    .menu__item.menu__item_theme_islands
+        background-color: #FFF
+        unless $menu_columns
+            // display: inline-block
+            float: left
+        padding-left: 24px
+        padding-right: 8px
+        margin-right: 1px
+        margin-bottom: 1px
+        background-position-x: 6px
+        width: $item_width
+        overflow: hidden
+        text-overflow: ellipsis
+        &.menu__item_hovered
+            // background-color: alpha($element-color,.5)
+            background-color: mix($element-color,#FFF,$hovered_mix)
+        &.menu__item_checked
+            // background-color: alpha($element-color,$checked_transparency)
+            background-color: mix($element-color,#FFF,$checked_mix)
+            &.menu__item_hovered
+                // background-color: alpha($element-color,.5)
+                background-color: mix($element-color,#FFF,$checked_hovered_mix)
+        &.menu__item_new
+            // cursor: default
+            // background-color: alpha($element-color,.4)
+            animation-duration: 1.5s
+            animation-name: ObjectsSelector_menu_item_animation
+            &.menu__item_checked
+                animation-name: ObjectsSelector_menu_item_checked_animation
+
+// ObjectsSelector_menu_item_animation($transparency)
+ObjectsSelector_menu_item_animation($mix)
+    0%
+        opacity: 0
+        // background-color: alpha($element-color,1)
+        background-color: $element-color
+    50%
+        opacity: 1
+    100%
+        // background-color: alpha($element-color,$transparency)
+        background-color: mix($element-color,#FFF,$mix)
+
+@keyframes ObjectsSelector_menu_item_animation
+    ObjectsSelector_menu_item_animation(0)
+
+@keyframes ObjectsSelector_menu_item_checked_animation
+    // ObjectsSelector_menu_item_animation($checked_transparency)
+    ObjectsSelector_menu_item_animation($checked_mix)
+

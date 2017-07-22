@@ -1,0 +1,82 @@
+/* jshint camelcase:false, unused:false, laxbreak:true, expr:true, boss:true */
+/* globals modules, project, addAttrs, addElemMods, addJs, addMix, addMods, appendContent, apply, applyCtx, applyNext, attrs, bem, block, cls, content, def, elem, elemMod, elemMods, extend, js, local, match, mix, mod, mode, mods, oninit, prependContent, replace, tag, wrap, xjstOptions */
+/**
+ *
+ * @module tableview_checkable
+ * @overview tableview_checkable
+ * @author lilliputten <lilliputten@yandex.ru>
+ * @since 2016.11.22, 17:16
+ * @version 2016.11.22, 17:16
+ *
+*/
+
+block('tableview').mod('checkable', true)(
+
+    elem('headcell').match(function(){ return this.ctx.check; })(
+
+        def()(function(){
+            var ctx = this.ctx;
+            // debugger
+            ctx.cls = ctx.cls ? ctx.cls+' ': '';
+            ctx.cls += 'check';
+            if ( ! /\bshow\b/.test(ctx.cls) ) {
+                ctx.cls += ' show';
+            }
+            return applyNext();
+        }),
+
+        content()(function(){
+            var ctx = this.ctx;
+            var content = applyNext();
+            content = {
+                block : 'checkbox',
+                mods : { theme : 'islands', size : 'm' },
+                name: 'check',
+                val: 'all',
+                attrs : {
+                    title : 'Отметить все',
+                },
+            };
+            return content;
+        })
+
+    ),
+
+    elem('bodycell').match(function(){ return this.ctx.check; })(
+
+        def()(function(){
+            var ctx = this.ctx;
+            ctx.cls = ctx.cls ? ctx.cls+' ': '';
+            ctx.cls += 'check';
+            if ( ! /\bshow\b/.test(ctx.cls) ) {
+                ctx.cls += ' show';
+            }
+            return applyNext();
+        }),
+
+        content()(function(){
+            var ctx = this.ctx;
+            var content = applyNext();
+            content = {
+                block : 'checkbox',
+                mods : {
+                    theme : 'islands',
+                    size : 'm',
+                    checked : ctx.checked
+                    // row : ctx.row_no,
+                },
+                attrs : {
+                    id : ctx.row_no,
+                    title : 'Отметить',
+                },
+                name: 'check',
+                val: ctx.row_no,
+            };
+            return content;
+        })
+
+    ),
+
+    tag()()
+
+);

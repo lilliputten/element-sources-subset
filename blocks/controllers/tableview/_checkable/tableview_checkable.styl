@@ -1,0 +1,45 @@
+@require "../__defaults.styl"
+
+.tableview_checkable
+    .tableview__bodyrow_checked:not(.tableview__bodyrow_selected)
+        .tableview__bodycell
+            @extend $checked_cell
+    .tableview__bodyrow_checked.tableview__bodyrow_hovered:not(.tableview__bodyrow_selected)
+        .tableview__bodycell
+            @extend $checked_hovered_cell
+
+    .tableview__headcell.check
+        @extend $default_check
+
+        .handle
+            cursor: default
+            &:hover
+                border-left-color: $head_bg_color
+                border-right-color: $head_bg_color
+
+    .tableview__bodycell.check
+        @extend $default_check
+
+    // Показывать чекбокс по наведению мыши
+    &.tableview_hoverable
+        .tableview__bodycell.check
+            > .checkbox
+                opacity: 0
+                transition: opacity .1s ease-in
+                ^[0..1] .tableview__bodyrow_checked ^[2..-1]
+                ^[0..1] .tableview__bodyrow_hovered ^[2..-1]
+                    opacity: 1
+
+    // Прячем чекбокс, если таблица resizable
+    &.tableview_resizable
+        .tableview__headcell.check
+            // .handle
+            .title
+            .text
+                @extend $default_check
+                // width: $check_width
+
+            &
+            .text
+                height: 0
+

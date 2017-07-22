@@ -1,0 +1,156 @@
+@require "../__defaults.styl"
+
+$vspace = 10px
+
+default_resizable_cell($lighten=$default_lighten)
+    // font-weight: normal
+    // // text-align: left
+    // padding: $cell_offset
+    // background-color: lighten($base_bg_color,$lighten)
+    overflow: hidden
+    text-overflow: ellipsis
+    box-sizing: border-box
+    transition: background .1s
+$default_resizable_cell
+    default_resizable_cell()
+
+
+// .tableview
+.tableview_resizable
+
+    position: relative
+
+    // Насколько это совместимо с мобильными и старыми устройствами?
+    // height: "calc( 100% - %s )" % ( $head_height ) // ???
+
+    // Хинт отступа для скрытия "настоящего" заголовка таблицы
+    // (Показываем виртуальный абсолютно позиционируемый заголовок
+    // -- блоки .title внтури .tableview__headcell
+    padding-top: $head_height// - 4px
+
+    &.tableview_vpadded
+    &.tableview_vpadded_both
+    &.tableview_vpadded_top
+        padding-top: $head_height + $vspace
+    &.tableview_vpadded
+    &.tableview_vpadded_both
+    &.tableview_vpadded_bottom
+        margin-bottom: $vspace
+
+    .tableview__table
+        // width: auto
+        table-layout: fixed
+        margin-top: - $head_height // Прячем "настоящий" заголовок
+
+    .tableview__underlay
+        background: $accent-color
+        height: $head_height
+        position: absolute
+        top: 0
+        width: 100%
+        border: 0px solid #FFF
+        border-left-width: 1px
+        // border-right-width: 1px // ???
+        border-bottom-width: 2px
+        box-sizing: border-box
+        z-index: 5
+
+    &.tableview_vpadded
+    &.tableview_vpadded_both
+    &.tableview_vpadded_top
+        .tableview__underlay
+            top: $vspace
+
+    // TODO 2016.11.25, 15:47 -- Ещё и выход з-а границы таблицы (модификатор на элементе "выше" таблицы?)
+    & .tableview__head_resizing
+        &
+        .tableview__headcell
+            cursor: col-resize
+
+    .tableview__headrow
+        margin-right: 10px // ??? Для изменения размера последней колонки -- нужно ли?
+
+    .tableview__bodycell
+        @extend $default_resizable_cell
+
+    .tableview__headcell// {{{
+        @extend $default_resizable_cell
+
+        padding: 0
+        border: none
+        white-space: nowrap
+
+        &
+        .text
+            // Прячем "настоящий" заголовок
+            // Изменено: используем способ указания отрицательного отступа
+            // для самой таблицы (см. .tableview__table выше).
+            //
+            // height: 0
+            // line-height: 0
+            // color: transparent
+            height: $head_height
+        .text
+            display: block
+            padding: 0 $cell_offset
+
+        > .checkbox
+            display: none
+
+        .handle
+        .title
+            @extend $default_resizable_cell
+            position: absolute
+            background: transparent
+            background: $head_bg_color
+            color: #FFF
+            padding: 0 $cell_offset
+            padding-top: $head_xtra_offset
+            height: $head_height
+            top: 0px
+            line-height: normal
+            border-bottom: $head_bottom_offset solid #FFF
+            z-index: 10
+
+            // ??? DEBUG: Смотрим, как отсекаются тексты заголовка.
+            // Не отсекаются; надо делать принудительно в скрипте.
+            // Также надо будет отслеживать горизонтальный скроллинг
+            // width: 50px
+
+        .handle
+
+            // TODO: Научиться находить первую видимую колонку и прятать у неё "рукоятку"
+
+            padding: 0
+            width: 5px
+            border: 0px
+            border-left: 2px solid $head_bg_color
+            border-right: 2px solid $head_bg_color
+            height: $head_height - $head_bottom_offset
+            top: 0
+            background: #FFF
+            cursor: col-resize
+            z-index: 20
+
+            transition: border .1s, background .1s
+
+            &:hover
+                border-left-color: #FFF
+                border-right-color: #FFF
+
+        &.resizing
+            .handle
+                background: $accent-color
+                border-left-color: #FFF
+                border-right-color: #FFF
+    // }}}
+
+    &.tableview_vpadded
+    &.tableview_vpadded_both
+    &.tableview_vpadded_top
+        .tableview__headcell
+            .handle
+            .title
+                top: $vspace
+
+

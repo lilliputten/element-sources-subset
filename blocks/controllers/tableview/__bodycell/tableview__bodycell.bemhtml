@@ -1,0 +1,57 @@
+/* jshint camelcase:false, unused:false, laxbreak:true, expr:true, boss:true */
+/* globals modules, project, addAttrs, addElemMods, addJs, addMix, addMods, appendContent, apply, applyCtx, applyNext, attrs, bem, block, cls, content, def, elem, elemMod, elemMods, extend, js, local, match, mix, mod, mode, mods, oninit, prependContent, replace, tag, wrap, xjstOptions */
+/**
+ *
+ * @module tableview__bodycell
+ * @overview tableview__bodycell
+ *
+ * @author lilliputten <lilliputten@yandex.ru>
+ * @since 2016.10.31 13:31
+ * @version 2016.10.31 13:31
+ *
+*/
+
+block('tableview').elem('bodycell')(
+
+    def()(function(){
+        var ctx = this.ctx;
+
+        if ( !ctx.mix ) { ctx.mix = []; }
+
+        ctx.bare_cls = 'n_'+ctx.n;
+
+        ctx.cls = ctx.cls ? ctx.cls+' ': '';
+        ctx.cls += 'cell '+ctx.bare_cls;
+
+        if ( ctx.show && ! /\bshow\b/.test(ctx.cls) ) {
+            ctx.cls += ' show';
+        }
+
+        if ( ctx.datasets ) {
+            ctx.cls += ' dataset dataset_'+ctx.datasets.replace(/,/g, ' dataset_');
+        }
+
+        ctx.attrs = this.extend(ctx.attrs, {
+            title : ctx.val,
+        });
+        if ( ctx.width ) {
+            ctx.attrs = this.extend(ctx.attrs, {
+                style : 'width:'+ctx.width+'px;min-width:'+ctx.width+'px;max-width:'+ctx.width+'px;',
+            });
+        }
+
+        // return applyCtx(ctx);
+        return applyNext();
+    }),
+
+    content()(function(){
+        var ctx = this.ctx;
+        ctx.content = ctx.val;
+        var result = applyNext();
+        return result;
+    }),
+
+    tag()('td')
+
+);
+

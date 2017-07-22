@@ -1,0 +1,87 @@
+// vim: ft=javascript
+/* jshint camelcase:false, unused:false, laxbreak:true, expr:true, boss:true */
+/* globals modules, debugger, project, match, block, elem, mod, elemMod, oninit, xjstOptions, wrap, replace, extend, mode, def, content, appendContent, prependContent, attrs, addAttrs, js, addJs, mix, addMix, mods, addMods, addElemMods, elemMods, tag, cls, bem, local, applyCtx, applyNext, apply */
+/**
+ *
+ * @module box
+ * @overview box
+ *
+ * @author lilliputten <lilliputten@yandex.ru>
+ * @since 2017.02.27 14:11:56
+ * @version 2017.02.27 14:11:56
+ *
+ * $Date: 2017-07-21 22:01:17 +0300 (Fri, 21 Jul 2017) $
+ * $Id: box.bemhtml 8794 2017-07-21 19:01:17Z miheev $
+ *
+*/
+
+block('box')(
+
+    // Добавляем идентификатор в params
+    addJs()(function(){
+        return {
+            id : ( this.mods && this.mods.id ) || this.ctx.id,
+        };
+    }),
+
+    // Модификаторы по умолчанию (не `addJs`)
+    mods()(function(){
+        var
+            // // Корневой блок
+            // rootBox = this.ctx._rootBox || {},
+            // rootMods = rootBox.mods || {},
+            // // Родительский блок
+            // parentBox = this.ctx._parentBox || {},
+            // parentMods = parentBox.mods || {},
+            // // Расположение сетки
+            // // stackMode = parentMods.layout || rootMods.layout || 'vertical',
+            // stackMode = this.ctx._parentBox && ( parentMods.layout || rootMods.layout || 'vertical' ) || '',
+            // layout = parentMods.layout || rootMods.layout || 'vertical',
+            // Собственные модификаторы
+            mods = applyNext()
+        ;
+        // console.log('box', this.ctx.id, 'stackMode:', stackMode, 'root:', rootBox.ctx && rootBox.ctx.id, 'parent:', parentBox.ctx && parentBox.ctx.id);
+        return Object.assign({
+            id : this.ctx.id,
+            // stackMode : stackMode,
+            // layout : layout,
+        }, mods);
+    }),
+
+    addAttrs()({
+        xxx : 'ttt',
+    }),
+
+    // TODO: Модификатор `noContainer`?
+    content()(function(){
+        // DBG( this.ctx.id, 'content', this.mods/* , this.ctx.content */ );
+        var content = applyNext();
+        // Array.isArray(content) || ( content = [content] );
+        // Проходим по всем вложенным элементам...
+        // content = content
+        //     .map(function(ctx){
+        //         // Если вложенный `box`...
+        //         if ( typeof ctx === 'object' && ctx.block === 'box' ) {
+        //             var box = Object.assign({}, this);
+        //             // Устанавливаем связь (для шаблонов) с родительским и корневым блоками
+        //             ctx = Object.assign({
+        //                 _parentBox : box,
+        //                 _rootBox : this.ctx._rootBox || box,
+        //             }, ctx);
+        //         }
+        //         return ctx;
+        //     }, this)
+        // ;
+        return {
+            elem : 'container',
+            elemMods : {
+                layout : this.mods.layout,
+            },
+            content : content,
+        };
+    }),
+
+    tag()()
+
+);
+

@@ -1,0 +1,37 @@
+// $Date: 2017-06-14 13:51:11 +0300 (Wed, 14 Jun 2017) $
+// $Id: page.styl 8591 2017-06-14 10:51:11Z miheev $
+
+// .test
+//     border: 1px solid red
+//     height: 10px
+//     .static
+//         background-image: url("/static/somefile")
+//     .libs
+//         background-image: url("/libs/somefile")
+
+html, body
+    height: 100%
+
+body.page
+    margin: 0;
+    padding: 0
+    background-color: $layout-background-color
+
+    background-repeat: repeat-x
+
+    font-family: $default-font
+    font-size: $font-size-normal
+
+    if $hide-overflow
+        overflow: hidden
+
+body.resizing
+body.resizing-h
+body.resizing-v
+    user-select: none
+    pointer-events: none
+body.resizing-h
+    cursor: col-resize
+body.resizing-v
+    cursor: row-resize
+

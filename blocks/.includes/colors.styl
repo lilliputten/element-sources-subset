@@ -1,0 +1,49 @@
+/**
+ * @overview Определения используемых цветов
+ * $Date: 2017-03-30 20:33:29 +0300 (Thu, 30 Mar 2017) $
+ * $Id: colors.styl 8020 2017-03-30 17:33:29Z miheev $
+ */
+
+$default-color = #222
+
+$light-text-color = mix($default-color,#FFF,50%)
+$lighten-text-color = mix($default-color,#FFF,20%)
+
+$background-color = #E5E5E5 // #F5F5F5
+$paper-color = #FFF
+$accent-color = #B9B9B9 // #2A333C
+$default-text-color = #444
+$dark-text-color = #333
+$panel-background-color = darken($paper-color,5%)
+$panel-border-color = darken($background-color, 0%)
+
+$tabs-border-color = $panel-border-color
+// $panel-border-color = darken($tabs-border-color,5)
+
+$accent-color = #B00
+$brand-primary = $accent-color
+$neutral-color = #999
+$alt-accent-color = #FC0
+
+$element-color = #859DC7
+$warning-color = #CC0000
+$error-color = #CC0000
+
+$required-color = $accent-color
+required_color()
+    color: $required-color
+.required_color
+    required_color()
+
+$layout-background-color = lighten($neutral-color,30)
+$layout-light-background-color = lighten($layout-background-color,5)
+$medium-background-color = lighten($neutral-color,37)
+$light-border-color = lighten($neutral-color,27)
+$medium-border-color = lighten($neutral-color,22)
+
+// $islands-active-color = #FFEBA0
+// $islands-border-color = #BEBEBE
+
+$islands-active-color = $element-color
+$islands-border-color = #CCC
+

@@ -1,0 +1,50 @@
+/**
+ * @overview Формы (не используется)
+ * $Date: 2017-03-09 22:37:35 +0300 (Thu, 09 Mar 2017) $
+ * $Id: bem-forms.styl 7531 2017-03-09 19:37:35Z miheev $
+ */
+
+$background-color = #EEE
+// $accent-color = #C00
+$accent-color = #2A333C
+$dark-text-color = #333
+
+$header-background-color = $accent-color
+
+$collapse-width = 768px
+$collapse-width-treshold = $collapse-width - 1px
+
+$default-font = Arial, sans-serif
+$accent-font = Georgia, "Times New Roman", Times, serif
+
+$default-font-size = 15px
+$small-font-size = $default-font-size - 2px
+$large-font-size = $default-font-size + 4px
+$xl-font-size = $large-font-size + 4px
+$xxl-font-size = $xl-font-size + 4px
+
+// Bootstrap sizes
+$screen-xs =                  480px
+//** Deprecated `$screen-xs-min` as of v3.2.0
+$screen-xs-min =              $screen-xs
+// Small screen / tablet
+//** Deprecated `$screen-sm` as of v3.0.1
+$screen-sm =                  768px
+$screen-sm-min =              $screen-sm
+// Medium screen / desktop
+//** Deprecated `$screen-md` as of v3.0.1
+$screen-md =                  992px
+$screen-md-min =              $screen-md
+// Large screen / wide desktop
+//** Deprecated `$screen-lg` as of v3.0.1
+$screen-lg =                  1200px
+$screen-lg-min =              $screen-lg
+// So media queries don't overlap when required, provide a maximum
+$screen-xs-max =              ($screen-sm-min - 1)
+$screen-sm-max =              ($screen-md-min - 1)
+$screen-md-max =              ($screen-lg-min - 1)
+// + my own
+$screen-sm-treshold =         ($screen-sm-min - 1)
+$screen-md-treshold =         ($screen-md-min - 1)
+$screen-lg-treshold =         ($screen-lg-min - 1)
+

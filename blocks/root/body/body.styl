@@ -1,0 +1,82 @@
+@require "__default.styl"
+
+// @require "common.styl"
+//@require "common.colors.styl"
+//@require "common.fonts.styl"
+//@require "common.dimensions.styl"
+
+body
+table
+.PrintReport
+.appholder
+.bem-text
+// .inject
+.demo
+.popup
+.split_view
+.progressbar
+.app
+    default-font-style()
+    // @extend $default-font-style
+
+// section.cf
+//     display: flex
+//     flex-flow: column
+//     // -webkit-flex-flow: column
+//     // align-items: stretch
+//     // align-content: stretch
+//     // padding-top: 0px !important
+//     // display: flex !important
+//     // flex-flow: column
+//     height: 100vh
+//     box-shadow: inset 0 0 0 6px blue
+
+html
+body
+    loaded: yes
+    height: 100%
+    height: 100vh
+    margin: 0
+    padding: 0
+    border: 0
+    outline: 0
+    // box-shadow: inset 0 0 0 6px blue
+    // border: 2px solid red
+    // box-sizing: border-box
+
+    // // *** ???
+    //
+    // -webkit-font-smoothing: antialiased;
+    // -moz-osx-font-smoothing: grayscale;
+    // -webkit-backface-visibility: hidden;
+    // backface-visibility: hidden;
+    // -webkit-transform-style: preserve-3d;
+    // -webkit-transform: translate3d(0,0,0);
+
+
+body.app_layout
+body.bem_root
+    // background: #DDD
+    // background: $layout-background-color
+    min-width: 0 // Remove previous styles
+body.app_layout
+    margin: 0
+    padding: 0
+    box-sizing: border-box
+    // padding-bottom: $app_panel_spacing
+    // box-shadow: inset 0 0 0 6px blue
+    // border: 4px solid blue
+    max-height: 100%
+    max-height: 100vh
+    overflow: hidden
+
+a
+    &
+    &:visited
+        color: $brand-primary
+    &:hover
+        color: lighten($brand-primary,20)
+
+// body.has_popup
+//     border: 2px solid red
+

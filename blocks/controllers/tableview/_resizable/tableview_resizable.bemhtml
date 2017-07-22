@@ -1,0 +1,66 @@
+/* jshint camelcase:false, unused:false, laxbreak:true, expr:true, boss:true */
+/* globals modules, project, addAttrs, addElemMods, addJs, addMix, addMods, appendContent, apply, applyCtx, applyNext, attrs, bem, block, cls, content, def, elem, elemMod, elemMods, extend, js, local, match, mix, mod, mode, mods, oninit, prependContent, replace, tag, wrap, xjstOptions */
+/**
+ *
+ * @module tableview_resizable
+ * @overview tableview_resizable
+ * @author lilliputten <lilliputten@yandex.ru>
+ * @since 2016.11.25 12:17
+ * @version 2016.11.25 12:17
+ *
+*/
+
+block('tableview').mod('resizable', true)(
+
+    elem('container')(
+
+        content()(function(){
+            var ctx = this.ctx;
+            var content = applyNext();
+            Array.isArray(content) || ( content = [] );
+            content.unshift({ elem : 'underlay' });
+            return content;
+        })
+
+    ),
+
+    elem('headcell')(
+
+        content()(function(){
+            var ctx = this.ctx;
+            var content = applyNext();
+            return [
+                {
+                    tag : 'div',
+                    cls : 'handle',
+                    attrs : {
+                        id : ctx.n,
+                        title : '',
+                    },
+                },
+                {
+                    tag : 'span',
+                    cls : 'text '+ctx.bare_cls,
+                    attrs : {
+                        title : ctx.title,
+                    },
+                    content : content,
+                },
+                {
+                    tag : 'div',
+                    cls : 'title '+ctx.bare_cls,
+                    attrs : {
+                        id : ctx.n,
+                        title : ctx.title,
+                    },
+                    content : content,
+                },
+            ];
+        })
+
+    ),
+
+    tag()()
+
+);
+

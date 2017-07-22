@@ -1,0 +1,135 @@
+/* jshint camelcase:false, unused:false, laxbreak:true, expr:true, boss:true */
+/* globals modules, debugger, project, def, tag, match, js, applyCtx, content, applyNext, block, elem, attrs, mix */
+/**
+ *
+ * @module page
+ * @overview Шаблон страницы-фреймворка приложения (SPA-Layout)
+ *
+ * @author lilliputten <lilliputten@yandex.ru>
+ * @since 2017.01.24, 13:12
+ * @version 2017.04.24, 14:35
+ *
+ * $Date: 2017-07-11 19:47:15 +0300 (Tue, 11 Jul 2017) $
+ * $Id: page.bemhtml 8733 2017-07-11 16:47:15Z miheev $
+ *
+*/
+
+block('page')(
+
+    mix()([
+        { block : 'app_layout' },
+        // { mods : { hashTag : project.config.hashTag } },
+    ]),
+
+    js()(function(){
+        return {
+            hashTag : project.config.hashTag,
+        };
+    }),
+
+    // Инициализируемся только один раз. Проверка.
+    match(function(){ return !this._inited; })
+    .def()(function() {
+
+        var ctx = this.ctx,
+            MINEXT = project.config.MINEXT || '',
+            // hashTagTail определён только если собираем из-под enb make (из `__global.gulpConfig`)
+            hashTagTail = project.config.hashTag ? '?--' + project.config.hashTag : ''
+        ;
+
+        ctx.head || ( ctx.head = [] );
+        // ctx.scripts || ( ctx.scripts = [] );
+        this.scripts || ( this.scripts = [] );
+
+        ctx.head.push({ elem : 'meta', attrs : { name : 'description', content : '' } });
+        ctx.head.push({ elem : 'meta', attrs : { name : 'viewport', content : 'width=device-width, initial-scale=1' } });
+
+        // Иконка приложения
+        ctx.head.push({ elem : 'link', attrs : { rel : 'icon', type : 'image/x-icon', href : 'favicon.ico' } });
+
+        // Выводим занчения при сборке
+        ctx.head.push({ html : '<!-- YENV: '+project.config.YENV+' -->' });
+        ctx.head.push({ html : '<!-- DEBUG: '+project.config.DEBUG+' -->' });
+        ctx.head.push({ html : '<!-- LOCAL_NGINX: '+project.config.LOCAL_NGINX+' -->' });
+        ctx.head.push({ html : '<!-- LOCAL_DEV: '+project.config.LOCAL_DEV+' -->' });
+        ctx.head.push({ html : '<!-- LOCAL_ENB: '+project.config.LOCAL_ENB+' -->' });
+        ctx.head.push({ html : '<!-- USE_ENB_URLS: '+project.config.USE_ENB_URLS+' -->' });
+        ctx.head.push({ html : '<!-- hashTag: '+project.config.hashTag+' -->' });
+
+        // Если запущены в локальном enb (работаем на сервере http://localhost:8080) и не из-под nginx
+        // ВНИМАНИЕ: Эти переменные определяются только при старте сборщика или сервера.
+        // Т.е., если сначала запустить под nginx, а потом без него, переменаая LOCAL_NGINX
+        // будет установлена в true в обоих случаях.
+        if ( project.config.USE_ENB_URLS ) {
+            // jquery
+            ctx.head.push({ elem : 'js', url : project.config.libsUrl+project.config.jqueryLibPath+'jquery'+MINEXT+'.js' });
+            // Стили
+            ctx.head.push({ elem : 'css', url : ctx.pageId + '.styles.css' });
+            // NOTE 2017.04.24, 14:22
+            // Последовательность подключения пакетов bemhtml и browser пока важна.
+            // Для локальной разработки (enb-сервер) шаблоны должны подключаться первыми --
+            // используется определённый там глобальный модуль BEMHTML.
+            // См. также деление на типы пакетов `*x.*`.
+            // Шаблоны
+            this.scripts.push({ elem : 'js', url : ctx.pageId + '.bemhtml.js' });
+            // Скрипты
+            this.scripts.push({ elem : 'js', url : ctx.pageId + '.browser.js' });
+        }
+        // Реальные адреса, как на рабочем сервере (eg, подстановка через nginx)
+        else {
+            // jquery
+            ctx.head.push({ elem : 'js', url : project.config.libsUrl+project.config.jqueryLibPath+'jquery'+MINEXT+'.js' });
+            // Стили
+            ctx.head.push({ elem : 'css', url : project.config.coreUrl + 'css/bem/'+project.config.appPage+'.styles'+MINEXT+'.css'+hashTagTail });
+            // Скрипты
+            this.scripts.push({ elem : 'js', url : project.config.coreUrl + 'js/bem/'+project.config.appPage+'.browser'+MINEXT+'.js'+hashTagTail });
+            // Шаблоны
+            this.scripts.push({ elem : 'js', url : project.config.coreUrl + 'js/bem/'+project.config.appPage+'.bemhtml'+MINEXT+'.js'+hashTagTail });
+            // Добавляем ресурсы для текущей страницы???
+            // if ( ctx.pageId !== 'App' ) {
+            //     this.scripts.push({ elem : 'js', url : project.config.coreUrl + 'js/bem/' + ctx.pageId + '.bemhtml.js' });
+            // }
+        }
+
+        this._inited = true;
+
+        return applyNext();
+
+    }),
+
+    content()(function() {
+
+        var ctx = this.ctx,
+            content = applyNext()
+        ;
+
+        // Внутренний контент
+        content = [
+            { block : 'NavHeader' },
+            { block : 'progressbar', mods : { main : true }, cls : 'vlayout__item_fixed' },
+            content,
+        ];
+
+        // Использовать ли общую экранную заставку -- в зависимости от параметра конфигурации.
+        if ( project.config.useAppholder ) {
+            content.push({ block : 'appholder', mods : { show : true } });
+        }
+
+        // Упаковываем во внешний vlayout
+        content = [
+            {
+                block : 'vlayout',
+                tag : 'section',
+                cls : 'cf',
+                js : true,
+                content : content,
+            },
+            this.scripts,
+        ];
+
+        return content;
+
+    })
+
+);
+

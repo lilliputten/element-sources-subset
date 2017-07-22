@@ -1,0 +1,58 @@
+/* jshint camelcase: false */
+/* jshint unused: false */
+/* globals modules, debugger, applyCtx, content, tag, applyNext, block, elem, attrs, match, def */
+
+/**
+ *
+ *  @module tableview__headcell
+ *  @overview tableview__headcell
+ *
+ *  @author lilliputten <lilliputten@yandex.ru>
+ *  @since 2016.10.31 13:31
+ *  @version 2016.10.31 13:31
+ *
+*/
+
+block('tableview').elem('headcell')(
+
+    def()(function(){
+        var ctx = this.ctx;
+
+        if ( !ctx.mix ) { ctx.mix = []; }
+        if ( !ctx.attrs ) { ctx.attrs = {}; }
+
+        ctx.bare_cls = 'n_'+ctx.n;
+
+        // debugger
+        ctx.cls = ctx.cls ? ctx.cls+' ': '';
+        ctx.cls += 'cell '+ctx.bare_cls;
+
+        if ( ctx.show && ! /\bshow\b/.test(ctx.cls) ) {
+            ctx.cls += ' show';
+        }
+
+        ctx.attrs = this.extend(ctx.attrs, {
+            id : ctx.n,
+            title : ctx.title,
+        });
+
+        ctx._dataset_classes = '';
+        if ( ctx.datasets ) {
+            ctx._dataset_classes = 'dataset dataset_'+ctx.datasets.replace(/,/g, ' dataset_');
+            ctx.cls += ' ' + ctx._dataset_classes;
+            ctx.bare_cls += ' ' + ctx._dataset_classes;
+        }
+
+        return applyNext();
+    }),
+
+    content()(function(){
+        var ctx = this.ctx;
+        ctx.content = ctx.title;
+        return applyNext();
+    }),
+
+    tag()('th')
+
+);
+

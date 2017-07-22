@@ -1,0 +1,5 @@
+/* jshint camelcase:false, unused:false, laxbreak:true, expr:true, boss:true */
+/* globals modules, debugger, project, def, tag, match, js, applyCtx, content, applyNext, block, elem, attrs, mix, mod */
+block('menu').elem('item').mod('tree', true)(
+
+);

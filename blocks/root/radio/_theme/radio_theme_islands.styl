@@ -1,0 +1,21 @@
+$radio-color = $accent-color
+
+.radio.radio_theme_islands
+    padding-left: 1px // ??? -- Защита от обрезания толстой обводки в `_focused`
+    &.radio_checked
+        .radio__box
+            background: $radio-color
+            &:before
+                background: #FFF
+            &:after
+                background: $accent-color
+    &.radio_focused
+        &:before
+            background: $radio-color
+        .radio__box
+            background: $radio-color
+            &:before
+                box-shadow: 0 0 0 1px $radio-color, inset 0 0 0 1px $radio-color
+    &.radio_hovered
+        &.radio_checked .radio__box
+            background: $radio-color

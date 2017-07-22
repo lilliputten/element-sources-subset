@@ -1,0 +1,25 @@
+{
+  "name": "RTFReport",
+  "version": "1.0.0",
+  "description": "",
+  "main": "RTFReport.js",
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "webpack": "^3.0.0",
+    "webpack-dev-server": "^2.5.0",
+    "fs-extra": "^3.0.1",
+    "jshint": "^2.9.5",
+    "ym": "^0.1.2"
+  },
+  "private": true,
+  "scripts": {
+    "server": "webpack-dev-server --output-public-path=/dist/ -w",
+    "lint": "jshint .",
+    "test": "npm run lint",
+    "make": "webpack --display-modules",
+    "demo": "rm -vf demo/.results/test-local.rtf && node demo/test-local.js && start demo/.results/test-local.rtf"
+  }
+}

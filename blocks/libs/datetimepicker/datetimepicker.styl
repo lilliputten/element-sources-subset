@@ -1,0 +1,117 @@
+@require "jquery_datetimepicker.styl"
+
+.app_layout .xdsoft_datetimepicker
+    // box-shadow: inset 0 0 0 1px red
+    z-index: 50
+    // display: block !important // debug!!!
+    // display: none
+
+    margin-top: 5px
+
+    animation-timing-function: ease-out
+    animation-duration: 0.1s
+    // animation-fill-mode: forwards
+    animation-name: datetimepicker_animation
+    // animation-direction: alternate
+
+    // xdsoft_datepicker
+    // xdsoft_timepicker
+
+    // border-color: lighten($neutral-color,40)
+    border: none
+    box-shadow: 0 0 0 1px rgba(0,0,0,0.1), 0 10px 20px -5px rgba(0,0,0,0.4)
+
+    &
+    .xdsoft_save_selected.blue-gradient-button
+        // content: "OK"
+        default-font-style()
+
+    .xdsoft_save_selected.blue-gradient-button
+        border-radius: 3px
+        background: #FFF
+        color: $default-color
+        cursor: pointer
+        &:hover
+            background: $accent-color
+            border-color: darken($accent-color,7) !important
+            color: #FFF
+            // box-shadow: $button-glow-hovered
+            box-shadow: 0 0 1px 1px alpha($accent-color,.6)
+
+    .xdsoft_select
+        // border: none
+        // box-shadow: 0 0 0 1px rgba(0,0,0,0.1), 0 5px 10px -2px rgba(0,0,0,0.4)
+        box-shadow: 0 6px 10px -2px rgba(0,0,0,0.4)
+
+
+    .xdsoft_calendar td.xdsoft_other_month
+        opacity: .4
+    .xdsoft_calendar td.xdsoft_current
+    .xdsoft_timepicker .xdsoft_time_box>div>div.xdsoft_current
+    .xdsoft_label>.xdsoft_select>div>.xdsoft_option.xdsoft_current
+        background: $accent-color
+        box-shadow: none // $accent-color 0 1px 3px 0 inset
+        font-weight: normal
+        color: #FFF
+    .xdsoft_calendar td.xdsoft_today:not(.xdsoft_current)
+        color: $accent-color
+        // border-color: $accent-color
+        box-shadow: inset 0 0 0 1px $accent-color
+        // &.xdsoft_current
+        //     color: #FFF
+    .xdsoft_calendar td:hover
+    .xdsoft_timepicker .xdsoft_time_box>div>div:hover
+    .xdsoft_label>.xdsoft_select>div>.xdsoft_option:hover
+        background: $element-color !important
+    .xdsoft_label i
+    .xdsoft_next
+    .xdsoft_prev
+    .xdsoft_today_button
+        opacity: .2
+        &:hover
+            opacity: .4
+    .xdsoft_label:hover i
+        opacity: .4
+    .xdsoft_label
+        font-weight: normal
+        font-size: $font-size-normal
+    .xdsoft_timepicker .xdsoft_time_box
+    .xdsoft_timepicker .xdsoft_time_box>div>div
+    .xdsoft_calendar td
+    .xdsoft_calendar th
+        border-color: #FFF
+        font-weight: normal
+        color: $default-color
+    .xdsoft_calendar th
+        color: lighten($default-color,60)
+
+    .xdsoft_scrollbar
+        width: 5px
+        transition: opacity .2s ease-out
+        opacity: .5
+        &:hover
+            opacity: 1
+    .xdsoft_timepicker .xdsoft_time_box>div>div.xdsoft_scroller
+    .xdsoft_scrollbar>.xdsoft_scroller
+        background: darken($neutral-color,50) !important
+        opacity: .6
+        transition: opacity .1s ease-out
+        box-shadow: 0 0 0 1px #FFF
+        &:hover
+            // background: darken($neutral-color,50) !important
+            background: $accent-color !important
+            opacity: 1
+            box-shadow: 0 0 0 1px alpha(#FFF,.7) !important
+
+
+@keyframes datetimepicker_animation
+    0%
+        // visibility: visible
+        // margin: 0
+        transform: translateY(10px)
+        opacity: 0
+    100%
+        // margin: 0
+        transform: translateY(0px)
+        opacity: 1
+

@@ -1,0 +1,21 @@
+module.exports = {
+    root : true,
+    levels1 [
+        'blocks/test',
+    ],
+    levels : {
+        'blocks/test' : { 'scheme' : 'nested', 'default' : true, },
+        // 'blocks' : { 'scheme' : 'nested', 'default' : true, },
+    },
+    modules : {
+        'bem-lib-site' : {
+            data : {
+                outputFolder : 'tmp/data',
+            },
+            view : {
+                outputFolder : 'docs',
+            },
+            libs : {},
+        }
+    }
+};

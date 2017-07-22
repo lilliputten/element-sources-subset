@@ -1,0 +1,11 @@
+--- base.bemhtml.js.orig	2017-05-26 13:40:35.567634400 +0300
++++ base.bemhtml.js	2017-05-26 13:48:03.359634400 +0300
+@@ -2208,7 +2208,7 @@
+                 }
+             );
+ 
+-        defineAsGlobal = false;
++        // defineAsGlobal = false; // XXX: Always creating global object!
+     }
+ 
+     // Provide to global scope

@@ -1,0 +1,12 @@
+/* jshint camelcase:false, unused:false, laxbreak:true, expr:true, boss:true */
+/* globals modules, project, addAttrs, addElemMods, addJs, addMix, addMods, appendContent, apply, applyCtx, applyNext, attrs, bem, block, cls, content, def, elem, elemMod, elemMods, extend, js, local, match, mix, mod, mode, mods, oninit, prependContent, replace, tag, wrap, xjstOptions */
+block('select').mod('nicescroll', true)(
+
+    def()(function(){
+        // Передаём флаг nicescroll для формирования параметров/модификаторов вложенных блоков (popup, menu)
+        // См. эффект в `menu` (mod:nicescroll), `popup` (js:directions)
+        this._nicescroll = true;
+        return applyNext();
+    })
+
+);

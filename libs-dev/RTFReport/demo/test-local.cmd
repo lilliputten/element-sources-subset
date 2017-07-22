@@ -1,0 +1,1 @@
+@rm -vf .results/test-local.rtf && node test-local.js && start .results/test-local.rtf

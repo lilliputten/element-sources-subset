@@ -1,0 +1,22 @@
+.checkbox_theme_islands
+    // border: 1px solid green
+    &.checkbox_checked
+        .checkbox__box
+            background: rgba(0, 0, 0, 0.3)
+            &:before
+                background: #FFF
+                background: alpha($element-color,.25)
+                background: mix($element-color,#FFF,25%)
+    &.checkbox_focused
+        .checkbox__box
+            // box-shadow: 0 0 0 1px #ffcc00, inset 0 0 0 1px #ffcc00
+            &:before
+                box-shadow: 0 0 0 1px $element-color, inset 0 0 0 1px $element-color
+    &.checkbox_hovered
+        .checkbox__box
+            // background: rgba(0, 0, 0, 0.3)
+            background: $element-color
+        &.checkbox_checked .checkbox__box
+            // background: rgba(129, 103, 0, 0.6)
+            background: alpha($element-color,1)
+

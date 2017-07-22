@@ -1,0 +1,46 @@
+/**
+ * @overview Шапка страницы.
+ * $Date: 2017-04-03 17:57:50 +0300 (Mon, 03 Apr 2017) $
+ * $Id: NavHeader.styl 8038 2017-04-03 14:57:50Z miheev $
+ */
+
+$BgColor = darken($accent-color,10)
+
+$NavHeader = {
+
+    zIndex : 50
+
+    defaultColor : $paper-color
+    padding : 15px
+    paddingBrief : 10px
+
+    titleFontSize : $font-size-xl
+    titlePlusColor : $alt-accent-color
+
+    Background : {
+        color : $BgColor
+        image : url("/core/i/NavHeader/h-bg.jpg")
+    },
+
+    Gradient : {
+        color : darken($BgColor,20)
+        startOpacity : .5
+    },
+
+    Logo : {
+        image : url("/core/i/NavHeader/logo.png")
+        size : 80px
+        sizeSmall : 50px
+    },
+
+    SideMenu : {
+        bgColor : alpha($BgColor,.85)
+    },
+
+}
+
+$NavMenu = {
+
+    zIndex : $NavHeader.zIndex
+
+}

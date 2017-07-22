@@ -1,0 +1,65 @@
+
+$head_height = 50px
+$cell_offset = 10px
+
+$head_xtra_offset = 18px
+$head_bottom_offset = 2px
+
+$base_bg_color = $element-color
+$head_bg_color = $accent-color
+
+$default_lighten = 30
+$hovered_lighten = 25
+$checked_lighten = 20
+$checked_hovered_lighten = 15
+$selected_lighten = 5
+$selected_hovered_lighten = 0
+
+$check_width = 45px
+
+default_check()
+    width: $check_width
+    box-sizing: border-box
+    text-align: center
+    // padding-left: $cell_offset + 4px
+    > .checkbox
+        // padding-left: 4px
+        margin-left:4px
+$default_check
+    default_check()
+
+default_cell($lighten=$default_lighten)
+    white-space: nowrap
+    font-weight: normal
+    padding: $cell_offset
+    background-color: lighten($base_bg_color,$lighten)
+    border: 0px solid #FFF
+    border-left-width: 1px
+    border-bottom-width: 1px
+    // overflow: hidden
+    // text-overflow: ellipsis
+    // box-sizing: border-box
+    // transition: background .1s
+$default_cell
+    default_cell()
+
+$hovered_cell
+    @extend $default_cell
+    background-color: lighten($base_bg_color,$hovered_lighten)
+$selected_cell
+    @extend $default_cell
+    background-color: lighten($base_bg_color,$selected_lighten)
+    // background-color: $accent-color
+    // color: #FFF
+$selected_hovered_cell
+    @extend $default_cell
+    background-color: lighten($base_bg_color,$selected_hovered_lighten)
+    // background-color: lighten($accent-color,5)
+    // color: #FFF
+$checked_cell
+    @extend $default_cell
+    background-color: lighten($base_bg_color,$checked_lighten)
+$checked_hovered_cell
+    @extend $default_cell
+    background-color: lighten($base_bg_color,$checked_hovered_lighten)
+

@@ -1,0 +1,206 @@
+/**
+ * @overview Параметры и типы кнопок.
+ * $Date: 2017-03-09 22:37:35 +0300 (Thu, 09 Mar 2017) $
+ * $Id: buttons.styl 7531 2017-03-09 19:37:35Z miheev $
+ */
+
+button_disabled()// {{{
+    &.button_theme_islands
+        cursor: default
+        opacity: .5
+        // border: 1px solid red
+        &
+        &.button_hovered
+            &
+            &:before
+                background: none
+        .icon
+            opacity: .3
+            color: darken($neutral-color,40%)
+            // color: #000
+// }}}
+$button_disabled
+    button_disabled()
+
+// $button_default // {{{
+//
+//     $icon_font_size = 18px
+//
+//     $normal_color = #FFF
+//     $normal_bg_color = lighten($accent-color,5%)
+//     $normal_border_color = darken($accent-color,5%)
+//     // $normal_glow_color = alpha($islands-active-color,.3)
+//
+//     $hovered_color = #FFF
+//     $hovered_bg_color = lighten($accent-color,15%)
+//     $hovered_border_color = darken($accent-color,5%)
+//
+//     // $hovered_color = lighten($accent-color,15%)
+//
+//     &.button_theme_islands
+//         // background: none
+//         background: $normal_border_color
+//         &:before
+//             background: $normal_bg_color
+//             box-shadow: none // 0px 0px 4px 1px alpha($islands-active-color,.3)
+//         color: $normal_color
+//         .icon
+//             // color: $normal_color
+//             font-size: $icon_font_size
+//             &:before
+//                 position: relative
+//                 top: 1px
+//             &:after
+//                 display: none
+//         // .button__text
+//         //     display: none
+//
+//         &.button_hovered
+//             background: $hovered_border_color
+//             &:before
+//                 background: $hovered_bg_color
+//                 box-shadow: 0px 0px 4px 1px $hovered_glow_color
+//             color: $hovered_color
+//             // .icon
+//             //     color: $hovered_color
+//
+//         &.button_focused-hard
+//             // background: darken($islands-border-color,10%)
+//             background: none
+//             // background: darken($accent-color,10%)
+//             box-shadow: 0 0 0 1px alpha($accent-color,.6), inset 0 0 0 1px alpha($accent-color,.6);
+//
+//     &.button_disabled
+//         @extend $button_disabled
+//         // background: none
+//         // .icon
+//         //     color: darken($neutral-color,40%)
+//
+//     // }}}
+
+
+$selector_button_colors // {{{
+    $checked-color = lighten($accent-color,0%)
+    &.button
+        background: $panel-border-color
+        color: $neutral-color
+        // transition: all .25s
+        &:before
+            background: lighten($neutral-color,90%)
+            // transition: all .25s
+        .icon
+            top: 2px
+            // height: 14px
+            // &:before
+            //     height: 14px
+            // if $type == 'sm'
+            //     top: 1px
+            // color: $normal_color
+            font-size: 17px
+            // box-sizing: border-box
+            &:after
+                display: none
+        &.button_checked
+            // background: $panel-border-color
+            background: darken($checked-color,15%)
+            color: #FFF
+            &:before
+                background: $checked-color
+                box-shadow: none
+        &.button_pressed
+        &.button_hovered
+            background: $panel-border-color
+            &
+            // .icon
+                color: darken($neutral-color,30%)
+            &:before
+                background: lighten($neutral-color,95%)
+                // box-shadow: 0px 0px 4px 0px alpha(lighten($neutral-color,50%),.6)
+                box-shadow: none
+            &.button_checked
+                background: darken($checked-color,15%)
+                &
+                // .icon
+                    color: #FFF
+                &:before
+                    background: lighten($checked-color,10%)
+                    box-shadow: 0px 0px 4px 0px alpha($checked-color,.6)
+                    box-shadow: none
+        // .icon
+        //     height: 14px
+        //     &:before
+        //         height: 14px !important // ???
+    // }}}
+
+// {{{ customize icons...
+
+// .selector_group_show_boxes
+.icon
+    &.icon-offset-1
+        top: 1px
+    &.icon-offset-2
+        top: 2px
+    &.icon-offset-3
+        top: 3px
+    &.icon-offset-4
+        top: 4px
+    &.icon-turnaround90
+    &.icon-turnaround
+        &:before
+            position: relative
+            display: inline-block
+            transition: transform .15s
+            transform: rotate(0deg)
+            .button_checked &
+                transform: rotate(180deg)
+    &.icon-turnaround90
+        &:before
+            .button_checked &
+                transform: rotate(90deg)
+
+// .button_checked
+//     .icon
+//         &:before
+//             padding-bottom: 2px
+//             transform: rotate(180deg)
+
+// }}}
+
+default_select() // {{{
+    .button_theme_islands
+        &.button_checked
+            background: rgba(0,0,0,0.2)
+            &::before
+                background-color: #FFF
+                box-shadow: none;
+            &.button_hovered
+                // background: rgba(129, 103, 0, 0.6)
+                &:before
+                    background: lighten($islands-active-color,70%)
+                    box-shadow: 0px 0px 4px 1px alpha($islands-active-color,.3)
+
+        //     background: rgba(153, 122, 0, 0.5)
+        //     &:before
+        //         background: #ffeba0
+        //         background: $accent-color
+        //     &.button_pressed
+        //         background: rgba(129, 103, 0, 0.6)
+        //         &:before
+        //             background: #fee481
+        //     &.button_hovered
+        //         background: rgba(129, 103, 0, 0.6)
+        //         background: $accent-color
+        // &.button_hovered
+        //     // background: rgba(129, 103, 0, 0.6)
+        //     // &:before
+        //     //     background: #fee481
+        //     //     background-color: lighten($accent-color,0%)
+        //     &:before
+        //         background: lighten($islands-active-color,70%)
+        //         box-shadow: 0px 0px 4px 1px alpha($islands-active-color,.3)
+        //     .button__text
+        //         color: #FFF
+    // }}}
+
+$default_select
+    default_select()

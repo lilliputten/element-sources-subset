@@ -1,0 +1,14 @@
+@require "../__defaults.styl"
+
+.tableview__bodycell
+    @extend $default_cell
+    text-align: left
+
+    // min-width: 100px
+    //
+    &:not(.show)
+        display: none
+
+    // .tableview__bodyrow &
+    //     height: 100px // DEBUG!
+

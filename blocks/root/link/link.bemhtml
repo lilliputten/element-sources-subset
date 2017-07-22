@@ -1,0 +1,53 @@
+/* jshint camelcase:false, unused:false, laxbreak:true, expr:true, boss:true */
+/* globals modules, project, addAttrs, addElemMods, addJs, addMix, addMods, appendContent, apply, applyCtx, applyNext, attrs, bem, block, cls, content, def, elem, elemMod, elemMods, extend, js, local, match, mix, mod, mode, mods, oninit, prependContent, replace, tag, wrap, xjstOptions */
+block('link')(
+    def()(function() {
+        this._url = this.ctx.url;
+        if ( typeof this._url === 'object' ) { // url could contain bemjson
+            this._url = this.reapply(this._url);
+        }
+        if ( this._url && this._url.includes('{{') ) {
+            this._url = project.helpers.expand_path(this._url);
+        }
+        return applyNext();
+    }),
+
+    tag()('a'),
+
+    js()(false),
+
+    // NOTE: mix below is to satisfy interface of `control`
+    // mix()([{ elem : 'control' }]),
+    mix()([]),
+
+    attrs()(function() {
+        var ctx = this.ctx,
+            attrs = {},//{ role : 'link' },
+            tabIndex;
+
+        if(!this.mods.disabled) {
+            if(this._url) {
+                attrs.href = this._url;
+                tabIndex = ctx.tabIndex;
+            } else {
+                tabIndex = ctx.tabIndex || 0;
+            }
+        } else {
+            attrs['aria-disabled'] = true;
+        }
+
+        // typeof tabIndex === 'undefined' || (attrs.tabindex = tabIndex);
+
+        ctx.title && (attrs.title = ctx.title);
+        ctx.target && (attrs.target = ctx.target);
+        ctx.id && (attrs.id = ctx.id);
+
+        return attrs;
+    }),
+
+    mod('disabled', true)
+        .js()(function() {
+            return this.extend(applyNext(), { url : this.ctx.url });
+        })
+);
+

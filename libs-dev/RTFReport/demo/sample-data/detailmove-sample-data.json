@@ -1,0 +1,295 @@
+[
+  {
+    "elem": "Group",
+    "id": "detailmove_header",
+    "mods": {
+      "showTitle": true
+    }
+  },
+  {
+    "elem": "Title",
+    "content": "Отчет о пробеге за период"
+  },
+  {
+    "elem": "Group",
+    "id": "detailmove_reportInfo",
+    "title": "Информация об отчёте",
+    "mods": {
+      "showTitle": true,
+      "showStat": true
+    },
+    "Stat": [
+      {
+        "elem": "Item",
+        "id": "ReportTimeStr",
+        "title": "Время создания отчёта",
+        "val": "28.06.2017 13:33"
+      },
+      {
+        "elem": "Item",
+        "id": "BeginTimeStr",
+        "title": "Начало периода",
+        "val": "28.11.2016 00:00"
+      },
+      {
+        "elem": "Item",
+        "id": "EndTimeStr",
+        "title": "Конец периода",
+        "val": "29.11.2016 00:00"
+      },
+      {
+        "elem": "Item",
+        "id": "username",
+        "title": "Имя пользователя",
+        "val": 555
+      }
+    ]
+  },
+  {
+    "elem": "Group",
+    "id": "detailmove_commonStat",
+    "title": "Общая статистика",
+    "mods": {
+      "showTitle": true,
+      "showStat": true
+    },
+    "Stat": [
+      {
+        "elem": "Item",
+        "id": "Distance",
+        "title": "Дистанция",
+        "val": 428.64
+      },
+      {
+        "elem": "Item",
+        "id": "SpeedMax",
+        "title": "Макс.скорость",
+        "val": 40.744
+      }
+    ]
+  },
+  {
+    "elem": "Group",
+    "id": "detailmove_object_2",
+    "title": "ТС x101xx180 (АНК-М)",
+    "mods": {
+      "showTitle": true,
+      "showStat": true,
+      "showTable": true
+    },
+    "Stat": [
+      {
+        "elem": "Item",
+        "id": "typeID",
+        "title": "Тип КО",
+        "val": "ТС"
+      },
+      {
+        "elem": "Item",
+        "id": "name",
+        "title": "Наименование",
+        "val": "x101xx180"
+      },
+      {
+        "elem": "Item",
+        "id": "acInfo.typeID",
+        "title": "Тип АНК",
+        "val": "АНК-М"
+      },
+      {
+        "elem": "Item",
+        "id": "PeriodTime",
+        "title": "Общее время движения",
+        "val": "11 ч. 30 м. 49 с."
+      },
+      {
+        "elem": "Item",
+        "id": "Distance",
+        "title": "Дистанция",
+        "val": 214.341
+      },
+      {
+        "elem": "Item",
+        "id": "SpeedMax",
+        "title": "Макс.скорость",
+        "val": 40.744
+      },
+      {
+        "elem": "Item",
+        "id": "SpeedAvg",
+        "title": "Средняя скорость",
+        "val": 18.616
+      },
+      {
+        "elem": "Item",
+        "id": "MovePeriodType1",
+        "title": "Стоянка",
+        "val": 0
+      },
+      {
+        "elem": "Item",
+        "id": "MovePeriodType2",
+        "title": "Движение",
+        "val": "11 ч. 30 м. 49 с."
+      },
+      {
+        "elem": "Item",
+        "id": "MovePeriodType3",
+        "title": "Нет данных",
+        "val": 0
+      }
+    ],
+    "Table": {
+      "columns": [
+        "Тип периода",
+        "Длительность",
+        "Начало движения",
+        "Окончание движения",
+        "Пробег за период",
+        "Максимальная скорость",
+        "Средняя скорость"
+      ],
+      "rows": [
+        [
+          "Нет данных",
+          "9 ч. 40 м. 2 с.",
+          "28.11.2016 00:00",
+          "28.11.2016 09:40",
+          0,
+          0,
+          0
+        ],
+        [
+          "Движение",
+          "11 ч. 30 м. 49 с.",
+          "28.11.2016 09:40",
+          "28.11.2016 21:10",
+          214.341,
+          40.74,
+          18.62
+        ],
+        [
+          "Нет данных",
+          "2 ч. 49 м. 9 с.",
+          "28.11.2016 21:10",
+          "29.11.2016 00:00",
+          0,
+          0,
+          0
+        ]
+      ]
+    }
+  },
+  {
+    "elem": "Group",
+    "id": "detailmove_object_3",
+    "title": "ТС x102xx180 (АНК-М)",
+    "mods": {
+      "showTitle": true,
+      "showStat": true,
+      "showTable": true
+    },
+    "Stat": [
+      {
+        "elem": "Item",
+        "id": "typeID",
+        "title": "Тип КО",
+        "val": "ТС"
+      },
+      {
+        "elem": "Item",
+        "id": "name",
+        "title": "Наименование",
+        "val": "x102xx180"
+      },
+      {
+        "elem": "Item",
+        "id": "acInfo.typeID",
+        "title": "Тип АНК",
+        "val": "АНК-М"
+      },
+      {
+        "elem": "Item",
+        "id": "PeriodTime",
+        "title": "Общее время движения",
+        "val": "11 ч. 30 м. 49 с."
+      },
+      {
+        "elem": "Item",
+        "id": "Distance",
+        "title": "Дистанция",
+        "val": 214.3
+      },
+      {
+        "elem": "Item",
+        "id": "SpeedMax",
+        "title": "Макс.скорость",
+        "val": 40.744
+      },
+      {
+        "elem": "Item",
+        "id": "SpeedAvg",
+        "title": "Средняя скорость",
+        "val": 18.613
+      },
+      {
+        "elem": "Item",
+        "id": "MovePeriodType1",
+        "title": "Стоянка",
+        "val": 0
+      },
+      {
+        "elem": "Item",
+        "id": "MovePeriodType2",
+        "title": "Движение",
+        "val": "11 ч. 30 м. 49 с."
+      },
+      {
+        "elem": "Item",
+        "id": "MovePeriodType3",
+        "title": "Нет данных",
+        "val": 0
+      }
+    ],
+    "Table": {
+      "columns": [
+        "Тип периода",
+        "Длительность",
+        "Начало движения",
+        "Окончание движения",
+        "Пробег за период",
+        "Максимальная скорость",
+        "Средняя скорость"
+      ],
+      "rows": [
+        [
+          "Нет данных",
+          "9 ч. 40 м. 2 с.",
+          "28.11.2016 00:00",
+          "28.11.2016 09:40",
+          0,
+          0,
+          0
+        ],
+        [
+          "Движение",
+          "11 ч. 30 м. 49 с.",
+          "28.11.2016 09:40",
+          "28.11.2016 21:10",
+          214.3,
+          40.74,
+          18.61
+        ],
+        [
+          "Нет данных",
+          "2 ч. 49 м. 9 с.",
+          "28.11.2016 21:10",
+          "29.11.2016 00:00",
+          0,
+          0,
+          0
+        ]
+      ]
+    }
+  }
+]
